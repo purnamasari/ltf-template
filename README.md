@@ -6,6 +6,11 @@ to themselves, choose an archival design, and have it delivered one year later.
 Implemented from Figma:
 [WIP / Raffles Heritage → Design](https://www.figma.com/design/HMYN8b4CKSRi2vwwSFznCS/WIP-_-Raffles-Heritage?node-id=3714-10662&m=dev).
 
+Keeping it in step with the file as the design moves on is a one-frame-at-a-time
+job — `/sync-frame <node-id>`; the frame registry and the reasoning are in
+[docs/design/frames.md](docs/design/frames.md), and the house rules a re-sync
+must not break are in [CLAUDE.md](CLAUDE.md).
+
 ## Running it
 
 ```bash

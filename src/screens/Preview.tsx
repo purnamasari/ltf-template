@@ -1,3 +1,4 @@
+// FIGMA: 4802:3876 — see docs/design/frames.md
 import { useNavigate } from "@tanstack/react-router";
 import { Backdrop } from "../components/Backdrop";
 import { LogoMark, PrivacyLink, ProgressBar, StepNav } from "../components/chrome";

@@ -1,3 +1,4 @@
+// FIGMA: 4836:10970 — see docs/design/frames.md
 import { useEffect } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { useMutation } from "@tanstack/react-query";

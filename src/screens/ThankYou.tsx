@@ -1,3 +1,4 @@
+// FIGMA: 4814:8120 — see docs/design/frames.md
 import { useEffect, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { Backdrop } from "../components/Backdrop";

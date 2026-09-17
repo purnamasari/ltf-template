@@ -1,3 +1,4 @@
+// FIGMA: 4734:6213 — see docs/design/frames.md
 import { useNavigate } from "@tanstack/react-router";
 import { ASSETS } from "../lib/assets";
 

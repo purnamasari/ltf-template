@@ -1,3 +1,4 @@
+// FIGMA: 4808:8058 — see docs/design/frames.md
 import { useState } from "react";
 import type { ReactNode } from "react";
 import { useNavigate } from "@tanstack/react-router";

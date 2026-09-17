@@ -26,6 +26,41 @@ never need to be open at the same time:
 
 If a task seems to need both, do them as two passes, in that order.
 
+## Where functional code goes
+
+A screen is a Figma frame. It gets re-synced from a file other people edit, so
+**a screen may hold layout and local UI state, and nothing else**: no fetch, no
+storage, no retry, no business rule, no decision about where the guest goes
+next. Everything durable lives under `src/lib/<domain>/` and is reached through
+a single hook, so a frame can move without a line of logic being at risk.
+
+`src/lib/submission/` is the worked example. The Sending screen renders a
+postcard going into a box and reads one flag:
+
+```tsx
+const { failed } = useSubmitPostcard();
+```
+
+When it is time to send, `mutate` on mount, the navigate-on-success and the
+error shape are the hook's business. Re-syncing `4836:10970` cannot break any of
+it, because none of it is in the file being rewritten.
+
+The features not yet built go the same way, one folder each:
+
+| Domain | Folder | Public surface |
+| --- | --- | --- |
+| Handing the postcard over | `src/lib/submission/` | `useSubmitPostcard()` |
+| Queue and retry when the kiosk is offline | `src/lib/outbox/` | `useOutbox()` |
+| Pairing and reporting to the dashboard | `src/lib/pairing/` | `usePairing()` |
+
+Two things stay out of this rule, because they genuinely belong to the layout:
+
+- **Interaction primitives** — `useSwipe`, `useTypewriter`. Behaviour, but
+  behaviour the design specifies; they live in `src/lib` and screens call them.
+- **Geometry** — `MOUTH_Y` in `Sending.tsx` derived from the postbox's own
+  `slotTop`, the carousel offsets. These must move when the frame moves, so
+  they belong beside the layout, not behind a hook.
+
 ## Rules that survive a re-sync from Figma
 
 1. **Tokens, never raw values.** Colour, font and size go into `@theme` in

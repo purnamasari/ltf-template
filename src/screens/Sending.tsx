@@ -1,13 +1,10 @@
 // FIGMA: 4836:10970 — see docs/design/frames.md
-import { useEffect } from "react";
-import { useNavigate } from "@tanstack/react-router";
-import { useMutation } from "@tanstack/react-query";
 import { Backdrop } from "../components/Backdrop";
 import { LogoMark, ProgressBar } from "../components/chrome";
 import { PostcardFront } from "../components/Postcard";
 import { POSTBOX, Postbox } from "../components/Postbox";
-import { submitPostcard } from "../lib/api";
-import { useFlow, useSelectedDesign } from "../lib/flow";
+import { useSubmitPostcard } from "../lib/submission";
+import { useSelectedDesign } from "../lib/flow";
 
 /** Where the box stands, and the card's resting place above it. */
 const BOX_TOP = 490;
@@ -22,21 +19,8 @@ const MOUTH_Y = BOX_TOP + POSTBOX.slotTop + 6;
  * watches it go rather than watching a spinner.
  */
 export function Sending() {
-  const navigate = useNavigate();
-  const { draft } = useFlow();
   const design = useSelectedDesign();
-
-  const { mutate, isSuccess, isError } = useMutation({ mutationFn: submitPostcard });
-
-  useEffect(() => {
-    mutate(draft);
-    // The draft is frozen for the length of this screen — submit exactly once.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    if (isSuccess) navigate({ to: "/thank-you" });
-  }, [isSuccess, navigate]);
+  const { failed } = useSubmitPostcard();
 
   return (
     <>
@@ -73,7 +57,7 @@ export function Sending() {
         </div>
       </div>
 
-      {isError && (
+      {failed && (
         <p
           role="alert"
           className="absolute left-1/2 top-[790px] -translate-x-1/2 text-[20px] text-brick"

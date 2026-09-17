@@ -33,7 +33,14 @@ what resolves them. Work in this order and do not widen the scope.
      whole frame if a smaller node will do. Reference, not output: write the
      screen in the house idiom from CLAUDE.md.
 5. Make the change. Tokens not hex, `src/lib/assets.ts` for any new artwork, no
-   responsive rules, no edits to `src/lib/api.ts`.
+   responsive rules, and nothing under `src/lib/` edited at all — a sync changes
+   layout, never behaviour.
+
+   If the frame has dropped an element that the screen uses to drive something
+   (a button wired to a hook, a field the flow stores), do **not** delete the
+   wiring to make the markup match. Say what the design removed and what it was
+   connected to, and let the user decide. A frame going quiet about a feature is
+   usually the designer not having drawn it, not the feature being cancelled.
 6. Verify: `npm run build` and `npm run lint` must both pass.
 7. Move `<key>.json.new` over `<key>.json` — the snapshot is now the baseline for
    next time. Update the entry's `synced` date in `docs/design/frames.json` and

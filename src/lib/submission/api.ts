@@ -1,4 +1,4 @@
-import type { PostcardDraft } from "./flow";
+import type { PostcardDraft } from "../flow";
 
 export type SubmitResult = { id: string; deliverOn: string };
 

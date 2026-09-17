@@ -24,17 +24,21 @@ export function Pair() {
   const [error, setError] = useState<string | null>(null);
 
   const request = useCallback(async () => {
-    setError(null);
-    setPairing(null);
     try {
-      setPairing(await startPairing(KIOSK_LABEL));
+      const started = await startPairing(KIOSK_LABEL);
+      setPairing(started);
       setRemaining(WINDOW_SECONDS);
+      setError(null);
     } catch {
+      setPairing(null);
       setError("Could not reach the server. Check the tablet's connection and try again.");
     }
   }, []);
 
   useEffect(() => {
+    // Asking the server for a code is the external synchronisation an effect is
+    // for, and the state is set after the await rather than during the render.
+    // eslint-disable-next-line react/set-state-in-effect
     void request();
   }, [request]);
 

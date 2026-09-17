@@ -62,9 +62,12 @@ drift, and a blind re-sync will undo them.
   ordinary `input`/`textarea`; nothing is drawn for it.
 - **Two additions the frames do not draw:** the back chevron on narration beats
   2 and 3, and the "Tap to continue" line that fades in after typing.
-- **Wechat is drawn on `4808:5417` but not offered.** The channel list comes
-  from `meta.channels`, and `EMAIL` is the only one the API supports today. When
-  Wechat goes live it appears on its own, with no code or layout change.
+- **Wechat is drawn on `4808:5417` and stays on screen, disabled.** The API
+  lists `EMAIL` alone in `meta.channels` today; Wechat is scheduled for the
+  first release after launch, once the official account exists. Tapping it says
+  so rather than doing nothing, because a guest who wants Wechat should learn it
+  is coming, not find it missing. It enables itself when the server lists it —
+  no code change, no layout change.
 - **No title picker on `/name`.** The API accepts `recipient.title`, but the
   frame does not draw one and the field is optional, so it is never sent.
 - **`/pair` has no frame at all.** It is a staff screen, deliberately plain —

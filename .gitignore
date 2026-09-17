@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Figma metadata dumps mid-sync; the committed snapshot is the baseline
+docs/design/snapshots/*.json.new

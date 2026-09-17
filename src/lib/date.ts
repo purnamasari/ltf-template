@@ -9,10 +9,14 @@ export function ordinalSuffix(day: number): string {
   return ["th", "st", "nd", "rd"][day % 10] ?? "th";
 }
 
-/** The postcard is delivered one year to the day after it is written. */
-export function deliveryDate(writtenOn: Date): Date {
+/**
+ * The date shown while the guest is still at the kiosk, computed from the
+ * server's `delivery_horizon_days`. The app never decides when anything is
+ * sent: the server schedules it and its `scheduled_at` is the one of record.
+ */
+export function deliveryDate(writtenOn: Date, horizonDays: number): Date {
   const date = new Date(writtenOn);
-  date.setFullYear(date.getFullYear() + 1);
+  date.setDate(date.getDate() + horizonDays);
   return date;
 }
 

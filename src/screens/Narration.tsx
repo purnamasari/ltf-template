@@ -1,3 +1,4 @@
+// FIGMA: 4734:4631, 4929:5286, 4929:5308 — see docs/design/frames.md
 import { useState } from "react";
 import { useNavigate, useSearch } from "@tanstack/react-router";
 import { IntroScene } from "../components/IntroScene";

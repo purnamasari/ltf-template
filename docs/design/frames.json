@@ -1,0 +1,22 @@
+{
+  "file": "https://www.figma.com/design/HMYN8b4CKSRi2vwwSFznCS/WIP-_-Raffles-Heritage",
+  "parent": {
+    "nodeId": "3714:10662",
+    "note": "The section that holds the kiosk flow. This is the one id the tooling trusts. Every frame id below is a cache, re-resolved by /scan-frames. If the design team ever duplicates this section wholesale, change it here and nowhere else."
+  },
+  "frames": [
+    { "key": "cover",        "route": "/",          "file": "src/screens/Cover.tsx",        "nodeId": "4734:6213",  "figmaName": null, "synced": "2026-09-17", "describes": "Cover / attract" },
+    { "key": "intro-1",      "route": "/intro",     "file": "src/screens/Narration.tsx",    "nodeId": "4734:4631",  "figmaName": null, "synced": "2026-09-17", "describes": "Narration beat 1" },
+    { "key": "intro-2",      "route": "/intro",     "file": "src/screens/Narration.tsx",    "nodeId": "4929:5286",  "figmaName": null, "synced": "2026-09-17", "describes": "Narration beat 2" },
+    { "key": "intro-3",      "route": "/intro",     "file": "src/screens/Narration.tsx",    "nodeId": "4929:5308",  "figmaName": null, "synced": "2026-09-17", "describes": "Narration beat 3" },
+    { "key": "design",       "route": "/design",    "file": "src/screens/ChooseDesign.tsx", "nodeId": "4734:6117",  "figmaName": null, "synced": "2026-09-17", "describes": "Design picker" },
+    { "key": "write",        "route": "/write",     "file": "src/screens/Write.tsx",        "nodeId": "4734:6165",  "figmaName": null, "synced": "2026-09-17", "describes": "Write, prompts open" },
+    { "key": "write-folded", "route": "/write",     "file": "src/screens/Write.tsx",        "nodeId": "4802:3536",  "figmaName": null, "synced": "2026-09-17", "describes": "Write, prompts folded" },
+    { "key": "preview",      "route": "/preview",   "file": "src/screens/Preview.tsx",      "nodeId": "4802:3876",  "figmaName": null, "synced": "2026-09-17", "describes": "Preview written side" },
+    { "key": "name",         "route": "/name",      "file": "src/screens/YourName.tsx",     "nodeId": "4808:4040",  "figmaName": null, "synced": "2026-09-17", "describes": "How to be addressed" },
+    { "key": "delivery",     "route": "/delivery",  "file": "src/screens/Delivery.tsx",     "nodeId": "4808:5417",  "figmaName": null, "synced": "2026-09-17", "describes": "E-mail or Wechat" },
+    { "key": "confirm",      "route": "/confirm",   "file": "src/screens/Confirmation.tsx", "nodeId": "4808:8058",  "figmaName": null, "synced": "2026-09-17", "describes": "Confirmation summary" },
+    { "key": "sending",      "route": "/sending",   "file": "src/screens/Sending.tsx",      "nodeId": "4836:10970", "figmaName": null, "synced": "2026-09-17", "describes": "Posting the card" },
+    { "key": "thank-you",    "route": "/thank-you", "file": "src/screens/ThankYou.tsx",     "nodeId": "4814:8120",  "figmaName": null, "synced": "2026-09-17", "describes": "Thank You (8s timeout)" }
+  ]
+}

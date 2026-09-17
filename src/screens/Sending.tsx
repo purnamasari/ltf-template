@@ -1,12 +1,22 @@
-import { useEffect } from "react";
-import { useNavigate } from "@tanstack/react-router";
-import { useMutation } from "@tanstack/react-query";
+// FIGMA: 4836:10970 — see docs/design/frames.md
 import { Backdrop } from "../components/Backdrop";
 import { LogoMark, ProgressBar } from "../components/chrome";
 import { PostcardFront } from "../components/Postcard";
 import { POSTBOX, Postbox } from "../components/Postbox";
-import { submitPostcard } from "../lib/api";
-import { useFlow, useSelectedDesign } from "../lib/flow";
+import { useSealPostcard } from "../lib/outbox/useSealPostcard";
+import { useSelectedDesign } from "../lib/flow";
+
+/**
+ * The only refusals a guest can see. Everything else is either retried in the
+ * background or a bug that has no business being on a kiosk screen.
+ */
+const REJECTION: Record<string, string> = {
+  "letter.recipient_already_used":
+    "This address already has a postcard on its way. Only one may be sent to each address.",
+};
+
+const FALLBACK_REJECTION =
+  "We could not send your postcard just now. Please ask a member of staff for help.";
 
 /** Where the box stands, and the card's resting place above it. */
 const BOX_TOP = 490;
@@ -21,21 +31,8 @@ const MOUTH_Y = BOX_TOP + POSTBOX.slotTop + 6;
  * watches it go rather than watching a spinner.
  */
 export function Sending() {
-  const navigate = useNavigate();
-  const { draft } = useFlow();
   const design = useSelectedDesign();
-
-  const { mutate, isSuccess, isError } = useMutation({ mutationFn: submitPostcard });
-
-  useEffect(() => {
-    mutate(draft);
-    // The draft is frozen for the length of this screen — submit exactly once.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    if (isSuccess) navigate({ to: "/thank-you" });
-  }, [isSuccess, navigate]);
+  const { rejected } = useSealPostcard();
 
   return (
     <>
@@ -72,12 +69,12 @@ export function Sending() {
         </div>
       </div>
 
-      {isError && (
+      {rejected && (
         <p
           role="alert"
-          className="absolute left-1/2 top-[790px] -translate-x-1/2 text-[20px] text-brick"
+          className="absolute left-1/2 top-[790px] -translate-x-1/2 px-[80px] text-center text-[20px] text-brick"
         >
-          We could not send your postcard just now. Please ask a member of staff for help.
+          {REJECTION[rejected] ?? FALLBACK_REJECTION}
         </p>
       )}
     </>

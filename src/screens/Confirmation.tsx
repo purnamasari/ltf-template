@@ -1,3 +1,4 @@
+// FIGMA: 4808:8058 — see docs/design/frames.md
 import { useState } from "react";
 import type { ReactNode } from "react";
 import { useNavigate } from "@tanstack/react-router";
@@ -5,6 +6,7 @@ import { Backdrop } from "../components/Backdrop";
 import { CarouselArrow, Dots, LogoMark, PrivacyLink, ProgressBar, StepNav } from "../components/chrome";
 import { PostcardBack, PostcardFront } from "../components/Postcard";
 import { deliveryDate, formatDeliveryDate } from "../lib/date";
+import { meta } from "../lib/meta";
 import { useFlow, useSelectedDesign } from "../lib/flow";
 import { useSwipe, wrapIndex } from "../lib/useSwipe";
 
@@ -22,7 +24,7 @@ export function Confirmation() {
   const flip = (delta: number) => setPosition((current) => current + delta);
   const swipe = useSwipe({ axis: "x", onNext: () => flip(1), onPrevious: () => flip(-1) });
 
-  const delivery = formatDeliveryDate(deliveryDate(draft.writtenOn));
+  const delivery = formatDeliveryDate(deliveryDate(draft.writtenOn, meta().delivery_horizon_days));
 
   const cardStyle = (isFront: boolean) => ({
     transform: isFront ? "translate(0px, 0px)" : `translate(${BEHIND.x}px, ${BEHIND.y}px)`,

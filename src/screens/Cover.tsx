@@ -1,11 +1,18 @@
+// FIGMA: 4734:6213 — see docs/design/frames.md
 import { useNavigate } from "@tanstack/react-router";
 import { ASSETS } from "../lib/assets";
+import { useApplyUpdateWhenIdle } from "../lib/updates/useApplyUpdateWhenIdle";
+import { useStaffAccess } from "../components/StaffAccess";
 
 /**
  * The attract screen a guest walks up to: the title set large on a tilted
  * card, over the archival artboard and a script watermark.
  */
 export function Cover() {
+  // Nobody is mid-postcard on the cover — a waiting build can be taken here.
+  useApplyUpdateWhenIdle();
+  const { press } = useStaffAccess();
+
   const navigate = useNavigate();
 
   return (
@@ -64,6 +71,19 @@ export function Cover() {
         src={ASSETS.logoMark}
         alt="Raffles"
         className="absolute left-1/2 top-[49px] block h-[93px] w-[106px] max-w-none -translate-x-1/2"
+      />
+
+      {/*
+        Staff reach the pairing screen through the mark: five presses inside two
+        seconds. An overlay rather than a wrapper, so the logo drawn in
+        `4734:6213` stays exactly as the frame has it.
+      */}
+      <button
+        type="button"
+        aria-hidden
+        tabIndex={-1}
+        onClick={press}
+        className="absolute left-1/2 top-[49px] z-40 h-[93px] w-[106px] -translate-x-1/2 opacity-0"
       />
 
       {/* The title is set as four placed words, exactly as in the design. */}

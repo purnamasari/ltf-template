@@ -49,9 +49,10 @@ The features not yet built go the same way, one folder each:
 
 | Domain | Folder | Public surface |
 | --- | --- | --- |
-| Handing the postcard over | `src/lib/submission/` | `useSubmitPostcard()` |
-| Queue and retry when the kiosk is offline | `src/lib/outbox/` | `useOutbox()` |
-| Pairing and reporting to the dashboard | `src/lib/pairing/` | `usePairing()` |
+| Sealing, queueing and retrying a postcard | `src/lib/outbox/` | `useSealPostcard()`, `useOutboxSync()` |
+| Device pairing and the bearer token | `src/lib/pairing/` | `startPairing()`, `bearer()` |
+| The server's rules, read at launch | `src/lib/meta/` | `meta()` |
+| Durable storage (IndexedDB) | `src/lib/storage.ts` | `get`/`put`/`getAll`/`remove` |
 | Service worker and the update policy | `src/lib/updates/` | `useApplyUpdateWhenIdle()` |
 
 Two things stay out of this rule, because they genuinely belong to the layout:
@@ -61,6 +62,15 @@ Two things stay out of this rule, because they genuinely belong to the layout:
 - **Geometry** — `MOUTH_Y` in `Sending.tsx` derived from the postbox's own
   `slotTop`, the carousel offsets. These must move when the frame moves, so
   they belong beside the layout, not behind a hook.
+
+## When the design and the API disagree
+
+On anything a guest sees — a field, an option, a step — **the Figma file wins**,
+and the API is made to fit around it. The backend contract in
+[docs/backend/letters-api.md](docs/backend/letters-api.md) says what the server
+will accept, not what the kiosk must show: an optional field the frames do not
+draw is simply never sent. Raise the conflict rather than resolving it by
+quietly adding what the design left out.
 
 ## Rules that survive a re-sync from Figma
 

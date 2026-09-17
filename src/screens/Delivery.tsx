@@ -5,8 +5,9 @@ import { LogoMark, PrivacyLink, ProgressBar, StepNav } from "../components/chrom
 import { UnderlinedField } from "../components/UnderlinedField";
 import { isContactValid, useFlow } from "../lib/flow";
 import type { DeliveryChannel } from "../lib/flow";
+import { meta } from "../lib/meta";
 
-const CHANNELS: { id: DeliveryChannel; label: string; placeholder: string }[] = [
+const ALL_CHANNELS: { id: DeliveryChannel; label: string; placeholder: string }[] = [
   { id: "email", label: "E-mail", placeholder: "Your E-mail Address" },
   { id: "wechat", label: "Wechat", placeholder: "Your Wechat Username" },
 ];
@@ -14,6 +15,17 @@ const CHANNELS: { id: DeliveryChannel; label: string; placeholder: string }[] = 
 export function Delivery() {
   const navigate = useNavigate();
   const { draft, update } = useFlow();
+
+  /**
+   * Both options are drawn in `4808:5417`, but only the channels the server
+   * says are live are offered — today that is e-mail alone. When Wechat is
+   * supported it appears in `meta.channels` and the button returns on its own,
+   * with no code change and no change to the layout.
+   */
+  const CHANNELS = ALL_CHANNELS.filter((option) =>
+    meta().channels.includes(option.id.toUpperCase()),
+  );
+
   const channel = CHANNELS.find((option) => option.id === draft.channel) ?? CHANNELS[0];
 
   return (

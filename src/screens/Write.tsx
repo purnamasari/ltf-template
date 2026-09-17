@@ -1,6 +1,7 @@
 // FIGMA: 4734:6165, 4802:3536 — see docs/design/frames.md
 import { useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
+import { meta } from "../lib/meta";
 import { Backdrop } from "../components/Backdrop";
 import { CloseButton, LogoMark, PrivacyLink, ProgressBar, StepNav } from "../components/chrome";
 import { ASSETS } from "../lib/assets";
@@ -10,7 +11,12 @@ import { useSwipe, wrapIndex } from "../lib/useSwipe";
 /** Ruled writing area, measured off the Figma rules (44.58px apart). */
 const LINE_HEIGHT = 44.58;
 const RULE_COLOR = "rgba(141, 110, 69, 0.65)";
-const MAX_CHARACTERS = 512;
+/**
+ * 512 is the design's cap — the counter drawn in `4802:3536`. The server allows
+ * far more, but it is the lower of the two that applies, so a tightened server
+ * limit is honoured without touching the layout.
+ */
+const DESIGN_MAX_CHARACTERS = 512;
 
 /** The prompt stack: centre, spacing and the two card sizes, from Figma. */
 const PROMPT_CENTRE = { x: 897, y: 391.5 };
@@ -27,6 +33,7 @@ const IDEA_PROMPTS = [
 ];
 
 export function Write() {
+  const MAX_CHARACTERS = Math.min(DESIGN_MAX_CHARACTERS, meta().max_body_chars);
   const navigate = useNavigate();
   const { draft, update } = useFlow();
   const [position, setPosition] = useState(1);

@@ -81,7 +81,7 @@ letter's uuid>`, `Content-Type: application/json`.
 | `recipient.address` | yes | The guest's own address. One letter per address, for good. |
 | `recipient.channel` | no | Defaults to `EMAIL`, **the only channel live today**. |
 | `recipient.display_name` | no | ≤120 chars. Becomes the greeting and the name on the envelope. |
-| `recipient.title` | no | `MR` `MRS` `MS` `MX` `DR` `PROF`. Dropped if no name is given. |
+| `recipient.title` | no | `MR` `MRS` `MS` `MX` `DR` `PROF`. **Not sent.** The `/name` frame draws no title picker, and the design direction settles it. |
 
 `201 Created` returns `id`, `status`, `scheduled_at`, `status_token` (shown
 once) and `review_expected`. On success: mark confirmed, keep `id` and

@@ -62,6 +62,13 @@ drift, and a blind re-sync will undo them.
   ordinary `input`/`textarea`; nothing is drawn for it.
 - **Two additions the frames do not draw:** the back chevron on narration beats
   2 and 3, and the "Tap to continue" line that fades in after typing.
+- **Wechat is drawn on `4808:5417` but not offered.** The channel list comes
+  from `meta.channels`, and `EMAIL` is the only one the API supports today. When
+  Wechat goes live it appears on its own, with no code or layout change.
+- **No title picker on `/name`.** The API accepts `recipient.title`, but the
+  frame does not draw one and the field is optional, so it is never sent.
+- **`/pair` has no frame at all.** It is a staff screen, deliberately plain —
+  see `src/screens/Pair.tsx`. Do not style it from the guest-facing frames.
 - **The picture side of a postcard is flat artwork** exported at 595 × 420 with
   its caption and date baked in. The written side is composed at runtime.
 

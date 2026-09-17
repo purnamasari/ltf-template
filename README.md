@@ -42,6 +42,21 @@ throw away a half-written letter, so `registerType` is `prompt` and
 `src/lib/updates` takes the waiting build only once the app is back on the cover
 with nobody using it.
 
+## With no network
+
+The tablet is the system of record until the server says otherwise. Sealing a
+postcard writes it to IndexedDB with its own idempotency key **before** any
+request is attempted, so the guest reaches the thank you whether or not the wifi
+is up. `src/lib/outbox` drains the queue on launch, when the connection returns,
+on returning to the foreground and on a slow timer — Background Sync is
+Chromium-only and a service worker does not run while a home-screen app is
+closed, so the foreground is all there is. A kiosk is open all day, which makes
+that a fit rather than a compromise.
+
+The contract it implements — pairing, the response codes that are final versus
+transient, backoff, limits — is in
+[docs/backend/letters-api.md](docs/backend/letters-api.md).
+
 ## How it is put together
 
 - **Vite + React 19 + TypeScript**, Tailwind v4 (`@tailwindcss/vite`), TanStack

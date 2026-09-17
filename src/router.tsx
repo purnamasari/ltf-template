@@ -1,6 +1,8 @@
 import { Outlet, createRootRoute, createRoute, createRouter } from "@tanstack/react-router";
 import { Stage } from "./components/Stage";
 import { TermsProvider } from "./components/terms";
+import { useKioskBoot } from "./lib/boot";
+import { useOutboxSync } from "./lib/outbox/useOutboxSync";
 import { Cover } from "./screens/Cover";
 import { Narration } from "./screens/Narration";
 import { ChooseDesign } from "./screens/ChooseDesign";
@@ -11,16 +13,26 @@ import { Delivery } from "./screens/Delivery";
 import { Confirmation } from "./screens/Confirmation";
 import { Sending } from "./screens/Sending";
 import { ThankYou } from "./screens/ThankYou";
+import { Pair } from "./screens/Pair";
 
-const rootRoute = createRootRoute({
-  component: () => (
+/**
+ * Boot and the outbox live above the flow: the queue drains whatever screen the
+ * kiosk happens to be on, including while it sits on the cover overnight.
+ */
+function Root() {
+  useKioskBoot();
+  useOutboxSync();
+
+  return (
     <Stage>
       <TermsProvider>
         <Outlet />
       </TermsProvider>
     </Stage>
-  ),
-});
+  );
+}
+
+const rootRoute = createRootRoute({ component: Root });
 
 /**
  * The narration remembers which beat it was on, so stepping back from the
@@ -46,6 +58,7 @@ const screens = [
   { path: "/confirm", component: Confirmation },
   { path: "/sending", component: Sending },
   { path: "/thank-you", component: ThankYou },
+  { path: "/pair", component: Pair },
 ] as const;
 
 const routeTree = rootRoute.addChildren([

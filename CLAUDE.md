@@ -52,6 +52,7 @@ The features not yet built go the same way, one folder each:
 | Handing the postcard over | `src/lib/submission/` | `useSubmitPostcard()` |
 | Queue and retry when the kiosk is offline | `src/lib/outbox/` | `useOutbox()` |
 | Pairing and reporting to the dashboard | `src/lib/pairing/` | `usePairing()` |
+| Service worker and the update policy | `src/lib/updates/` | `useApplyUpdateWhenIdle()` |
 
 Two things stay out of this rule, because they genuinely belong to the layout:
 

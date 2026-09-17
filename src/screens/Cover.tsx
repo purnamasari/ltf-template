@@ -1,12 +1,16 @@
 // FIGMA: 4734:6213 — see docs/design/frames.md
 import { useNavigate } from "@tanstack/react-router";
 import { ASSETS } from "../lib/assets";
+import { useApplyUpdateWhenIdle } from "../lib/updates/useApplyUpdateWhenIdle";
 
 /**
  * The attract screen a guest walks up to: the title set large on a tilted
  * card, over the archival artboard and a script watermark.
  */
 export function Cover() {
+  // Nobody is mid-postcard on the cover — a waiting build can be taken here.
+  useApplyUpdateWhenIdle();
+
   const navigate = useNavigate();
 
   return (

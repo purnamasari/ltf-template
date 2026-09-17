@@ -4,7 +4,10 @@ import { RouterProvider } from "@tanstack/react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { FlowProvider } from "./lib/flow";
 import { router } from "./router";
+import { registerAppUpdates } from "./lib/updates";
 import "./index.css";
+
+registerAppUpdates();
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { retry: 1, refetchOnWindowFocus: false } },

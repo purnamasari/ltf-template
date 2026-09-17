@@ -70,6 +70,10 @@ drift, and a blind re-sync will undo them.
   no code change, no layout change.
 - **No title picker on `/name`.** The API accepts `recipient.title`, but the
   frame does not draw one and the field is optional, so it is never sent.
+- **The cover's Raffles mark is also a staff control.** Five presses inside two
+  seconds opens a passcode dialog, and the passcode opens `/pair`. An invisible
+  overlay, so the mark drawn in `4734:6213` is untouched. Only on the cover —
+  a guest part-way through a postcard must not be able to fall into it.
 - **`/pair` has no frame at all.** It is a staff screen, deliberately plain —
   see `src/screens/Pair.tsx`. Do not style it from the guest-facing frames.
 - **The picture side of a postcard is flat artwork** exported at 595 × 420 with

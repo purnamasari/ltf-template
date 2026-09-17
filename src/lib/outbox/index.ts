@@ -1,4 +1,6 @@
 import { API_BASE } from "../config";
+import { DEMO, DEMO_SEND_MS } from "../demo";
+import { meta } from "../meta";
 import { LETTERS, getAll, put, remove } from "../storage";
 import { bearer, clearBearer } from "../pairing";
 
@@ -92,6 +94,8 @@ export type SendOutcome =
 
 /** One letter, one attempt. There is no batch endpoint and no need for one. */
 export async function send(letter: QueuedLetter): Promise<SendOutcome> {
+  if (DEMO) return demoSend(letter);
+
   const token = await bearer();
   if (!token) return { result: "unpaired" };
 
@@ -154,6 +158,28 @@ export async function send(letter: QueuedLetter): Promise<SendOutcome> {
   // 429, 5xx and anything unrecognised: back off and try the same letter again.
   await defer(letter, code);
   return { result: "retry" };
+}
+
+/**
+ * Walks the same path a real 201 takes — the record is confirmed, the body is
+ * dropped — so what the demo shows is what the kiosk does.
+ */
+async function demoSend(letter: QueuedLetter): Promise<SendOutcome> {
+  await new Promise((resolve) => setTimeout(resolve, DEMO_SEND_MS));
+
+  const scheduled = new Date(letter.recorded_at);
+  scheduled.setDate(scheduled.getDate() + meta().delivery_horizon_days);
+
+  const confirmed: QueuedLetter = {
+    ...letter,
+    state: "confirmed",
+    body: "",
+    serverId: `demo-${letter.id.slice(0, 8)}`,
+    statusToken: "demo",
+    scheduledAt: scheduled.toISOString(),
+  };
+  await put(LETTERS, confirmed);
+  return { result: "confirmed", letter: confirmed };
 }
 
 async function defer(letter: QueuedLetter, code?: string) {

@@ -1,6 +1,7 @@
 import { Outlet, createRootRoute, createRoute, createRouter } from "@tanstack/react-router";
 import { Stage } from "./components/Stage";
 import { TermsProvider } from "./components/terms";
+import { StaffAccessProvider } from "./components/StaffAccess";
 import { useKioskBoot } from "./lib/boot";
 import { useOutboxSync } from "./lib/outbox/useOutboxSync";
 import { Cover } from "./screens/Cover";
@@ -25,9 +26,11 @@ function Root() {
 
   return (
     <Stage>
-      <TermsProvider>
-        <Outlet />
-      </TermsProvider>
+      <StaffAccessProvider>
+        <TermsProvider>
+          <Outlet />
+        </TermsProvider>
+      </StaffAccessProvider>
     </Stage>
   );
 }

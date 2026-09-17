@@ -1,4 +1,5 @@
 import { API_BASE } from "../config";
+import { DEMO, DEMO_APPROVAL_MS, DEMO_BEARER, DEMO_CODE } from "../demo";
 import { KV, get, put, remove } from "../storage";
 
 /**
@@ -25,7 +26,11 @@ export type PairingPoll = {
 
 let cached: string | null | undefined;
 
+/** Demo only: when the imaginary member of staff gets round to approving. */
+let demoApprovesAt = 0;
+
 export async function bearer(): Promise<string | null> {
+  if (DEMO) return DEMO_BEARER;
   if (cached !== undefined) return cached;
   cached = (await get<string>(KV, TOKEN_KEY)) ?? null;
   return cached;
@@ -47,6 +52,16 @@ export async function clearBearer() {
 
 /** Step 1 — ask to be paired. No auth; rate-limited to 5 per hour per IP. */
 export async function startPairing(label: string): Promise<PairingStart> {
+  if (DEMO) {
+    demoApprovesAt = Date.now() + DEMO_APPROVAL_MS;
+    return {
+      device_id: "demo-device",
+      device_code: DEMO_CODE,
+      claim_token: "demo-claim",
+      pairing_state: "PAIRING",
+    };
+  }
+
   const response = await fetch(`${API_BASE}/v1/devices/pair`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -61,6 +76,8 @@ export async function startPairing(label: string): Promise<PairingStart> {
  * window expired or the code was already claimed: start again at step 1.
  */
 export async function pollPairing(claimToken: string): Promise<"pairing" | "paired" | "expired"> {
+  if (DEMO) return Date.now() >= demoApprovesAt ? "paired" : "pairing";
+
   const response = await fetch(`${API_BASE}/v1/devices/pair/${claimToken}`);
   if (response.status === 404) return "expired";
   if (!response.ok) return "pairing";
@@ -75,6 +92,8 @@ export async function pollPairing(claimToken: string): Promise<"pairing" | "pair
 
 /** Called at launch to confirm the stored token still works. Never in a loop. */
 export async function checkDevice(): Promise<boolean> {
+  if (DEMO) return true;
+
   const token = await bearer();
   if (!token) return false;
 

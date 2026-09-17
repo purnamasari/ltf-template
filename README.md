@@ -42,6 +42,21 @@ throw away a half-written letter, so `registerType` is `prompt` and
 `src/lib/updates` takes the waiting build only once the app is back on the cover
 with nobody using it.
 
+## Demo mode
+
+**On by default.** `src/lib/demo.ts` fakes every seam the server sits behind, so
+the whole flow can be walked through with no backend and no wifi: the tablet
+believes it was paired long ago, pairing approves itself after six seconds, and
+a sealed postcard confirms after a beat. It takes the same code path a real 201
+takes — the record is confirmed and the body dropped — so what the demo shows is
+what the kiosk does. A warning is logged to the console on every launch.
+
+Set `VITE_DEMO_MODE=false` to talk to the real API.
+
+**Reaching the pairing screen.** Press the Raffles mark on the cover five times
+inside two seconds and enter the passcode (`VITE_STAFF_PASSCODE`, `1887` by
+default). Only the cover's mark does this.
+
 ## With no network
 
 The tablet is the system of record until the server says otherwise. Sealing a

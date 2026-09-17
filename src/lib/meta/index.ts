@@ -1,4 +1,5 @@
 import { API_BASE } from "../config";
+import { DEMO } from "../demo";
 import { KV, get, put } from "../storage";
 
 /**
@@ -41,6 +42,10 @@ export function meta(): Meta {
 }
 
 export async function loadMeta(): Promise<Meta> {
+  // A demo should not depend on the venue's wifi, and the fallback already
+  // carries the values the live server returns.
+  if (DEMO) return current;
+
   const cached = await get<Meta>(KV, CACHE_KEY);
   if (cached) current = cached;
 

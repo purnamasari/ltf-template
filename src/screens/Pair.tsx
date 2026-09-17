@@ -20,14 +20,24 @@ const POLL_MS = 3_000;
 export function Pair() {
   const navigate = useNavigate();
   const [pairing, setPairing] = useState<PairingStart | null>(null);
-  const [remaining, setRemaining] = useState(WINDOW_SECONDS);
   const [error, setError] = useState<string | null>(null);
+
+  /**
+   * The deadline is held as a timestamp and the clock ticks separately, so the
+   * poll below depends on when the code expires rather than on the second hand.
+   * Keying the poll to the countdown tears its interval down every second, and
+   * a 3s poll inside a 1s teardown never fires at all.
+   */
+  const [expiresAt, setExpiresAt] = useState(0);
+  const [now, setNow] = useState(() => Date.now());
+  const remaining = Math.max(0, Math.ceil((expiresAt - now) / 1000));
 
   const request = useCallback(async () => {
     try {
       const started = await startPairing(KIOSK_LABEL);
       setPairing(started);
-      setRemaining(WINDOW_SECONDS);
+      setExpiresAt(Date.now() + WINDOW_SECONDS * 1000);
+      setNow(Date.now());
       setError(null);
     } catch {
       setPairing(null);
@@ -43,25 +53,27 @@ export function Pair() {
   }, [request]);
 
   useEffect(() => {
-    if (!pairing || remaining <= 0) return;
-    const tick = window.setInterval(() => setRemaining((value) => value - 1), 1000);
+    if (!pairing) return;
+    const tick = window.setInterval(() => setNow(Date.now()), 1000);
     return () => window.clearInterval(tick);
-  }, [pairing, remaining]);
+  }, [pairing]);
 
   useEffect(() => {
-    if (!pairing || remaining <= 0) return;
+    if (!pairing || !expiresAt) return;
 
     const poll = window.setInterval(() => {
+      if (Date.now() >= expiresAt) return;
+
       void pollPairing(pairing.claim_token).then((state) => {
         if (state === "paired") navigate({ to: "/" });
         // Expired, already claimed, or unknown: the countdown covers it, and
         // "Show a new code" starts again at step one.
-        if (state === "expired") setRemaining(0);
+        if (state === "expired") setExpiresAt(Date.now());
       });
     }, POLL_MS);
 
     return () => window.clearInterval(poll);
-  }, [pairing, remaining, navigate]);
+  }, [pairing, expiresAt, navigate]);
 
   const expired = remaining <= 0;
   const [first, ...rest] = pairing?.device_code.split("-") ?? [];

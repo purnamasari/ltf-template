@@ -3,27 +3,49 @@
 The Figma file:
 [WIP / Raffles Heritage → Design](https://www.figma.com/design/HMYN8b4CKSRi2vwwSFznCS/WIP-_-Raffles-Heritage?node-id=3714-10662&m=dev)
 
+## What the tooling trusts
+
+**The parent section `3714:10662`, and nothing else.** That node holds the whole
+kiosk flow and survives the way the design team actually works — duplicating a
+frame, reworking the copy, deleting the original. A frame that goes through that
+comes back with a new id, so frame ids are treated as a **cache**, not a key:
+`/scan-frames` re-resolves them from the parent, matching on the frame's name and
+its position on the canvas.
+
+The one thing that would break it is the parent section itself being duplicated
+wholesale. If that happens it is a one-line fix — `parent.nodeId` in
+[`frames.json`](frames.json) — and everything below re-resolves on the next scan.
+
 ## The registry
 
-One row per frame that exists in code. `Synced` is the date the frame was last
-read from Figma and reconciled with the screen; bump it in the same commit as
-the change, so a later session can tell at a glance what has drifted.
+[`frames.json`](frames.json) is the source of truth and the thing the scripts
+read. The table below is generated from it — run `node scripts/frames.mjs table`
+after editing the JSON rather than editing the table by hand.
 
-| Route | Frame | Node id | Implemented in | Synced |
-| --- | --- | --- | --- | --- |
-| `/` | Cover / attract | `4734:6213` | `src/screens/Cover.tsx` | 2026-09-17 |
-| `/intro` | Narration beat 1 | `4734:4631` | `src/screens/Narration.tsx` | 2026-09-17 |
-| `/intro` | Narration beat 2 | `4929:5286` | `src/screens/Narration.tsx` | 2026-09-17 |
-| `/intro` | Narration beat 3 | `4929:5308` | `src/screens/Narration.tsx` | 2026-09-17 |
-| `/design` | Design picker | `4734:6117` | `src/screens/ChooseDesign.tsx` | 2026-09-17 |
-| `/write` | Write, prompts open | `4734:6165` | `src/screens/Write.tsx` | 2026-09-17 |
-| `/write` | Write, prompts folded | `4802:3536` | `src/screens/Write.tsx` | 2026-09-17 |
-| `/preview` | Preview written side | `4802:3876` | `src/screens/Preview.tsx` | 2026-09-17 |
-| `/name` | How to be addressed | `4808:4040` | `src/screens/YourName.tsx` | 2026-09-17 |
-| `/delivery` | E-mail or Wechat | `4808:5417` | `src/screens/Delivery.tsx` | 2026-09-17 |
-| `/confirm` | Confirmation summary | `4808:8058` | `src/screens/Confirmation.tsx` | 2026-09-17 |
-| `/sending` | Posting the card | `4836:10970` | `src/screens/Sending.tsx` | 2026-09-17 |
-| `/thank-you` | Thank You (8s timeout) | `4814:8120` | `src/screens/ThankYou.tsx` | 2026-09-17 |
+`Figma name` fills in on the first `/scan-frames` run; it is what lets a
+duplicated-and-replaced frame still be recognised. `Synced` is the date the frame
+was last read from Figma and reconciled with the screen — bump it in the same
+commit as the change.
+
+<!-- frames:begin -->
+
+| Route | Frame | Figma name | Node id | Implemented in | Synced |
+| --- | --- | --- | --- | --- | --- |
+| `/` | Cover / attract | _not yet scanned_ | `4734:6213` | `src/screens/Cover.tsx` | 2026-09-17 |
+| `/intro` | Narration beat 1 | _not yet scanned_ | `4734:4631` | `src/screens/Narration.tsx` | 2026-09-17 |
+| `/intro` | Narration beat 2 | _not yet scanned_ | `4929:5286` | `src/screens/Narration.tsx` | 2026-09-17 |
+| `/intro` | Narration beat 3 | _not yet scanned_ | `4929:5308` | `src/screens/Narration.tsx` | 2026-09-17 |
+| `/design` | Design picker | _not yet scanned_ | `4734:6117` | `src/screens/ChooseDesign.tsx` | 2026-09-17 |
+| `/write` | Write, prompts open | _not yet scanned_ | `4734:6165` | `src/screens/Write.tsx` | 2026-09-17 |
+| `/write` | Write, prompts folded | _not yet scanned_ | `4802:3536` | `src/screens/Write.tsx` | 2026-09-17 |
+| `/preview` | Preview written side | _not yet scanned_ | `4802:3876` | `src/screens/Preview.tsx` | 2026-09-17 |
+| `/name` | How to be addressed | _not yet scanned_ | `4808:4040` | `src/screens/YourName.tsx` | 2026-09-17 |
+| `/delivery` | E-mail or Wechat | _not yet scanned_ | `4808:5417` | `src/screens/Delivery.tsx` | 2026-09-17 |
+| `/confirm` | Confirmation summary | _not yet scanned_ | `4808:8058` | `src/screens/Confirmation.tsx` | 2026-09-17 |
+| `/sending` | Posting the card | _not yet scanned_ | `4836:10970` | `src/screens/Sending.tsx` | 2026-09-17 |
+| `/thank-you` | Thank You (8s timeout) | _not yet scanned_ | `4814:8120` | `src/screens/ThankYou.tsx` | 2026-09-17 |
+
+<!-- frames:end -->
 
 ### Deliberate departures from the file
 
@@ -47,42 +69,61 @@ drift, and a blind re-sync will undo them.
 
 A Figma MCP `get_code` call on a single dense frame can return tens of thousands
 of tokens of generated markup — mostly absolutely-positioned divs and inline
-hex. Pull two or three of those into a session that is also holding the
-codebase and the backend work, and the useful context (the house conventions,
-the seam rules, what you were actually doing) gets crowded out by material you
-are going to throw away anyway. That is the failure mode, not the model.
+hex. Pull two or three of those into a session that is also holding the codebase
+and the backend work, and the useful context (the house conventions, the seam
+rules, what you were actually doing) gets crowded out by material you are going
+to throw away anyway. That is the failure mode, not the model.
 
-The fix is to treat a Figma read as an **extraction step with its own session**,
-whose only durable output is code and a registry row.
+So a Figma read is an **extraction step with its own session**, and its only
+durable outputs are code, a registry row and a snapshot.
 
-## The protocol
+## The two commands
 
-1. **One frame per session.** Run `/sync-frame <node-id>`. When it is done,
-   `/clear` before the next frame.
-2. **Cheapest tool that answers the question.**
-   - `get_variable_defs` — tokens. Run this once per sync round, not per frame;
-     the output belongs in `@theme`.
-   - `get_metadata` — compact node tree with ids, names, positions and sizes.
-     This answers most "what moved" questions on its own.
-   - `get_image` — a render of the frame. Cheap, and often enough to confirm
-     a layout change.
-   - `get_code` — last resort, and only on the specific child node you are
-     rewriting, never on a page or a whole flow.
-3. **Never read a node you are not about to implement.** No "let me look at the
-   whole file first". The registry above is the map.
-4. **Land the change, then the registry row,** in one commit. The commit message
-   names the node id.
-5. **Design and backend never share a session.** Finish the frame, `/clear`,
-   then do the API work. `src/lib/api.ts` is the seam; a design sync has no
-   business there.
-6. **If you need several frames in one sitting,** run each `/sync-frame` as a
-   subagent. The Figma payload dies with the subagent; what comes back is a
-   file list and a summary, which is all the parent session needed.
+### `/scan-frames` — what moved, what is new
+
+One `get_metadata` call on the parent section, saved straight to
+`docs/design/snapshots/parent.json`, then `node scripts/frames.mjs scan` prints a
+short table: frames whose id changed, frames renamed, rows whose frame has gone,
+and frames with no row at all. Only that table reaches the conversation — the
+dump is on disk and no one reads it.
+
+This is the one page-level read that is worth making. Run it when the design team
+says they have been busy, or on a Monday.
+
+New frames are a **new screen**, not a sync: a route in `src/router.tsx`, a file
+in `src/screens`, a step in the progress chrome, a registry entry. That is a
+separate piece of work from reconciling an existing screen — do it as its own
+session too.
+
+### `/sync-frame <route-or-key>` — reconcile one screen
+
+Takes a route or a registry key, resolves the current node id from the registry,
+reads **only that node**, and reconciles it against the screen file. One frame per
+session; `/clear` between frames, and between a design pass and a backend pass.
+
+Cheapest tool that answers the question, in this order:
+
+- `get_variable_defs` — tokens. Once per sync round, not per frame; the output
+  belongs in `@theme` in `src/index.css`.
+- `get_metadata` — the compact tree for that frame. This settles most syncs on
+  its own, and gets diffed against the frame's stored snapshot.
+- `get_image` — a render, when you need to see it.
+- `get_code` — last resort, on the specific child node being rewritten, never on
+  a whole frame if a smaller node will do. Reference, not output: the screen is
+  written in the house idiom from [CLAUDE.md](../../CLAUDE.md).
+
+### Snapshots
+
+`docs/design/snapshots/<key>.json` holds the metadata for a frame as of its last
+sync, and `parent.json` the last scan. They are committed, so the next sync
+`diff`s against a real baseline instead of relying on someone remembering what
+the screen used to look like — and the diff, rather than the whole tree, is what
+gets read.
 
 ## When the backend arrives
 
-`submitPostcard` in `src/lib/api.ts` is a stub. Point it at the real endpoint
-and the Sending screen works unchanged. Keep it that way: request/response
-shapes live in `src/lib/api.ts`, the draft shape lives in `src/lib/flow.tsx`,
-and screens stay unaware of both. As long as that holds, a Figma re-sync can
-never conflict with a backend change — they touch disjoint files.
+`submitPostcard` in `src/lib/api.ts` is a stub. Point it at the real endpoint and
+the Sending screen works unchanged. Keep it that way: request/response shapes in
+`src/lib/api.ts`, the draft shape in `src/lib/flow.tsx`, screens unaware of both.
+As long as that holds, a Figma re-sync and a backend change touch disjoint files
+and can never conflict.

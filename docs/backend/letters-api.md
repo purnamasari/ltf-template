@@ -5,6 +5,11 @@ session can implement against the API without re-reading the full document.
 Where the two disagree, the spec wins.
 
 - Base: `https://letters.dev.heydewi.com`
+- Verified live 2026-09-17: `GET /v1/meta` → 200, shape as below. It also
+  returns `min_schedule_seconds` and `max_schedule_days`, which this app ignores
+  — it records, it does not schedule. Note `installation_tz` is
+  **`Europe/Lisbon`** on the dev instance; a Singapore kiosk needs that changed
+  server-side, as the server resolves the delivery date in that zone.
 - Auth: device bearer, `Authorization: Bearer ltf_…` — header only, never a URL
 - Errors: RFC 9457 problem documents. **Branch on `code`, never on `title`/`detail`.**
 
@@ -125,7 +130,7 @@ returned to any client, and a missing letter and a wrong token give the same
 
 | Limit | Value |
 | --- | --- |
-| Letter length | 10 000 chars — read from `meta`, do not hard-code |
+| Letter length | Read from `meta` — the spec's example says 10 000, the dev server returns **512**, which is also the design's cap. Never hard-code either. |
 | Per address | 1, lifetime |
 | Per device | 60/hour, 400/day |
 | Pairing requests | 5/hour/IP (the whole building is one address) |

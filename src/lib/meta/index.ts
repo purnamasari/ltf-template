@@ -13,6 +13,9 @@ export type Meta = {
   delivery_horizon_days: number;
   installation_tz: string;
   channels: string[];
+  /** Present on the live server, unused here: the app never schedules. */
+  min_schedule_seconds?: number;
+  max_schedule_days?: number;
   one_letter_per_address: boolean;
   device_pairing_required: boolean;
   sender: string;

@@ -1,4 +1,5 @@
 import { ASSETS } from "../lib/assets";
+import { useStageTone } from "../lib/stageTone";
 
 type BackdropProps = {
   /** Base paper colour; the Thank You screen swaps it for deep green. */
@@ -13,6 +14,9 @@ type BackdropProps = {
  */
 export function Backdrop({ tone = "parchment", artboard = false }: BackdropProps) {
   const base = tone === "forest" ? "bg-forest-dark" : "bg-parchment";
+
+  // The space around the stage is painted in this screen's own ground.
+  useStageTone(tone);
 
   return (
     <div aria-hidden className={`absolute inset-0 overflow-hidden ${base}`}>

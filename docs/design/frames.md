@@ -74,6 +74,10 @@ drift, and a blind re-sync will undo them.
   seconds opens a passcode dialog, and the passcode opens `/pair`. An invisible
   overlay, so the mark drawn in `4734:6213` is untouched. Only on the cover —
   a guest part-way through a postcard must not be able to fall into it.
+- **"Please turn the tablet" is not in the file.** The frame is landscape and
+  the manifest asks for landscape, but a tablet picked up and turned would show
+  the stage at half the height of the screen. `Stage` covers that rather than
+  letting it read as a fault.
 - **`/pair` has no frame at all.** It is a staff screen, deliberately plain —
   see `src/screens/Pair.tsx`. Do not style it from the guest-facing frames.
 - **The picture side of a postcard is flat artwork** exported at 595 × 420 with

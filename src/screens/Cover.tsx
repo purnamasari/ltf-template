@@ -3,6 +3,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { ASSETS } from "../lib/assets";
 import { useApplyUpdateWhenIdle } from "../lib/updates/useApplyUpdateWhenIdle";
 import { useStaffAccess } from "../components/StaffAccess";
+import { useStageTone } from "../lib/stageTone";
 
 /**
  * The attract screen a guest walks up to: the title set large on a tilted
@@ -12,6 +13,7 @@ export function Cover() {
   // Nobody is mid-postcard on the cover — a waiting build can be taken here.
   useApplyUpdateWhenIdle();
   const { press } = useStaffAccess();
+  useStageTone("parchment");
 
   const navigate = useNavigate();
 

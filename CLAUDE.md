@@ -79,6 +79,11 @@ quietly adding what the design left out.
    A hex literal in a screen file is a bug, even if Figma's codegen emitted it.
 2. **Positions come from the 1194 × 834 frame** and are written as plain
    absolute values. There are no responsive breakpoints; `Stage` handles fit.
+   It scales to **fit, never to fill** — the progress bar sits on the top edge
+   and the footer link near the bottom, so cropping to fill a taller screen
+   would slice both. Whatever is left over is painted in the screen's own ground
+   via `useStageTone`, so it reads as a margin. A screen that draws its own
+   backdrop instead of using `<Backdrop>` must call `useStageTone` itself.
 3. **Artwork goes through `src/lib/assets.ts`.** Export to `public/assets`,
    downscale for the kiosk, register the path there — never inline base64 or a
    Figma URL.

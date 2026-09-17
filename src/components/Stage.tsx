@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import type { ReactNode } from "react";
+import { createPortal } from "react-dom";
 
 const STAGE_WIDTH = 1194;
 const STAGE_HEIGHT = 834;
@@ -12,12 +13,26 @@ const STAGE_HEIGHT = 834;
  *
  * It is scaled to **fit**, never to fill: the progress bar sits on the very top
  * edge of the frame and the footer link close to the bottom, so cropping to fill
- * a taller screen would slice both. What is left over is painted in the screen's
- * own ground (`--stage-surround`, set by `useStageTone`), so the frame reads as
- * paper with a margin rather than a letterboxed video.
+ * a taller screen would slice both.
+ *
+ * What is left over is not a margin but more paper. The ground — flat colour,
+ * the linen texture, the vignette — is rendered into the layer below at the size
+ * of the screen rather than the size of the frame, so it runs to the edges on
+ * any tablet. Only the ground: it has no geometry to get wrong, unlike type or a
+ * circle, so covering more of it is unnoticeable. Everything with a position
+ * from Figma stays inside the frame at one uniform scale.
  */
+const GroundContext = createContext<HTMLElement | null>(null);
+
+/** The unscaled layer behind the frame, filled by `<Bleed>`. */
+export function Bleed({ children }: { children: ReactNode }) {
+  const ground = useContext(GroundContext);
+  return ground ? createPortal(children, ground) : null;
+}
+
 export function Stage({ children }: { children: ReactNode }) {
   const [{ scale, portrait }, setFit] = useState({ scale: 1, portrait: false });
+  const [ground, setGround] = useState<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const fit = () => {
@@ -55,8 +70,11 @@ export function Stage({ children }: { children: ReactNode }) {
       className="relative h-full w-full overflow-hidden"
       style={{ background: "var(--stage-surround, var(--color-parchment))" }}
     >
+      {/* The ground, at the size of the screen. Behind everything. */}
+      <div ref={setGround} aria-hidden className="absolute inset-0 overflow-hidden" />
+
       <div
-        className="absolute left-1/2 top-1/2 overflow-hidden bg-parchment"
+        className="absolute left-1/2 top-1/2 overflow-hidden"
         style={{
           width: STAGE_WIDTH,
           height: STAGE_HEIGHT,
@@ -66,7 +84,7 @@ export function Stage({ children }: { children: ReactNode }) {
           visibility: portrait ? "hidden" : "visible",
         }}
       >
-        {children}
+        <GroundContext.Provider value={ground}>{children}</GroundContext.Provider>
       </div>
 
       {portrait && <TurnTheTablet />}

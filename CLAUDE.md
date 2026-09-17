@@ -81,9 +81,12 @@ quietly adding what the design left out.
    absolute values. There are no responsive breakpoints; `Stage` handles fit.
    It scales to **fit, never to fill** — the progress bar sits on the top edge
    and the footer link near the bottom, so cropping to fill a taller screen
-   would slice both. Whatever is left over is painted in the screen's own ground
-   via `useStageTone`, so it reads as a margin. A screen that draws its own
-   backdrop instead of using `<Backdrop>` must call `useStageTone` itself.
+   would slice both. Instead the **ground bleeds**: flat colour, texture and
+   vignette render through `<Bleed>` into a layer the size of the screen, so the
+   paper runs to the edges on any tablet while everything with a position from
+   Figma stays inside the frame at one uniform scale. Only the ground may bleed
+   — it has no geometry to get wrong, unlike type or a circle. A screen that
+   draws its own backdrop wraps it in `<Bleed>` and keeps its type in the frame.
 3. **Artwork goes through `src/lib/assets.ts`.** Export to `public/assets`,
    downscale for the kiosk, register the path there — never inline base64 or a
    Figma URL.

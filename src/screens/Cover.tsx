@@ -3,6 +3,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { ASSETS } from "../lib/assets";
 import { useApplyUpdateWhenIdle } from "../lib/updates/useApplyUpdateWhenIdle";
 import { useStaffAccess } from "../components/StaffAccess";
+import { Bleed } from "../components/Stage";
 import { useStageTone } from "../lib/stageTone";
 
 /**
@@ -19,21 +20,33 @@ export function Cover() {
 
   return (
     <>
-      <div aria-hidden className="absolute inset-0 overflow-hidden bg-[#886b41]">
-        <div className="absolute -left-[313px] -top-[46px] h-[880px] w-[1543px] bg-parchment-light opacity-40" />
-        <img
-          src={ASSETS.artboard}
-          alt=""
-          className="absolute -left-[85px] -top-[23px] h-[880px] w-[1543px] max-w-none object-cover opacity-20"
-        />
-        <div
-          className="absolute inset-0 bg-parchment mix-blend-soft-light"
-          style={{ boxShadow: "inset 0 4px 62.8px 8px rgba(131, 103, 66, 0.53)" }}
-        />
-        <p className="absolute left-[calc(50%-24px)] top-[-112px] flex h-[1000px] w-[1561px] -translate-x-1/2 -rotate-[3.96deg] items-center justify-center text-center font-script text-[300px] leading-[0.674] text-white opacity-12">
-          Raffles Heritage
-        </p>
-      </div>
+      {/*
+        The ground runs to the edges of the screen rather than the edges of the
+        frame — flat colour, the archival wash and the vignette, none of which
+        has geometry to distort. The script watermark stays in the frame below,
+        because it is type and belongs where the design put it.
+      */}
+      <Bleed>
+        <div aria-hidden className="absolute inset-0 overflow-hidden bg-[#886b41]">
+          <div className="absolute inset-0 bg-parchment-light opacity-40" />
+          <img
+            src={ASSETS.artboard}
+            alt=""
+            className="absolute inset-0 h-full w-full max-w-none object-cover opacity-20"
+          />
+          <div
+            className="absolute inset-0 bg-parchment mix-blend-soft-light"
+            style={{ boxShadow: "inset 0 4px 62.8px 8px rgba(131, 103, 66, 0.53)" }}
+          />
+        </div>
+      </Bleed>
+
+      <p
+        aria-hidden
+        className="absolute left-[calc(50%-24px)] top-[-112px] flex h-[1000px] w-[1561px] -translate-x-1/2 -rotate-[3.96deg] items-center justify-center text-center font-script text-[300px] leading-[0.674] text-white opacity-12"
+      >
+        Raffles Heritage
+      </p>
 
       <img
         src={ASSETS.coverCardBack}

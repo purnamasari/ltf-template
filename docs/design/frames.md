@@ -74,6 +74,11 @@ drift, and a blind re-sync will undo them.
   seconds opens a passcode dialog, and the passcode opens `/pair`. An invisible
   overlay, so the mark drawn in `4734:6213` is untouched. Only on the cover —
   a guest part-way through a postcard must not be able to fall into it.
+- **The ground runs past the frame.** On a tablet that is not the design's
+  shape, the paper, texture and vignette fill the screen rather than stopping at
+  1194 × 834. Content is untouched, but the vignette lands further out than the
+  frame draws it — 35px on a 13" iPad, 68px on a 16:10 tablet. A composition
+  change worth a designer's eye.
 - **"Please turn the tablet" is not in the file.** The frame is landscape and
   the manifest asks for landscape, but a tablet picked up and turned would show
   the stage at half the height of the screen. `Stage` covers that rather than

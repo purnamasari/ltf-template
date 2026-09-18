@@ -156,3 +156,31 @@ button {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/*
+ * A beat of narration settling onto the paper. An animation rather than a
+ * transition, because two React renders in the same frame collapse into one and
+ * a transition between them never plays; keyed on the beat, this cannot.
+ * The x half-offset is carried through both stops so the line stays centred.
+ */
+@keyframes beat-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.animate-beat-in {
+  animation: beat-in 900ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+/* Still fires animationend, so the "Tap to continue" line still appears. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-beat-in {
+    animation-duration: 1ms;
+  }
+}

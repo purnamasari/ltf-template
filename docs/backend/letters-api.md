@@ -130,7 +130,7 @@ returned to any client, and a missing letter and a wrong token give the same
 
 | Limit | Value |
 | --- | --- |
-| Letter length | Read from `meta` — the spec's example says 10 000, the dev server returns **512**, which is also the design's cap. Never hard-code either. |
+| Letter length | Read from `meta` — the spec's example says 10 000, the dev server returns **512**. The design asks for **600** (`4802:3536`), so this needs raising server-side. Never hard-code either. |
 | Per address | 1, lifetime |
 | Per device | 60/hour, 400/day |
 | Pairing requests | 5/hour/IP (the whole building is one address) |

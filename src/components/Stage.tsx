@@ -35,14 +35,29 @@ export function Stage({ children }: { children: ReactNode }) {
   const [ground, setGround] = useState<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const fit = () => {
-      /*
-       * `visualViewport` is what is actually visible: in a browser tab it
-       * excludes the URL bar, and it settles correctly after a rotation, where
-       * `innerHeight` can report the previous orientation for a frame.
-       */
-      const width = window.visualViewport?.width ?? window.innerWidth;
-      const height = window.visualViewport?.height ?? window.innerHeight;
+    /*
+     * Whether a guest is typing. While they are, the stage does not re-measure
+     * at all.
+     *
+     * Measuring the layout viewport rather than `visualViewport` is what stops
+     * an Android keyboard rescaling the kiosk, but which viewport a platform
+     * shrinks for its keyboard is its own business — iOS and Android have never
+     * agreed, and `interactive-widget` is Chromium-only. Rather than depend on
+     * that, the fit is frozen for as long as a field has focus: whatever the
+     * browser does to its viewports while the keyboard is up, the design does
+     * not move under the guest's hands.
+     */
+    const typing = () => {
+      const el = document.activeElement;
+      return !!el && (el.tagName === "INPUT" || el.tagName === "TEXTAREA");
+    };
+
+    const fit = (force = false) => {
+      if (typing() && !force) return;
+
+      // The layout viewport, not `visualViewport` — see above.
+      const width = document.documentElement.clientWidth || window.innerWidth;
+      const height = document.documentElement.clientHeight || window.innerHeight;
 
       setFit({
         scale: Math.min(width / STAGE_WIDTH, height / STAGE_HEIGHT),
@@ -50,18 +65,36 @@ export function Stage({ children }: { children: ReactNode }) {
       });
     };
 
+    /* A rotation is a real change and applies even mid-letter. */
+    const rotated = () => fit(true);
+    const measure = () => fit();
+
+    /*
+     * iOS scrolls a focused field into view, and it is left alone while the
+     * guest is typing: on a screen too short to show the field above the
+     * keyboard, that scroll is the only thing that makes the field visible at
+     * all. It is put back once focus leaves, so the design never sits offset
+     * with nothing being written.
+     */
+    const settled = () => {
+      window.scrollTo(0, 0);
+      window.setTimeout(() => fit(true), 100);
+    };
+
     fit();
 
-    window.addEventListener("resize", fit);
-    window.addEventListener("orientationchange", fit);
-    window.visualViewport?.addEventListener("resize", fit);
-    window.visualViewport?.addEventListener("scroll", fit);
+    window.addEventListener("resize", measure);
+    window.addEventListener("orientationchange", rotated);
+    window.visualViewport?.addEventListener("resize", measure);
+    window.visualViewport?.addEventListener("scroll", measure);
+    document.addEventListener("focusout", settled);
 
     return () => {
-      window.removeEventListener("resize", fit);
-      window.removeEventListener("orientationchange", fit);
-      window.visualViewport?.removeEventListener("resize", fit);
-      window.visualViewport?.removeEventListener("scroll", fit);
+      window.removeEventListener("resize", measure);
+      window.removeEventListener("orientationchange", rotated);
+      window.visualViewport?.removeEventListener("resize", measure);
+      window.visualViewport?.removeEventListener("scroll", measure);
+      document.removeEventListener("focusout", settled);
     };
   }, []);
 
@@ -74,6 +107,7 @@ export function Stage({ children }: { children: ReactNode }) {
       <div ref={setGround} aria-hidden className="absolute inset-0 overflow-hidden" />
 
       <div
+        data-stage
         className="absolute left-1/2 top-1/2 overflow-hidden"
         style={{
           width: STAGE_WIDTH,

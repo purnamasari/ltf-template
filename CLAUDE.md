@@ -57,7 +57,7 @@ The features not yet built go the same way, one folder each:
 
 Two things stay out of this rule, because they genuinely belong to the layout:
 
-- **Interaction primitives** — `useSwipe`, `useTypewriter`. Behaviour, but
+- **Interaction primitives** — `useSwipe`, `useFadeIn`. Behaviour, but
   behaviour the design specifies; they live in `src/lib` and screens call them.
 - **Geometry** — `MOUTH_Y` in `Sending.tsx` derived from the postbox's own
   `slotTop`, the carousel offsets. These must move when the frame moves, so

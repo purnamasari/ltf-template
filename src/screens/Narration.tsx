@@ -4,11 +4,11 @@ import { useNavigate, useSearch } from "@tanstack/react-router";
 import { IntroScene } from "../components/IntroScene";
 import { CarouselArrow, PrivacyLink } from "../components/chrome";
 import { ASSETS } from "../lib/assets";
-import { useTypewriter } from "../lib/useTypewriter";
+import { useFadeIn } from "../lib/useFadeIn";
 
 /**
- * Three beats of narration on the same cover layout. Each one types itself
- * out; a tap finishes the line, and the next tap moves on.
+ * Three beats of narration on the same cover layout. Each one fades up into
+ * place; a tap finishes the fade, and the next tap moves on.
  */
 const BEATS = [
   "Every guest arrives with a story. Some celebrating a milestone, others beginning a new chapter, or simply stepping away from the rhythm of everyday life.",
@@ -20,13 +20,13 @@ export function Narration() {
   const navigate = useNavigate();
   const { beat: initialBeat } = useSearch({ from: "/intro" });
   const [beat, setBeat] = useState(initialBeat);
-  const { shown, isDone, skip } = useTypewriter(BEATS[beat]);
+  const { settled, settle } = useFadeIn(beat);
 
   const isLast = beat === BEATS.length - 1;
 
   const advance = () => {
-    if (!isDone) {
-      skip();
+    if (!settled) {
+      settle();
       return;
     }
     if (!isLast) setBeat((current) => current + 1);
@@ -46,18 +46,28 @@ export function Narration() {
               : { top: 347, width: 988, height: 215 }
           }
         />
+        {/*
+          The line rises a few pixels as it arrives, which reads as settling onto
+          the paper rather than switching on. Keyed on the beat so the animation
+          restarts; dropping the class on a tap ends it at once, since the base
+          styles are the animation's final values.
+        */}
         <p
+          key={beat}
           aria-live="polite"
-          className="absolute left-1/2 w-[848px] -translate-x-1/2 text-center text-[24px] leading-normal text-ink"
+          onAnimationEnd={settle}
+          className={`absolute left-1/2 w-[848px] -translate-x-1/2 text-center text-[24px] leading-normal text-ink ${
+            settled ? "" : "animate-beat-in"
+          }`}
           style={{ top: isLast ? 414 : 419 }}
         >
-          {shown}
+          {BEATS[beat]}
         </p>
 
         {!isLast && (
           <p
             className={`absolute left-1/2 top-[597px] -translate-x-1/2 whitespace-nowrap text-[20px] font-light italic text-ink transition-opacity duration-500 ${
-              isDone ? "opacity-100" : "opacity-0"
+              settled ? "opacity-100" : "opacity-0"
             }`}
           >
             Tap to continue
@@ -69,7 +79,7 @@ export function Narration() {
       <button
         type="button"
         onClick={advance}
-        aria-label={isDone ? "Continue" : "Show the whole line"}
+        aria-label={settled ? "Continue" : "Show the whole line"}
         className="absolute inset-0 z-10 cursor-pointer"
       />
 

@@ -12,11 +12,14 @@ import { useSwipe, wrapIndex } from "../lib/useSwipe";
 const LINE_HEIGHT = 44.58;
 const RULE_COLOR = "rgba(141, 110, 69, 0.65)";
 /**
- * 512 is the design's cap — the counter drawn in `4802:3536`. The server allows
- * far more, but it is the lower of the two that applies, so a tightened server
- * limit is honoured without touching the layout.
+ * 600 is the design's cap — the counter drawn in `4802:3536`.
+ *
+ * The server currently allows 512, and it is the lower of the two that applies,
+ * so the counter reads 512 until the backend raises `max_body_chars`. When it
+ * does, this screen follows with no code change — the same way the Wechat
+ * channel appears on `/delivery` when the server starts listing it.
  */
-const DESIGN_MAX_CHARACTERS = 512;
+const DESIGN_MAX_CHARACTERS = 600;
 
 /** The prompt stack: centre, spacing and the two card sizes, from Figma. */
 const PROMPT_CENTRE = { x: 897, y: 391.5 };

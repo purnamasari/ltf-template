@@ -66,6 +66,11 @@ drift, and a blind re-sync will undo them.
   not the file's to specify; a typewriter read as a terminal rather than a
   heritage piece. Each beat fades up over 1.4s with a 14px rise, and a tap
   finishes it early.
+- **The letter is capped at 512, not the 600 the frame draws.** `4802:3536`
+  shows `231/600 characters`; the server's `meta.max_body_chars` is 512 and it
+  refuses anything longer with `letter.too_long`. The lower of the two applies,
+  so the counter reads 512 until the backend is raised to match the design.
+  Nothing in the app needs changing when it is.
 - **Wechat is drawn on `4808:5417` and stays on screen, disabled.** The API
   lists `EMAIL` alone in `meta.channels` today; Wechat is scheduled for the
   first release after launch, once the official account exists. Tapping it says

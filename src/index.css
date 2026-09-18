@@ -161,16 +161,21 @@ button {
  * A beat of narration settling onto the paper. An animation rather than a
  * transition, because two React renders in the same frame collapse into one and
  * a transition between them never plays; keyed on the beat, this cannot.
- * The x half-offset is carried through both stops so the line stays centred.
+ *
+ * Only the y offset, and only through `transform`. Tailwind centres the line
+ * with the separate `translate` property (`translate: -50%`), which composes
+ * with `transform` rather than being replaced by it — carrying the half-offset
+ * in here too moved the line a further half-width to the left for the whole
+ * animation, then snapped it back.
  */
 @keyframes beat-in {
   from {
     opacity: 0;
-    transform: translate(-50%, 10px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
-    transform: translate(-50%, 0);
+    transform: translateY(0);
   }
 }
 

@@ -61,7 +61,11 @@ drift, and a blind re-sync will undo them.
 - **Keyboard states in the frames are the iPadOS system keyboard.** Fields are
   ordinary `input`/`textarea`; nothing is drawn for it.
 - **Two additions the frames do not draw:** the back chevron on narration beats
-  2 and 3, and the "Tap to continue" line that fades in after typing.
+  2 and 3, and the "Tap to continue" line that fades in once a beat settles.
+- **The narration fades rather than types.** The frames are still, so motion is
+  not the file's to specify; a typewriter read as a terminal rather than a
+  heritage piece. Each beat fades up over 900ms with a 10px rise, and a tap
+  finishes it early.
 - **Wechat is drawn on `4808:5417` and stays on screen, disabled.** The API
   lists `EMAIL` alone in `meta.channels` today; Wechat is scheduled for the
   first release after launch, once the official account exists. Tapping it says

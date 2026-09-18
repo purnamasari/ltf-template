@@ -93,8 +93,8 @@ transient, backoff, limits — is in
 ### The opening
 
 A guest walks up to the cover (`/`) and taps **Discover More**. The narration
-(`/intro`) then plays three lines on the same layout, each typed out a character
-at a time: a tap completes the line in progress, the next tap moves to the
+(`/intro`) then plays three lines on the same layout, each fading up into place:
+a tap finishes the fade in progress, the next tap moves to the
 following beat, and the third ends on **Start Writing**. Beats two and three
 carry a back chevron, and `/intro?beat=2` returns to the last line so stepping
 back from the design picker does not replay the whole sequence.
@@ -123,7 +123,7 @@ want, change `MAX_CHARACTERS` in [`Write.tsx`](src/screens/Write.tsx).
 | Route | Screen | Figma node |
 | --- | --- | --- |
 | `/` | Cover / attract | `4734:6213` |
-| `/intro` | Three beats of narration, typed out | `4734:4631`, `4929:5286`, `4929:5308` |
+| `/intro` | Three beats of narration, faded up | `4734:4631`, `4929:5286`, `4929:5308` |
 | `/design` | Pick a postcard design | `4734:6117` |
 | `/write` | Write the letter, with idea prompts | `4734:6165`, `4802:3536` |
 | `/preview` | Preview the written side | `4802:3876` |
@@ -170,7 +170,7 @@ want, change `MAX_CHARACTERS` in [`Write.tsx`](src/screens/Write.tsx).
   their own words there; the picture side is still reviewable on `/confirm`.
 - **Two additions the frames do not draw.** The back chevron on narration beats
   two and three uses the same exported chevron as the carousels, and the "Tap to
-  continue" line fades in once a beat has finished typing. Say the word if you
+  continue" line fades in once a beat has settled. Say the word if you
   would rather they behaved differently.
 - The cover sets its title as four placed words in the display face rather than
   the flattened wordmark used on the narration frames, matching `4734:6213`.

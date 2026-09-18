@@ -64,7 +64,7 @@ drift, and a blind re-sync will undo them.
   2 and 3, and the "Tap to continue" line that fades in once a beat settles.
 - **The narration fades rather than types.** The frames are still, so motion is
   not the file's to specify; a typewriter read as a terminal rather than a
-  heritage piece. Each beat fades up over 900ms with a 10px rise, and a tap
+  heritage piece. Each beat fades up over 1.4s with a 14px rise, and a tap
   finishes it early.
 - **Wechat is drawn on `4808:5417` and stays on screen, disabled.** The API
   lists `EMAIL` alone in `meta.channels` today; Wechat is scheduled for the

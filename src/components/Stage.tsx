@@ -37,12 +37,21 @@ export function Stage({ children }: { children: ReactNode }) {
   useEffect(() => {
     const fit = () => {
       /*
-       * `visualViewport` is what is actually visible: in a browser tab it
-       * excludes the URL bar, and it settles correctly after a rotation, where
-       * `innerHeight` can report the previous orientation for a frame.
+       * The **layout** viewport, deliberately, not `visualViewport`.
+       *
+       * The visual viewport shrinks when the on-screen keyboard opens, and
+       * measuring it rescaled the whole kiosk the moment a guest tapped into the
+       * letter. The layout viewport does not move for a keyboard, so the stage
+       * holds still and the keyboard simply covers the lower part of the frame,
+       * which is what the design's keyboard states show.
+       *
+       * `visualViewport` still drives the listeners below — it fires when a
+       * rotation settles, where `innerHeight` can report the previous
+       * orientation for a frame — but re-measuring from the layout viewport
+       * means a keyboard event changes nothing.
        */
-      const width = window.visualViewport?.width ?? window.innerWidth;
-      const height = window.visualViewport?.height ?? window.innerHeight;
+      const width = document.documentElement.clientWidth || window.innerWidth;
+      const height = document.documentElement.clientHeight || window.innerHeight;
 
       setFit({
         scale: Math.min(width / STAGE_WIDTH, height / STAGE_HEIGHT),

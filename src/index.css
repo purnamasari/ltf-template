@@ -188,14 +188,18 @@ button {
 
 /*
  * Two animations rather than one, because the two properties want different
- * curves and CSS eases a whole animation, not a property. The opacity is eased
- * at both ends, so the line neither snaps on nor stalls; a single ease-out
- * front-loads it, which reads as a flash followed by a crawl. The rise keeps a
+ * curves and CSS eases a whole animation, not a property.
+ *
+ * The opacity is eased at both ends, so the line neither snaps on nor stalls —
+ * a single ease-out front-loads it, which reads as a flash followed by a crawl.
+ * It is not eased flat at the start, though: a tap that brings the next beat up
+ * has to be acknowledged, so the ink is faintly there within a quarter second
+ * (~0.18) and the rest of the curve is the long tail. The rise keeps a
  * decelerating curve, so it settles rather than arriving.
  */
 .animate-beat-in {
   animation:
-    beat-fade 1400ms cubic-bezier(0.37, 0, 0.63, 1) both,
+    beat-fade 1400ms cubic-bezier(0.33, 0.12, 0.3, 1) both,
     beat-rise 1400ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 

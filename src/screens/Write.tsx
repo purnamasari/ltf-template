@@ -7,6 +7,7 @@ import { CloseButton, LogoMark, PrivacyLink, ProgressBar, StepNav } from "../com
 import { ASSETS } from "../lib/assets";
 import { useFlow } from "../lib/flow";
 import { useSwipe, wrapIndex } from "../lib/useSwipe";
+import { useKeyboardRoom } from "../lib/useKeyboardRoom";
 
 /** Ruled writing area, measured off the Figma rules (44.58px apart). */
 const LINE_HEIGHT = 44.58;
@@ -20,6 +21,10 @@ const RULE_COLOR = "rgba(141, 110, 69, 0.65)";
  * channel appears on `/delivery` when the server starts listing it.
  */
 const DESIGN_MAX_CHARACTERS = 600;
+
+/** The ruled area as drawn, and the least it may be trimmed to for a keyboard. */
+const WRITING_HEIGHT = 357;
+const MIN_WRITING_HEIGHT = 120;
 
 /** The prompt stack: centre, spacing and the two card sizes, from Figma. */
 const PROMPT_CENTRE = { x: 897, y: 391.5 };
@@ -42,6 +47,24 @@ export function Write() {
   const [position, setPosition] = useState(1);
   const [showPrompts, setShowPrompts] = useState(true);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  /*
+   * The ruled area is drawn 357px deep, and the keyboard covers the bottom of it
+   * on a shorter tablet. Ending the box above the keyboard costs a rule or two
+   * of paper — which the frame draws going under the keyboard anyway — and keeps
+   * the line being written where the guest can see it.
+   */
+  const width = showPrompts ? 494 : 944;
+  const room = useKeyboardRoom(textareaRef, !showPrompts);
+
+  /*
+   * Trimmed to a whole number of rules. The paper is ruled every LINE_HEIGHT, so
+   * a part-rule at the bottom would look wrong — and the browser scrolls only
+   * far enough to bring the caret into view, which on a part-line leaves the
+   * line being written clipped.
+   */
+  const available = Math.max(MIN_WRITING_HEIGHT, Math.min(WRITING_HEIGHT, room ?? WRITING_HEIGHT));
+  const height = Math.floor(available / LINE_HEIGHT) * LINE_HEIGHT;
 
   const movePrompt = (delta: number) => setPosition((current) => current + delta);
   const promptSwipe = useSwipe({
@@ -82,9 +105,10 @@ export function Write() {
         placeholder="Start writing"
         maxLength={MAX_CHARACTERS}
         spellCheck={false}
-        className="no-scrollbar absolute left-[108px] top-[203px] h-[357px] resize-none bg-transparent text-[20px] text-ink outline-none transition-[width] duration-[400ms] ease-out placeholder:italic placeholder:text-[#423418] placeholder:opacity-25"
+        className="no-scrollbar absolute left-[108px] top-[203px] resize-none bg-transparent text-[20px] text-ink outline-none transition-[width] duration-[400ms] ease-out placeholder:italic placeholder:text-[#423418] placeholder:opacity-25"
         style={{
-          width: showPrompts ? 494 : 944,
+          width,
+          height,
           lineHeight: `${LINE_HEIGHT}px`,
           backgroundImage: `repeating-linear-gradient(to bottom, transparent 0, transparent ${
             LINE_HEIGHT - 1

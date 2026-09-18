@@ -107,6 +107,7 @@ export function Stage({ children }: { children: ReactNode }) {
       <div ref={setGround} aria-hidden className="absolute inset-0 overflow-hidden" />
 
       <div
+        data-stage
         className="absolute left-1/2 top-1/2 overflow-hidden"
         style={{
           width: STAGE_WIDTH,

@@ -70,14 +70,14 @@ export function Stage({ children }: { children: ReactNode }) {
     const measure = () => fit();
 
     /*
-     * iOS scrolls a focused field into view, which moves the page rather than
-     * resizing it. Nothing here scrolls, so any scroll is that — put it back.
+     * iOS scrolls a focused field into view, and it is left alone while the
+     * guest is typing: on a screen too short to show the field above the
+     * keyboard, that scroll is the only thing that makes the field visible at
+     * all. It is put back once focus leaves, so the design never sits offset
+     * with nothing being written.
      */
-    const unscroll = () => window.scrollTo(0, 0);
-
-    /* Once the keyboard is away, take whatever the viewport settled at. */
     const settled = () => {
-      unscroll();
+      window.scrollTo(0, 0);
       window.setTimeout(() => fit(true), 100);
     };
 
@@ -85,7 +85,6 @@ export function Stage({ children }: { children: ReactNode }) {
 
     window.addEventListener("resize", measure);
     window.addEventListener("orientationchange", rotated);
-    window.addEventListener("scroll", unscroll);
     window.visualViewport?.addEventListener("resize", measure);
     window.visualViewport?.addEventListener("scroll", measure);
     document.addEventListener("focusout", settled);
@@ -93,7 +92,6 @@ export function Stage({ children }: { children: ReactNode }) {
     return () => {
       window.removeEventListener("resize", measure);
       window.removeEventListener("orientationchange", rotated);
-      window.removeEventListener("scroll", unscroll);
       window.visualViewport?.removeEventListener("resize", measure);
       window.visualViewport?.removeEventListener("scroll", measure);
       document.removeEventListener("focusout", settled);

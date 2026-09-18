@@ -79,6 +79,8 @@ html,
 body,
 #root {
   height: 100%;
+  /* Browser chrome makes 100% lie on a tablet; dvh is the visible height. */
+  height: 100dvh;
   margin: 0;
   background: var(--color-forest-dark);
   font-family: var(--font-sans);
@@ -90,6 +92,9 @@ body,
    long-press-selected, and rubber-band scrolling is off. */
 body {
   overflow: hidden;
+  /* A kiosk should not rubber-band, and a double tap should not zoom. */
+  overscroll-behavior: none;
+  touch-action: manipulation;
   overscroll-behavior: none;
   -webkit-touch-callout: none;
   -webkit-tap-highlight-color: transparent;

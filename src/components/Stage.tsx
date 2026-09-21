@@ -33,15 +33,54 @@ const ScaleContext = createContext(1);
 
 export const useStageScale = () => useContext(ScaleContext);
 
+const SkyContext = createContext<HTMLElement | null>(null);
+
 /** The unscaled layer behind the frame, filled by `<Bleed>`. */
 export function Bleed({ children }: { children: ReactNode }) {
   const ground = useContext(GroundContext);
   return ground ? createPortal(children, ground) : null;
 }
 
+/**
+ * The counterpart above the frame, at the size of the screen.
+ *
+ * A dimmer cannot use `<Bleed>`: that layer is behind the frame, so a scrim put
+ * there would be covered by the very screen it is meant to dim. Anything that
+ * has to cover everything — the scrim of a modal — goes here instead, and the
+ * modal's own card goes inside a `<StageFrame>` so it keeps its position from
+ * Figma.
+ *
+ * The layer ignores the pointer; whatever is rendered into it takes it back.
+ */
+export function Sky({ children }: { children: ReactNode }) {
+  const sky = useContext(SkyContext);
+  return sky ? createPortal(children, sky) : null;
+}
+
+/**
+ * A box the size of the frame, scaled and centred exactly as the frame is, for
+ * content in `<Sky>` that is positioned in the design's coordinates.
+ */
+export function StageFrame({ children }: { children: ReactNode }) {
+  const scale = useStageScale();
+  return (
+    <div
+      className="pointer-events-none absolute left-1/2 top-1/2"
+      style={{
+        width: STAGE_WIDTH,
+        height: STAGE_HEIGHT,
+        transform: `translate(-50%, -50%) scale(${scale})`,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
 export function Stage({ children }: { children: ReactNode }) {
   const [{ scale, portrait }, setFit] = useState({ scale: 1, portrait: false });
   const [ground, setGround] = useState<HTMLDivElement | null>(null);
+  const [sky, setSky] = useState<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const fit = () => {
@@ -94,9 +133,15 @@ export function Stage({ children }: { children: ReactNode }) {
         }}
       >
         <GroundContext.Provider value={ground}>
-          <ScaleContext.Provider value={scale}>{children}</ScaleContext.Provider>
+          <SkyContext.Provider value={sky}>
+            <ScaleContext.Provider value={scale}>{children}</ScaleContext.Provider>
+          </SkyContext.Provider>
         </GroundContext.Provider>
       </div>
+
+      {/* Above the frame, at the size of the screen. Ignores the pointer until
+          something rendered into it asks for it. */}
+      <div ref={setSky} className="pointer-events-none absolute inset-0 overflow-hidden" />
 
       {portrait && <TurnTheTablet />}
     </div>

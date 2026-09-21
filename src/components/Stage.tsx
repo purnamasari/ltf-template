@@ -24,6 +24,15 @@ const STAGE_HEIGHT = 834;
  */
 const GroundContext = createContext<HTMLElement | null>(null);
 
+/**
+ * How much the frame is scaled by. The bleed layer is unscaled, so anything
+ * rendered into it that should match the frame's weight — a 9px bar drawn on
+ * the top edge — has to apply this itself.
+ */
+const ScaleContext = createContext(1);
+
+export const useStageScale = () => useContext(ScaleContext);
+
 /** The unscaled layer behind the frame, filled by `<Bleed>`. */
 export function Bleed({ children }: { children: ReactNode }) {
   const ground = useContext(GroundContext);
@@ -84,7 +93,9 @@ export function Stage({ children }: { children: ReactNode }) {
           visibility: portrait ? "hidden" : "visible",
         }}
       >
-        <GroundContext.Provider value={ground}>{children}</GroundContext.Provider>
+        <GroundContext.Provider value={ground}>
+          <ScaleContext.Provider value={scale}>{children}</ScaleContext.Provider>
+        </GroundContext.Provider>
       </div>
 
       {portrait && <TurnTheTablet />}

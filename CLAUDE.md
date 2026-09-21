@@ -9,7 +9,9 @@ file. Vite + React 19 + TypeScript, Tailwind v4, TanStack Router + Query.
 
 - `src/screens/*` — one file per route, each one a Figma frame.
 - `src/components/*` — shared pieces (`Stage` scales the fixed 1194 × 834 frame
-  to the viewport; `chrome.tsx` is the footer/progress that sits on every screen).
+  to the viewport; `chrome.tsx` is the footer, pills and carousel parts that sit
+  on every screen; `FlowProgress.tsx` is the progress bar, mounted once above
+  the routes).
 - `src/lib/*` — `flow.tsx` (session draft), `api.ts` (the backend seam),
   `designs.ts`, `assets.ts` (the single registry of exported artwork paths).
 - `src/index.css` — `@theme` tokens: colours, fonts, stage size.
@@ -87,9 +89,11 @@ quietly adding what the design left out.
    would slice both. Instead the **ground bleeds**: flat colour, texture and
    vignette render through `<Bleed>` into a layer the size of the screen, so the
    paper runs to the edges on any tablet while everything with a position from
-   Figma stays inside the frame at one uniform scale. Only the ground may bleed
-   — it has no geometry to get wrong, unlike type or a circle. A screen that
-   draws its own backdrop wraps it in `<Bleed>` and keeps its type in the frame.
+   Figma stays inside the frame at one uniform scale. The ground and the
+   progress bar are the only things that may bleed — a flat colour and a flat
+   rectangle on an edge have no geometry to get wrong, unlike type or a circle.
+   A screen that draws its own backdrop wraps it in `<Bleed>` and keeps its type
+   in the frame.
 3. **Artwork goes through `src/lib/assets.ts`.** Export to `public/assets`,
    downscale for the kiosk, register the path there — never inline base64 or a
    Figma URL.
@@ -97,7 +101,13 @@ quietly adding what the design left out.
    house idiom. Generated absolutely-positioned divs are rejected on review.
 5. **Canela is licensed and not bundled** — headings fall back to Cormorant
    Garamond, so line breaks may differ slightly from the frames. Not a bug.
-6. `docs/design/frames.json` is the registry and the source of truth; the table
+6. **The progress bar is ours, not the file's.** `src/components/FlowProgress.tsx`
+   is the only place it is drawn. Every frame draws a bar of its own, and those
+   are to be ignored on a sync: the widths stopped forming a ladder when `name`
+   moved ahead of the picker, and a fill fixed per frame cannot animate between
+   steps. A frame's bar is never copied into a screen, and a screen never
+   renders one. Adding or reordering a step is one line in `STEPS`.
+7. `docs/design/frames.json` is the registry and the source of truth; the table
    in `frames.md` is generated from it (`node scripts/frames.mjs table`). Screen
    files carry a `FIGMA:` header comment as a convenience — the registry wins if
    the two disagree.

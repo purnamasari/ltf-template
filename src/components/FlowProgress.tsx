@@ -1,7 +1,8 @@
 import { useRouterState } from "@tanstack/react-router";
+import { Bleed, useStageScale } from "./Stage";
 
-/** The track the frames draw, in frame px. */
-const TRACK = 1193;
+/** Height of the bar in frame px; scaled to match the frame it sits on. */
+const BAR_HEIGHT = 9;
 
 /**
  * The steps a guest walks through, in order. The cover, the thank you and the
@@ -21,28 +22,39 @@ const STEPS = [
 /**
  * The progress bar, owned by the flow rather than by a screen.
  *
- * The frames draw a bar per screen at widths that no longer form a ladder —
- * `name` still carries the fill it had before it moved ahead of the picker — so
- * the width here is simply how far through the steps the guest is. Splitting it
- * evenly also makes the movement between two steps a constant, which a fixed
- * fill taken from each frame could not promise.
+ * Not taken from the frames. Each of them draws its own fill, and those widths
+ * stopped forming a ladder when `name` moved ahead of the picker, so the width
+ * here is how far through the steps the guest is.
  *
- * Living above the routes is what lets it animate: the element survives the
- * navigation, so the width transitions from one step to the next instead of the
- * bar being torn down and rebuilt at its new length.
+ * Two things follow from where it is mounted. It lives above the routes, so the
+ * element survives a navigation and the width transitions between steps instead
+ * of being rebuilt at its new length. And it renders through `<Bleed>`, so it
+ * spans the screen rather than the 1193px the frame gives it: the stage scales
+ * to fit, and a bar that stopped at the frame's edge would leave paper either
+ * side of it on any tablet that is not the design's shape. It is safe to bleed
+ * for the same reason the ground is — a flat rectangle on an edge has no
+ * geometry to get wrong, and what carries the meaning is the proportion filled,
+ * which is unaffected by how wide the screen is.
  */
 export function FlowProgress() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const scale = useStageScale();
   const step = STEPS.indexOf(pathname as (typeof STEPS)[number]);
 
   if (step === -1) return null;
 
   return (
-    <div aria-hidden className="absolute left-0 top-0 z-40 h-[9px] bg-track" style={{ width: TRACK }}>
+    <Bleed>
       <div
-        className="h-full bg-forest transition-[width] duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
-        style={{ width: ((step + 1) / STEPS.length) * TRACK }}
-      />
-    </div>
+        aria-hidden
+        className="absolute left-0 top-0 z-40 w-full bg-track"
+        style={{ height: BAR_HEIGHT * scale }}
+      >
+        <div
+          className="h-full bg-forest transition-[width] duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+          style={{ width: `${((step + 1) / STEPS.length) * 100}%` }}
+        />
+      </div>
+    </Bleed>
   );
 }

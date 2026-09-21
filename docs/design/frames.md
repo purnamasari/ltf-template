@@ -44,6 +44,8 @@ commit as the change.
 | `/confirm` | Confirmation summary | confirmation | `4808:8058` | `src/screens/Confirmation.tsx` | 2026-09-21 |
 | `/sending` | Posting the card | loading | `4836:10970` | `src/screens/Sending.tsx` | 2026-09-21 |
 | `/thank-you` | Thank You (8s timeout) | Thank you | `4814:8120` | `src/screens/ThankYou.tsx` | 2026-09-17 |
+| `(dialog)` | Privacy and Terms dialog | privacy and terms | `4815:9521` | `src/components/terms.tsx` | 2026-09-21 |
+| `/write` | Are you still there? (idle) | writing setup | `4991:3777` | `src/components/IdleOverlay.tsx` | 2026-09-21 |
 
 <!-- frames:end -->
 
@@ -54,14 +56,18 @@ drift, and a blind re-sync will undo them.
 
 - **Canela → Cormorant Garamond.** Licensed face, not bundled. Headline widths
   and line breaks differ slightly from every frame. See `src/index.css`.
-- **Privacy and Terms is not a step.** It is a dialog above the flow
-  (`src/components/terms.tsx`), opened from the footer link on every screen.
-- **Progress bar widths are re-laddered, not taken from each frame.** The
-  section moved `name` ahead of the picker, but the bars drawn inside the frames
-  were not updated — `name` still carries the 767 it had when it came after
-  preview. `STEP_FILL` in `src/components/chrome.tsx` holds the file's own
-  ladder of values re-assigned to the file's own order. If the designer
-  re-ladders the frames, take the widths from them again and delete this note.
+- **Privacy and Terms is not a step.** Frame `4815:9521` draws it as a screen of
+  its own; here it is a dialog above the flow (`src/components/terms.tsx`),
+  opened from the footer link on every screen. Only the card is implemented —
+  the cover behind it in that frame is the narration's.
+- **The progress bar is not taken from the frames at all.** Each frame draws its
+  own fill, and those widths stopped forming a ladder when `name` moved ahead of
+  the picker — that frame still carries the 767 it had when it came after
+  preview. `src/components/FlowProgress.tsx` owns the bar instead: it lives
+  above the routes, reads the current one, and fills to how far through the
+  steps the guest is. Living above the routes is what lets it animate — the
+  element survives the navigation, so the width transitions between steps
+  instead of being rebuilt at its new length.
 - **Keyboard states in the frames are the iPadOS system keyboard.** Fields are
   ordinary `input`/`textarea`; nothing is drawn for it.
 - **Three postcard categories have no artwork.** Architecture & Design,

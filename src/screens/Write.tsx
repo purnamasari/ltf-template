@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { meta } from "../lib/meta";
 import { Backdrop } from "../components/Backdrop";
-import { CloseButton, LogoMark, PrivacyLink, ProgressBar, StepNav } from "../components/chrome";
+import { CloseButton, LogoMark, PrivacyLink, StepNav } from "../components/chrome";
 import { ASSETS } from "../lib/assets";
 import { useFlow } from "../lib/flow";
 import { useIdleReset } from "../lib/idle/useIdleReset";
@@ -64,7 +64,6 @@ export function Write() {
   return (
     <>
       <Backdrop />
-      <ProgressBar step="write" />
       <LogoMark className="left-[52px] top-[58px]" />
 
       <h1 className="absolute left-1/2 top-[70px] -translate-x-1/2 whitespace-nowrap text-center font-display text-[40px] font-[100] leading-normal text-ink">

@@ -1,7 +1,7 @@
 // FIGMA: 4808:4040 — see docs/design/frames.md
 import { useNavigate } from "@tanstack/react-router";
 import { Backdrop } from "../components/Backdrop";
-import { LogoMark, PrivacyLink, ProgressBar, StepNav } from "../components/chrome";
+import { LogoMark, PrivacyLink, StepNav } from "../components/chrome";
 import { UnderlinedField } from "../components/UnderlinedField";
 import { useFlow } from "../lib/flow";
 
@@ -12,7 +12,6 @@ export function YourName() {
   return (
     <>
       <Backdrop />
-      <ProgressBar step="name" />
       <LogoMark className="left-[52px] top-[58px]" />
 
       <h1 className="absolute left-1/2 top-[313px] -translate-x-1/2 whitespace-nowrap text-center font-display text-[46px] font-light leading-[58px] text-ink">

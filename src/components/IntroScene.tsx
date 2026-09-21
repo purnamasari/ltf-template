@@ -1,22 +1,13 @@
 import type { ReactNode } from "react";
 import { Backdrop } from "./Backdrop";
-import { LogoMark, ProgressBar } from "./chrome";
-import type { Step } from "./chrome";
+import { LogoMark } from "./chrome";
 import { ASSETS } from "../lib/assets";
 
 /**
- * Cover-page furniture shared by the attract screen and the terms screen
- * behind the modal: washed facade, centred mark, and the lettered title.
+ * Cover-page furniture behind the narration: washed facade, centred mark and
+ * the lettered title.
  */
-export function IntroScene({
-  step,
-  tone = "forest",
-  children,
-}: {
-  step: Step;
-  tone?: "forest" | "gold";
-  children?: ReactNode;
-}) {
+export function IntroScene({ children }: { children?: ReactNode }) {
   return (
     <>
       <Backdrop artboard />
@@ -27,8 +18,6 @@ export function IntroScene({
         aria-hidden
         className="absolute left-[203px] top-[-52px] h-[800px] w-[1199px] max-w-none object-cover opacity-30 mix-blend-multiply"
       />
-
-      <ProgressBar step={step} tone={tone} />
 
       <LogoMark className="left-1/2 top-[63px] -translate-x-1/2" />
       <img

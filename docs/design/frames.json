@@ -121,6 +121,24 @@
       "figmaName": "Thank you",
       "synced": "2026-09-17",
       "describes": "Thank You (8s timeout)"
+    },
+    {
+      "key": "terms",
+      "route": "(dialog)",
+      "file": "src/components/terms.tsx",
+      "nodeId": "4815:9521",
+      "figmaName": "privacy and terms",
+      "synced": "2026-09-21",
+      "describes": "Privacy and Terms dialog"
+    },
+    {
+      "key": "write-idle",
+      "route": "/write",
+      "file": "src/components/IdleOverlay.tsx",
+      "nodeId": "4991:3777",
+      "figmaName": "writing setup",
+      "synced": "2026-09-21",
+      "describes": "Are you still there? (idle)"
     }
   ]
 }

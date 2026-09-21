@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { Backdrop } from "../components/Backdrop";
-import { LogoMark, PrivacyLink, ProgressBar, StepNav } from "../components/chrome";
+import { LogoMark, PrivacyLink, StepNav } from "../components/chrome";
 import { UnderlinedField } from "../components/UnderlinedField";
 import { isContactValid, useFlow } from "../lib/flow";
 import type { DeliveryChannel } from "../lib/flow";
@@ -48,7 +48,6 @@ export function Delivery() {
   return (
     <>
       <Backdrop />
-      <ProgressBar step="delivery" />
       <LogoMark className="left-[52px] top-[58px]" />
 
       <h1 className="absolute left-1/2 top-[234px] -translate-x-1/2 whitespace-nowrap text-center font-display text-[46px] font-light leading-[58px] text-ink">

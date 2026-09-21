@@ -1,6 +1,7 @@
 import { Outlet, createRootRoute, createRoute, createRouter } from "@tanstack/react-router";
 import { Stage } from "./components/Stage";
 import { TermsProvider } from "./components/terms";
+import { FlowProgress } from "./components/FlowProgress";
 import { StaffAccessProvider } from "./components/StaffAccess";
 import { useKioskBoot } from "./lib/boot";
 import { useOutboxSync } from "./lib/outbox/useOutboxSync";
@@ -29,6 +30,8 @@ function Root() {
       <StaffAccessProvider>
         <TermsProvider>
           <Outlet />
+          {/* Above the routes so it survives the navigation and can animate. */}
+          <FlowProgress />
         </TermsProvider>
       </StaffAccessProvider>
     </Stage>

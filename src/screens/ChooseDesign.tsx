@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { Backdrop } from "../components/Backdrop";
-import { CarouselArrow, Dots, LogoMark, PrivacyLink, ProgressBar, StepNav } from "../components/chrome";
+import { CarouselArrow, Dots, LogoMark, PrivacyLink, StepNav } from "../components/chrome";
 import { PostcardFront } from "../components/Postcard";
 import { POSTCARD_DESIGNS } from "../lib/designs";
 import { useFlow } from "../lib/flow";
@@ -43,7 +43,6 @@ export function ChooseDesign() {
   return (
     <>
       <Backdrop />
-      <ProgressBar step="design" />
       <LogoMark className="left-[52px] top-[58px]" />
 
       {/* The frame writes this as "Hi [Name], …" — the name is the one the

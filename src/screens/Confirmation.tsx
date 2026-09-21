@@ -3,7 +3,7 @@ import { useState } from "react";
 import type { ReactNode } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { Backdrop } from "../components/Backdrop";
-import { CarouselArrow, Dots, LogoMark, PrivacyLink, ProgressBar, StepNav } from "../components/chrome";
+import { CarouselArrow, Dots, LogoMark, PrivacyLink, StepNav } from "../components/chrome";
 import { PostcardBack, PostcardFront } from "../components/Postcard";
 import { deliveryDate, formatDeliveryDate } from "../lib/date";
 import { meta } from "../lib/meta";
@@ -35,7 +35,6 @@ export function Confirmation() {
   return (
     <>
       <Backdrop />
-      <ProgressBar step="confirm" />
       <LogoMark className="left-[52px] top-[58px]" />
 
       <h1 className="absolute left-1/2 top-[70px] -translate-x-1/2 whitespace-nowrap text-center font-display text-[40px] font-[100] leading-normal text-ink">

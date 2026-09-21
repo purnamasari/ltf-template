@@ -41,7 +41,7 @@ export function Narration() {
 
   return (
     <>
-      <IntroScene step="intro">
+      <IntroScene>
         <img
           src={ASSETS.introGlow}
           alt=""

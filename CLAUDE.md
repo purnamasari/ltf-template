@@ -59,6 +59,9 @@ Two things stay out of this rule, because they genuinely belong to the layout:
 
 - **Interaction primitives** — `useSwipe`, `useFadeIn`. Behaviour, but
   behaviour the design specifies; they live in `src/lib` and screens call them.
+- **The progress bar** — `src/components/FlowProgress.tsx`, mounted in the root
+  route rather than by each screen, so that it survives a navigation and can
+  animate between steps.
 - **Geometry** — `MOUTH_Y` in `Sending.tsx` derived from the postbox's own
   `slotTop`, the carousel offsets. These must move when the frame moves, so
   they belong beside the layout, not behind a hook.

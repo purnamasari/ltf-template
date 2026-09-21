@@ -1,6 +1,6 @@
 // FIGMA: 4836:10970 — see docs/design/frames.md
 import { Backdrop } from "../components/Backdrop";
-import { LogoMark, ProgressBar } from "../components/chrome";
+import { LogoMark } from "../components/chrome";
 import { PostcardFront } from "../components/Postcard";
 import { ASSETS } from "../lib/assets";
 import { useSealPostcard } from "../lib/outbox/useSealPostcard";
@@ -47,7 +47,6 @@ export function Sending() {
   return (
     <>
       <Backdrop />
-      <ProgressBar step="sending" />
       <LogoMark className="left-[52px] top-[58px]" />
 
       <h1 className="absolute left-1/2 top-[70px] -translate-x-1/2 whitespace-nowrap text-center font-display text-[40px] font-[100] leading-normal text-ink">

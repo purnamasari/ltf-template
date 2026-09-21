@@ -22,9 +22,15 @@ export type Meta = {
   sender: string;
 };
 
-/** Used until the first successful fetch, and if the tablet has never been online. */
+/**
+ * Used until the first successful fetch, and if the tablet has never been
+ * online. `max_body_chars` tracks the cap drawn on the counter in the writing
+ * frames — it was 512 when they said 512 and is 600 now they say 600 — so an
+ * offline kiosk holds the guest to the same limit the screen promises. A live
+ * server's own value still wins.
+ */
 export const META_FALLBACK: Meta = {
-  max_body_chars: 512,
+  max_body_chars: 600,
   delivery_horizon_days: 365,
   installation_tz: "Asia/Singapore",
   channels: ["EMAIL"],

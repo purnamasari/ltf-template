@@ -10,15 +10,26 @@ import { useIdleReset } from "../lib/idle/useIdleReset";
 import { IdleOverlay } from "../components/IdleOverlay";
 import { useSwipe, wrapIndex } from "../lib/useSwipe";
 
-/** Ruled writing area, measured off the Figma rules (44.58px apart). */
-const LINE_HEIGHT = 44.58;
-const RULE_COLOR = "rgba(141, 110, 69, 0.65)";
 /**
- * 512 is the design's cap — the counter drawn in `4802:3536`. The server allows
- * far more, but it is the lower of the two that applies, so a tightened server
- * limit is honoured without touching the layout.
+ * The ruled writing area.
+ *
+ * The frame draws four 45px boxes with 44px between them, which averages
+ * 44.57 — but a repeating gradient on a fractional period cannot land its rule
+ * on a whole device pixel each time, so the gaps came out visibly uneven, some
+ * 44 and some 45. A whole number renders evenly, and 45 is the box height the
+ * frame actually draws; eight lines then run from 203 to 563 against the
+ * frame's 247–559, which is within the alternation it was averaging.
  */
-const DESIGN_MAX_CHARACTERS = 512;
+const LINE_HEIGHT = 45;
+const LINES = 8;
+const RULE_COLOR = "rgba(141, 110, 69, 0.65)";
+
+/**
+ * The cap drawn on the counter in `4802:3536` and `4991:3777`. The server
+ * allows more, but it is the lower of the two that applies, so a tightened
+ * server limit is honoured without touching the layout.
+ */
+const DESIGN_MAX_CHARACTERS = 600;
 
 /** The prompt stack: centre, spacing and the two card sizes, from Figma. */
 const PROMPT_CENTRE = { x: 897, y: 391.5 };
@@ -76,23 +87,39 @@ export function Write() {
         </p>
       )}
 
-      <textarea
-        ref={textareaRef}
-        value={draft.letter}
-        onChange={(event) => update({ letter: event.target.value })}
-        onFocus={startWriting}
-        placeholder="Start writing"
-        maxLength={MAX_CHARACTERS}
-        spellCheck={false}
-        className="no-scrollbar absolute left-[108px] top-[203px] h-[357px] resize-none bg-transparent text-[20px] text-ink outline-none transition-[width] duration-[400ms] ease-out placeholder:italic placeholder:text-[#423418] placeholder:opacity-25"
-        style={{
-          width: showPrompts ? 494 : 944,
-          lineHeight: `${LINE_HEIGHT}px`,
-          backgroundImage: `repeating-linear-gradient(to bottom, transparent 0, transparent ${
-            LINE_HEIGHT - 1
-          }px, ${RULE_COLOR} ${LINE_HEIGHT - 1}px, ${RULE_COLOR} ${LINE_HEIGHT}px)`,
-        }}
-      />
+      {/*
+        The rules are eight elements, not a repeating gradient. A repeating
+        gradient is rasterised as one tile and stepped, so the rule lands on a
+        different sub-pixel each repeat and the gaps read as uneven — which is
+        what they did. Positioned individually, every rule is placed and
+        antialiased the same way, at any stage scale.
+      */}
+      <div
+        className="absolute left-[108px] top-[203px] transition-[width] duration-[400ms] ease-out"
+        style={{ width: showPrompts ? 494 : 944, height: LINE_HEIGHT * LINES }}
+      >
+        <div aria-hidden className="absolute inset-0">
+          {Array.from({ length: LINES }, (_, line) => (
+            <div
+              key={line}
+              className="absolute inset-x-0 h-px"
+              style={{ top: (line + 1) * LINE_HEIGHT - 1, backgroundColor: RULE_COLOR }}
+            />
+          ))}
+        </div>
+
+        <textarea
+          ref={textareaRef}
+          value={draft.letter}
+          onChange={(event) => update({ letter: event.target.value })}
+          onFocus={startWriting}
+          placeholder="Start writing"
+          maxLength={MAX_CHARACTERS}
+          spellCheck={false}
+          className="no-scrollbar absolute inset-0 h-full w-full resize-none bg-transparent text-[20px] text-ink outline-none placeholder:italic placeholder:text-[#423418] placeholder:opacity-25"
+          style={{ lineHeight: `${LINE_HEIGHT}px` }}
+        />
+      </div>
 
       {showPrompts ? (
         <>

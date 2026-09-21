@@ -20,6 +20,13 @@ export function Delivery() {
   const [notice, setNotice] = useState<string | null>(null);
 
   /**
+   * Raised on a tap, never while typing — a half-entered address is not yet
+   * wrong. Cleared on the next keystroke so the message goes as soon as the
+   * guest starts fixing it.
+   */
+  const [malformed, setMalformed] = useState(false);
+
+  /**
    * Both options are drawn in `4808:5417` and both stay on screen, because
    * Wechat is coming: it is scheduled for the first release after launch, once
    * the official account exists. Until `meta.channels` lists it, the button is
@@ -101,13 +108,40 @@ export function Delivery() {
         placeholder={channel.placeholder}
         type={draft.channel === "email" ? "email" : "text"}
         value={draft.contact}
-        onChange={(contact) => update({ contact })}
+        onChange={(contact) => {
+          setMalformed(false);
+          update({ contact });
+        }}
+        invalid={malformed}
       />
 
+      {malformed && (
+        <p
+          role="alert"
+          className="absolute left-[233px] top-[478px] w-[728px] text-[18px] leading-[24px] text-brick"
+        >
+          {draft.channel === "email"
+            ? "That does not look like an e-mail address. Check it and try again."
+            : "That does not look like a Wechat username. Check it and try again."}
+        </p>
+      )}
+
+      {/*
+        Next stays live once anything has been typed. A greyed-out button gives
+        a guest nothing to act on — they cannot tell whether the kiosk is broken
+        or their address is wrong — so the check happens on the tap and says
+        what is wrong.
+      */}
       <StepNav
         onBack={() => navigate({ to: "/preview" })}
-        onNext={() => navigate({ to: "/confirm" })}
-        nextDisabled={!isContactValid(draft.channel, draft.contact)}
+        onNext={() => {
+          if (!isContactValid(draft.channel, draft.contact)) {
+            setMalformed(true);
+            return;
+          }
+          navigate({ to: "/confirm" });
+        }}
+        nextDisabled={draft.contact.trim().length === 0}
       />
 
       <PrivacyLink />

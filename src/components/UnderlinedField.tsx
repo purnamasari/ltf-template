@@ -7,6 +7,8 @@ type UnderlinedFieldProps = {
   autoFocus?: boolean;
   /** The name step centres its value on the rule; delivery sits left. */
   align?: "left" | "center";
+  /** Colours the rule when what has been typed has been rejected. */
+  invalid?: boolean;
 };
 
 /**
@@ -21,6 +23,7 @@ export function UnderlinedField({
   label,
   autoFocus = false,
   align = "left",
+  invalid = false,
 }: UnderlinedFieldProps) {
   return (
     <div className="absolute left-[232px] top-[408px] w-[730px]">
@@ -34,6 +37,7 @@ export function UnderlinedField({
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
         autoFocus={autoFocus}
+        aria-invalid={invalid || undefined}
         autoComplete="off"
         autoCapitalize={type === "email" ? "none" : "words"}
         spellCheck={false}
@@ -41,7 +45,10 @@ export function UnderlinedField({
           align === "center" ? "text-center" : ""
         }`}
       />
-      <div aria-hidden className="h-px w-full bg-gold" />
+      <div
+        aria-hidden
+        className={`h-px w-full transition-colors duration-200 ${invalid ? "bg-brick" : "bg-gold"}`}
+      />
     </div>
   );
 }

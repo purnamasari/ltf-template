@@ -31,19 +31,19 @@ commit as the change.
 
 | Route | Frame | Figma name | Node id | Implemented in | Synced |
 | --- | --- | --- | --- | --- | --- |
-| `/` | Cover / attract | _not yet scanned_ | `4734:6213` | `src/screens/Cover.tsx` | 2026-09-17 |
-| `/intro` | Narration beat 1 | _not yet scanned_ | `4734:4631` | `src/screens/Narration.tsx` | 2026-09-17 |
-| `/intro` | Narration beat 2 | _not yet scanned_ | `4929:5286` | `src/screens/Narration.tsx` | 2026-09-17 |
-| `/intro` | Narration beat 3 | _not yet scanned_ | `4929:5308` | `src/screens/Narration.tsx` | 2026-09-17 |
-| `/design` | Design picker | _not yet scanned_ | `4734:6117` | `src/screens/ChooseDesign.tsx` | 2026-09-17 |
-| `/write` | Write, prompts open | _not yet scanned_ | `4734:6165` | `src/screens/Write.tsx` | 2026-09-17 |
-| `/write` | Write, prompts folded | _not yet scanned_ | `4802:3536` | `src/screens/Write.tsx` | 2026-09-17 |
-| `/preview` | Preview written side | _not yet scanned_ | `4802:3876` | `src/screens/Preview.tsx` | 2026-09-17 |
-| `/name` | How to be addressed | _not yet scanned_ | `4808:4040` | `src/screens/YourName.tsx` | 2026-09-17 |
-| `/delivery` | E-mail or Wechat | _not yet scanned_ | `4808:5417` | `src/screens/Delivery.tsx` | 2026-09-17 |
-| `/confirm` | Confirmation summary | _not yet scanned_ | `4808:8058` | `src/screens/Confirmation.tsx` | 2026-09-17 |
-| `/sending` | Posting the card | _not yet scanned_ | `4836:10970` | `src/screens/Sending.tsx` | 2026-09-17 |
-| `/thank-you` | Thank You (8s timeout) | _not yet scanned_ | `4814:8120` | `src/screens/ThankYou.tsx` | 2026-09-17 |
+| `/` | Cover / attract | alt 1 | `4734:6213` | `src/screens/Cover.tsx` | 2026-09-17 |
+| `/intro` | Narration beat 1 | Introduction | `4734:4631` | `src/screens/Narration.tsx` | 2026-09-17 |
+| `/intro` | Narration beat 2 | Introduction | `4929:5286` | `src/screens/Narration.tsx` | 2026-09-17 |
+| `/intro` | Narration beat 3 | Introduction | `4929:5308` | `src/screens/Narration.tsx` | 2026-09-17 |
+| `/design` | Design picker | choose a design | `4734:6117` | `src/screens/ChooseDesign.tsx` | 2026-09-17 |
+| `/write` | Write, prompts open | writing setup | `4734:6165` | `src/screens/Write.tsx` | 2026-09-17 |
+| `/write` | Write, prompts folded | writing setup | `4802:3536` | `src/screens/Write.tsx` | 2026-09-17 |
+| `/preview` | Preview written side | preview | `4802:3876` | `src/screens/Preview.tsx` | 2026-09-17 |
+| `/name` | How to be addressed | name | `4808:4040` | `src/screens/YourName.tsx` | 2026-09-17 |
+| `/delivery` | E-mail or Wechat | email/wechat | `4808:5417` | `src/screens/Delivery.tsx` | 2026-09-17 |
+| `/confirm` | Confirmation summary | confirmation | `4808:8058` | `src/screens/Confirmation.tsx` | 2026-09-17 |
+| `/sending` | Posting the card | loading | `4836:10970` | `src/screens/Sending.tsx` | 2026-09-17 |
+| `/thank-you` | Thank You (8s timeout) | Thank you | `4814:8120` | `src/screens/ThankYou.tsx` | 2026-09-17 |
 
 <!-- frames:end -->
 

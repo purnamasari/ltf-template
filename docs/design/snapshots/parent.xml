@@ -1,0 +1,628 @@
+<section id="3714:10662" name="Design" x="310" y="5122" width="16955" height="3749">
+  <frame id="4734:4631" name="Introduction" x="1511" y="155" width="1194" height="834">
+    <frame id="4734:6112" name="Background" x="-313" y="-56" width="1771.662841796875" height="903.0000610351562">
+      <rounded-rectangle id="4734:6113" name="Raffles Artboard-01 1" x="-313.0000233501196" y="-56.00000000000091" width="1543.4581298828125" height="880.2534790039062" />
+      <rounded-rectangle id="4734:6114" name="Raffles Artboard-01 1" x="-84.79522705078125" y="-33.253469467163086" width="1543.4581298828125" height="880.2534790039062" />
+    </frame>
+    <frame id="4802:4019" name="Texture" x="-21" y="-56" width="1479.53076171875" height="926">
+      <frame id="4802:4020" name="Layer 1" x="-21" y="-56" width="1479.53076171875" height="926">
+        <rounded-rectangle id="4802:4021" name="Rectangle" x="1458.5308837890625" y="870" width="1479.53076171875" height="926" />
+      </frame>
+    </frame>
+    <rounded-rectangle id="4734:6115" name="Rectangle 108" x="0" y="-1" width="1194" height="835" />
+    <vector id="4929:5335" name="Rectangle 112" x="105" y="320" width="988" height="215" />
+    <rounded-rectangle id="4954:5929" name="Rectangle 113" x="112" y="326" width="974" height="203" />
+    <text id="4734:4633" name="Every guest arrives with a story. Some are celebrating a milestone, others beginning a new chapter, or simply stepping away from the rhythm of everyday life." x="173" y="384" width="848" height="87" />
+    <frame id="4734:4639" name="Group 268" x="0" y="0" width="1193" height="9">
+      <rounded-rectangle id="4734:4640" name="Rectangle 39" x="0" y="0" width="1193" height="9" />
+      <rounded-rectangle id="4734:4641" name="Rectangle 40" x="0" y="0" width="45" height="9" />
+    </frame>
+    <text id="4734:4642" name="Privacy and Terms" x="59" y="782" width="127" height="19" />
+    <rounded-rectangle id="4831:10951" name="SL-042921-42620-03 [Converted] 1" x="203" y="-52" width="1199" height="800" />
+    <frame id="4929:5431" name="Group 359" x="453" y="63" width="288" height="203">
+      <frame id="4929:5354" name="logo-brand-text-mark 2" x="559" y="63" width="80" height="71" />
+      <rounded-rectangle id="4929:5430" name="Group 358 1" x="453" y="134" width="288" height="132" />
+    </frame>
+    <frame id="5015:4140" name="Group 349" x="471" y="595" width="253" height="53">
+      <rounded-rectangle id="5015:4141" name="Rectangle 119" x="471" y="595" width="253" height="53" />
+      <text id="5015:4142" name="Start Writing" x="541" y="610" width="113" height="24" />
+    </frame>
+    <frame id="5015:4148" name="Group 259" x="571" y="549" width="51.333003997802734" height="9.999996185302734" />
+  </frame>
+  <frame id="4929:5286" name="Introduction" x="1511" y="1068" width="1194" height="834">
+    <frame id="4929:5287" name="Background" x="-313" y="-56" width="1771.662841796875" height="903.0000610351562">
+      <rounded-rectangle id="4929:5288" name="Raffles Artboard-01 1" x="-313.0000233501196" y="-56.00000000000091" width="1543.4581298828125" height="880.2534790039062" />
+      <rounded-rectangle id="4929:5289" name="Raffles Artboard-01 1" x="-84.79522705078125" y="-33.253469467163086" width="1543.4581298828125" height="880.2534790039062" />
+    </frame>
+    <frame id="4929:5290" name="Texture" x="-21" y="-56" width="1479.53076171875" height="926">
+      <frame id="4929:5291" name="Layer 1" x="-21" y="-56" width="1479.53076171875" height="926">
+        <rounded-rectangle id="4929:5292" name="Rectangle" x="1458.5308837890625" y="870" width="1479.53076171875" height="926" />
+      </frame>
+    </frame>
+    <rounded-rectangle id="4929:5293" name="Rectangle 108" x="0" y="-1" width="1194" height="835" />
+    <vector id="4929:5336" name="Rectangle 112" x="105" y="320" width="988" height="215" />
+    <text id="4929:5295" name="Take a moment to reflect. Capture a thought, a promise, or a memory of who you are right now and preserve it within this letter." x="173" y="392" width="848" height="58" />
+    <frame id="4929:5296" name="Group 268" x="0" y="0" width="1193" height="9">
+      <rounded-rectangle id="4929:5297" name="Rectangle 39" x="0" y="0" width="1193" height="9" />
+      <rounded-rectangle id="4929:5298" name="Rectangle 40" x="0" y="0" width="45" height="9" />
+    </frame>
+    <text id="4929:5299" name="Privacy and Terms" x="59" y="782" width="127" height="19" />
+    <rounded-rectangle id="4929:5304" name="SL-042921-42620-03 [Converted] 1" x="203" y="-52" width="1199" height="800" />
+    <frame id="4929:5432" name="Group 359" x="453" y="63" width="288" height="203">
+      <frame id="4929:5433" name="logo-brand-text-mark 2" x="559" y="63" width="80" height="71" />
+      <rounded-rectangle id="4929:5436" name="Group 358 1" x="453" y="134" width="288" height="132" />
+    </frame>
+    <rounded-rectangle id="4954:5931" name="Rectangle 113" x="112" y="326" width="974" height="203" />
+    <frame id="5015:4144" name="Group 349" x="471" y="595" width="253" height="53">
+      <rounded-rectangle id="5015:4145" name="Rectangle 119" x="471" y="595" width="253" height="53" />
+      <text id="5015:4146" name="Start Writing" x="541" y="610" width="113" height="24" />
+    </frame>
+    <frame id="5015:4155" name="Group 259" x="571" y="549" width="51.333003997802734" height="9.999996185302734" />
+  </frame>
+  <frame id="4929:5308" name="Introduction" x="1511" y="1981" width="1194" height="834">
+    <frame id="4929:5309" name="Background" x="-313" y="-56" width="1771.662841796875" height="903.0000610351562">
+      <rounded-rectangle id="4929:5310" name="Raffles Artboard-01 1" x="-313.0000233501196" y="-56.00000000000091" width="1543.4581298828125" height="880.2534790039062" />
+      <rounded-rectangle id="4929:5311" name="Raffles Artboard-01 1" x="-84.79522705078125" y="-33.253469467163086" width="1543.4581298828125" height="880.2534790039062" />
+    </frame>
+    <frame id="4929:5312" name="Texture" x="-21" y="-56" width="1479.53076171875" height="926">
+      <frame id="4929:5313" name="Layer 1" x="-21" y="-56" width="1479.53076171875" height="926">
+        <rounded-rectangle id="4929:5314" name="Rectangle" x="1458.5308837890625" y="870" width="1479.53076171875" height="926" />
+      </frame>
+    </frame>
+    <rounded-rectangle id="4929:5315" name="Rectangle 108" x="0" y="-1" width="1194" height="835" />
+    <vector id="4929:5350" name="Rectangle 112" x="105" y="320" width="988" height="215" />
+    <text id="4929:5317" name="One year from now, your message will remind you not only of where you were, but of who you hoped to become." x="173" y="399" width="848" height="58" />
+    <frame id="4929:5318" name="Group 268" x="0" y="0" width="1193" height="9">
+      <rounded-rectangle id="4929:5319" name="Rectangle 39" x="0" y="0" width="1193" height="9" />
+      <rounded-rectangle id="4929:5320" name="Rectangle 40" x="0" y="0" width="45" height="9" />
+    </frame>
+    <text id="4929:5321" name="Privacy and Terms" x="59" y="782" width="127" height="19" />
+    <rounded-rectangle id="4929:5326" name="SL-042921-42620-03 [Converted] 1" x="203" y="-52" width="1199" height="800" />
+    <frame id="4929:5339" name="Group 350" x="466" y="589" width="253" height="53">
+      <rounded-rectangle id="4929:5340" name="Rectangle 118" x="466" y="589" width="253" height="53" />
+      <text id="4929:5341" name="Start Writing" x="536" y="604" width="113" height="24" />
+    </frame>
+    <frame id="4929:5438" name="Group 359" x="453" y="63" width="288" height="203">
+      <frame id="4929:5439" name="logo-brand-text-mark 2" x="559" y="63" width="80" height="71" />
+      <rounded-rectangle id="4929:5442" name="Group 358 1" x="453" y="134" width="288" height="132" />
+    </frame>
+    <rounded-rectangle id="4954:5933" name="Rectangle 113" x="112" y="326" width="974" height="203" />
+    <frame id="5015:4160" name="Group 259" x="571" y="549" width="50.999996185302734" height="9.999996185302734" />
+  </frame>
+  <frame id="4734:6213" name="alt 1" x="277" y="155" width="1194" height="834">
+    <frame id="4734:6214" name="Background" x="-313" y="-46" width="1771.662841796875" height="903.0000610351562">
+      <rounded-rectangle id="4734:6215" name="Raffles Artboard-01 1" x="-313.0000233501196" y="-46.00000000000091" width="1543.4581298828125" height="880.2534790039062" />
+      <rounded-rectangle id="4734:6216" name="Raffles Artboard-01 1" x="-84.79522705078125" y="-23.253469467163086" width="1543.4581298828125" height="880.2534790039062" />
+    </frame>
+    <rounded-rectangle id="4734:6217" name="Rectangle 108" x="0" y="-1" width="1194" height="835" />
+    <text id="4802:3795" name="Raffles Heritage" x="-207" y="-8.2490234375" width="1560.7041613714246" height="999.6066824607042" />
+    <vector id="4929:5244" name="Rectangle 111" x="201" y="174.75" width="791.5779483318329" height="582.3212230205536" />
+    <vector id="4929:5246" name="Rectangle 112" x="218" y="147" width="759" height="535" />
+    <frame id="4734:7567" name="Frame" x="894" y="119" width="172" height="110">
+      <rounded-rectangle id="4734:7568" name="Rectangle 61" x="15.680912017822266" y="13.734058380126953" width="128.38746643066406" height="82.40435028076172" />
+      <frame id="4734:7569" name="Group" x="0" y="0" width="172.00003051757812" height="109.97057342529297" />
+    </frame>
+    <frame id="4734:6220" name="logo-brand-text-mark 2" x="544" y="49" width="106" height="93" />
+    <text id="4734:6227" name="Every arrival, every encounter, and every memory at Raffles begins a new chapter. Today, that chapter begins with you." x="246" y="546" width="703" height="48" />
+    <frame id="4929:5429" name="Group 358" x="270" y="215" width="653" height="296">
+      <text id="4929:5236" name="Postcard" x="270" y="215" width="524" height="158" />
+      <text id="4929:5238" name="to" x="810" y="228" width="87" height="158" />
+      <text id="4929:5240" name="the" x="316" y="324" width="130" height="158" />
+      <text id="4929:5242" name="Future" x="457" y="353" width="466" height="158" />
+    </frame>
+    <frame id="4929:5369" name="Group 350" x="470" y="709" width="253" height="53">
+      <rounded-rectangle id="4929:5370" name="Rectangle 118" x="470" y="709" width="253" height="53" />
+      <text id="4929:5371" name="Discover More" x="532" y="724" width="129" height="24" />
+    </frame>
+  </frame>
+  <frame id="4808:4040" name="name" x="2767" y="155" width="1194" height="834">
+    <frame id="4844:12890" name="Texture" x="-21" y="-56" width="1479.53076171875" height="926">
+      <frame id="4844:12891" name="Layer 1" x="-20.99951171875" y="-56" width="1479.53076171875" height="926">
+        <rounded-rectangle id="4844:12892" name="Rectangle" x="1458.5308837890625" y="870" width="1479.53076171875" height="926" />
+      </frame>
+    </frame>
+    <rounded-rectangle id="4844:12893" name="Rectangle 109" x="0" y="-1" width="1194" height="835" />
+    <frame id="4808:4048" name="Group 268" x="0" y="0" width="1193" height="9">
+      <rounded-rectangle id="4808:4049" name="Rectangle 39" x="0" y="0" width="1193" height="9" />
+      <rounded-rectangle id="4808:4050" name="Rectangle 40" x="0" y="0" width="767" height="9" />
+    </frame>
+    <text id="4808:4051" name="Privacy and Terms" x="52" y="787" width="127" height="19" />
+    <frame id="4808:4729" name="Group 342" x="1167.999755859375" y="7.000120162963867" width="79.00030755533226" height="987.1900093478253" hidden="true">
+      <frame id="4808:4730" name="Group 337" x="1088.9993209838963" y="7.00023638050715" width="79.00017829148783" height="254.19001280102384" />
+      <frame id="4808:4897" name="Group 338" x="1088.9993425773205" y="254.0002186221356" width="79.00017829148783" height="254.19001280102384" />
+      <frame id="4808:5064" name="Group 339" x="1088.9993637336324" y="496.0002186221356" width="79.00017829148783" height="254.19001280102384" />
+      <frame id="4808:5231" name="Group 340" x="1088.9994155823495" y="740.0000049990861" width="79.00017829148783" height="254.19001280102384" />
+    </frame>
+    <frame id="4808:5404" name="logo-brand-text-mark 2" x="52" y="58" width="80" height="71" />
+    <text id="4808:5409" name="Name" x="568" y="417" width="59" height="29" />
+    <vector id="4808:5410" name="Vector 7" x="232" y="463" width="730" height="0.00006381863204296678" />
+    <text id="4808:5415" name="What’s your name?" x="449" y="321" width="297" height="48" />
+    <frame id="4836:11059" name="Group 349" x="333" y="693" width="253" height="53">
+      <rounded-rectangle id="4836:11060" name="Rectangle 119" x="333" y="693" width="253" height="53" />
+      <text id="4836:11061" name="Back" x="426" y="708" width="67" height="24" />
+    </frame>
+    <frame id="4885:3270" name="Group 350" x="608" y="693" width="253" height="53">
+      <rounded-rectangle id="4885:3271" name="Rectangle 118" x="608" y="693" width="253" height="53" />
+      <text id="4885:3272" name="Next" x="702" y="708" width="65" height="24" />
+    </frame>
+  </frame>
+  <frame id="4808:5417" name="email/wechat" x="10519" y="155" width="1194" height="834">
+    <frame id="4844:12895" name="Texture" x="-21" y="-56" width="1479.53076171875" height="926">
+      <frame id="4844:12896" name="Layer 1" x="-20.99951171875" y="-56" width="1479.53076171875" height="926">
+        <rounded-rectangle id="4844:12897" name="Rectangle" x="1458.5308837890625" y="870" width="1479.53076171875" height="926" />
+      </frame>
+    </frame>
+    <rounded-rectangle id="4844:12898" name="Rectangle 109" x="0" y="-1" width="1194" height="835" />
+    <frame id="4808:5422" name="Group 268" x="0" y="0" width="1193" height="9">
+      <rounded-rectangle id="4808:5423" name="Rectangle 39" x="0" y="0" width="1193" height="9" />
+      <rounded-rectangle id="4808:5424" name="Rectangle 40" x="0" y="0" width="1015" height="9" />
+    </frame>
+    <text id="4808:5425" name="Privacy and Terms" x="52" y="787" width="127" height="19" />
+    <frame id="4808:5426" name="Group 342" x="1168" y="7" width="79.00015258789062" height="987.1900024414062" hidden="true">
+      <frame id="4808:5427" name="Group 337" x="1088.9998474121094" y="7.0000034532058635" width="79.00015606949455" height="254.1900058946121" />
+      <frame id="4808:5594" name="Group 338" x="1088.9998474121094" y="254" width="79.00015606949455" height="254.1900058946121" />
+      <frame id="4808:5761" name="Group 339" x="1088.9998474121094" y="496" width="79.00015606949455" height="254.1900058946121" />
+      <frame id="4808:5928" name="Group 340" x="1088.9998474121094" y="740" width="79.00015606949455" height="254.1900058946121" />
+    </frame>
+    <frame id="4808:6100" name="logo-brand-text-mark 2" x="52" y="58" width="80" height="71" />
+    <text id="4808:6103" name="E-mail Address" x="257" y="418" width="146" height="29" />
+    <vector id="4808:6104" name="Vector 7" x="232" y="463" width="730" height="0.00006381863204296678" />
+    <text id="4808:6105" name="How would you like to receive your postcard?" x="250" y="241" width="694" height="48" />
+    <frame id="4929:5458" name="Group 362" x="232" y="302" width="730" height="65">
+      <frame id="4929:5457" name="Group 361" x="607" y="302" width="355" height="65">
+        <rounded-rectangle id="4808:6109" name="Rectangle 33" x="607" y="302" width="355" height="65" />
+        <text id="4808:6110" name="Wechat" x="663" y="321" width="68" height="24" />
+        <ellipse id="4808:6111" name="Ellipse 12" x="628" y="328" width="17" height="17" />
+      </frame>
+      <frame id="4929:5456" name="Group 360" x="232" y="302" width="355" height="65">
+        <rounded-rectangle id="4808:6113" name="Rectangle 32" x="232" y="302" width="355" height="65" />
+        <text id="4808:6114" name="E-mail" x="295" y="321" width="55" height="24" />
+        <ellipse id="4808:6115" name="Ellipse 10" x="251" y="326" width="20" height="20" />
+        <ellipse id="4808:6116" name="Ellipse 11" x="257" y="332" width="8" height="8" />
+      </frame>
+    </frame>
+    <frame id="4836:11068" name="Group 349" x="333" y="693" width="253" height="53">
+      <rounded-rectangle id="4836:11069" name="Rectangle 119" x="333" y="693" width="253" height="53" />
+      <text id="4836:11070" name="Back" x="426" y="708" width="67" height="24" />
+    </frame>
+    <frame id="4885:3266" name="Group 350" x="608" y="693" width="253" height="53">
+      <rounded-rectangle id="4885:3267" name="Rectangle 118" x="608" y="693" width="253" height="53" />
+      <text id="4885:3268" name="Next" x="702" y="708" width="65" height="24" />
+    </frame>
+  </frame>
+  <frame id="4922:3360" name="name" x="2767" y="1037" width="1194" height="834">
+    <frame id="4922:3361" name="Texture" x="-21" y="-56" width="1479.53076171875" height="926">
+      <frame id="4922:3362" name="Layer 1" x="-21" y="-56" width="1479.53076171875" height="926">
+        <rounded-rectangle id="4922:3363" name="Rectangle" x="1458.5308837890625" y="870" width="1479.53076171875" height="926" />
+      </frame>
+    </frame>
+    <rounded-rectangle id="4922:3364" name="Rectangle 109" x="0" y="-1" width="1194" height="835" />
+    <frame id="4922:3365" name="Group 268" x="0" y="0" width="1193" height="9">
+      <rounded-rectangle id="4922:3366" name="Rectangle 39" x="0" y="0" width="1193" height="9" />
+      <rounded-rectangle id="4922:3367" name="Rectangle 40" x="0" y="0" width="767" height="9" />
+    </frame>
+    <text id="4922:3368" name="Privacy and Terms" x="52" y="787" width="127" height="19" />
+    <frame id="4922:3369" name="Group 342" x="1167.999755859375" y="7.000120162963867" width="79.00030755533226" height="987.1900093478253" hidden="true">
+      <frame id="4922:3370" name="Group 337" x="1088.9993209838963" y="7.00023638050715" width="79.00017829148783" height="254.19001280102384" />
+      <frame id="4922:3537" name="Group 338" x="1088.9993425773205" y="254.0002186221356" width="79.00017829148783" height="254.19001280102384" />
+      <frame id="4922:3704" name="Group 339" x="1088.9993637336324" y="496.0002186221356" width="79.00017829148783" height="254.19001280102384" />
+      <frame id="4922:3871" name="Group 340" x="1088.9994155823495" y="740.0000049990861" width="79.00017829148783" height="254.19001280102384" />
+    </frame>
+    <frame id="4922:4038" name="logo-brand-text-mark 2" x="52" y="58" width="80" height="71" />
+    <text id="4922:4041" name="Name" x="568" y="323" width="59" height="29" />
+    <vector id="4922:4042" name="Vector 7" x="232" y="368" width="730" height="0.00006381863204296678" />
+    <text id="4922:4043" name="What’s your name?" x="449" y="226" width="297" height="48" />
+    <frame id="4922:4044" name="Group 349" x="333" y="693" width="253" height="53">
+      <rounded-rectangle id="4922:4045" name="Rectangle 119" x="333" y="693" width="253" height="53" />
+      <text id="4922:4046" name="Back" x="426" y="708" width="67" height="24" />
+    </frame>
+    <frame id="4922:4047" name="Group 350" x="608" y="693" width="253" height="53">
+      <rounded-rectangle id="4922:4048" name="Rectangle 118" x="608" y="693" width="253" height="53" />
+      <text id="4922:4049" name="Next" x="702" y="708" width="65" height="24" />
+    </frame>
+    <instance id="4922:4748" name="System/Keyboards/iPad/Light/11&quot; - Landscape - Alphabetic" x="0" y="416" width="1194" height="418" />
+  </frame>
+  <frame id="4922:4050" name="email/wechat" x="10519" y="1055" width="1194" height="834">
+    <frame id="4922:4051" name="Texture" x="-21" y="-56" width="1479.53076171875" height="926">
+      <frame id="4922:4052" name="Layer 1" x="-21" y="-56" width="1479.53076171875" height="926">
+        <rounded-rectangle id="4922:4053" name="Rectangle" x="1458.5308837890625" y="870" width="1479.53076171875" height="926" />
+      </frame>
+    </frame>
+    <rounded-rectangle id="4922:4054" name="Rectangle 109" x="0" y="-1" width="1194" height="835" />
+    <frame id="4922:4055" name="Group 268" x="0" y="0" width="1193" height="9">
+      <rounded-rectangle id="4922:4056" name="Rectangle 39" x="0" y="0" width="1193" height="9" />
+      <rounded-rectangle id="4922:4057" name="Rectangle 40" x="0" y="0" width="1015" height="9" />
+    </frame>
+    <text id="4922:4058" name="Privacy and Terms" x="52" y="787" width="127" height="19" />
+    <frame id="4922:4059" name="Group 342" x="1168" y="7" width="79.00015258789062" height="987.1900024414062" hidden="true">
+      <frame id="4922:4060" name="Group 337" x="1088.9998474121094" y="7.0000034532058635" width="79.00015606949455" height="254.1900058946121" />
+      <frame id="4922:4227" name="Group 338" x="1088.9998474121094" y="254" width="79.00015606949455" height="254.1900058946121" />
+      <frame id="4922:4394" name="Group 339" x="1088.9998474121094" y="496" width="79.00015606949455" height="254.1900058946121" />
+      <frame id="4922:4561" name="Group 340" x="1088.9998474121094" y="740" width="79.00015606949455" height="254.1900058946121" />
+    </frame>
+    <frame id="4922:4728" name="logo-brand-text-mark 2" x="52" y="58" width="80" height="71" />
+    <text id="4922:4731" name="E-mail Address" x="255" y="323" width="150" height="29" />
+    <vector id="4922:4732" name="Vector 7" x="232" y="368" width="730" height="0.00006381863204296678" />
+    <text id="4922:4733" name="How would you like to receive your postcard?" x="250" y="146" width="694" height="48" />
+    <rounded-rectangle id="4922:4734" name="Rectangle 33" x="607" y="207" width="355" height="65" />
+    <text id="4922:4735" name="Wechat" x="663" y="226" width="68" height="24" />
+    <ellipse id="4922:4736" name="Ellipse 12" x="628" y="233" width="17" height="17" />
+    <rounded-rectangle id="4922:4737" name="Rectangle 32" x="232" y="207" width="355" height="65" />
+    <text id="4922:4738" name="E-mail" x="295" y="226" width="55" height="24" />
+    <ellipse id="4922:4739" name="Ellipse 10" x="251" y="231" width="20" height="20" />
+    <ellipse id="4922:4740" name="Ellipse 11" x="257" y="237" width="8" height="8" />
+    <frame id="4922:4741" name="Group 349" x="333" y="693" width="253" height="53">
+      <rounded-rectangle id="4922:4742" name="Rectangle 119" x="333" y="693" width="253" height="53" />
+      <text id="4922:4743" name="Back" x="426" y="708" width="67" height="24" />
+    </frame>
+    <frame id="4922:4744" name="Group 350" x="608" y="693" width="253" height="53">
+      <rounded-rectangle id="4922:4745" name="Rectangle 118" x="608" y="693" width="253" height="53" />
+      <text id="4922:4746" name="Next" x="702" y="708" width="65" height="24" />
+    </frame>
+    <instance id="4922:4976" name="System/Keyboards/iPad/Light/11&quot; - Landscape - Alphabetic" x="0" y="416" width="1194" height="418" />
+  </frame>
+  <frame id="4734:6165" name="writing setup" x="5467" y="155" width="1194" height="834">
+    <frame id="4844:12810" name="Texture" x="-21" y="-56" width="1479.53076171875" height="926">
+      <frame id="4844:12811" name="Layer 1" x="-21" y="-56" width="1479.53076171875" height="926">
+        <rounded-rectangle id="4844:12812" name="Rectangle" x="1458.5308837890625" y="870" width="1479.53076171875" height="926" />
+      </frame>
+    </frame>
+    <rounded-rectangle id="4844:12814" name="Rectangle 108" x="0" y="-1" width="1194" height="835" />
+    <frame id="4734:6166" name="Group 23" x="108" y="247" width="494" height="312.119140625">
+      <rounded-rectangle id="4734:6167" name="Rectangle 6" x="108" y="247" width="494" height="45.11915588378906" />
+      <rounded-rectangle id="4734:6168" name="Rectangle 7" x="108" y="336.1640625" width="494" height="45.11915588378906" />
+      <rounded-rectangle id="4734:6169" name="Rectangle 8" x="108" y="425.328125" width="494" height="45.11915588378906" />
+      <rounded-rectangle id="4734:6170" name="Rectangle 9" x="108" y="514" width="494" height="45.11915588378906" />
+    </frame>
+    <vector id="4734:6181" name="Vector 2" x="108" y="227" width="8.305160008603707e-7" height="19" />
+    <text id="4734:6185" name="Start writing..." x="110" y="215" width="494" height="43" />
+    <text id="4734:6211" name="Privacy and Terms" x="52" y="783" width="127" height="19" />
+    <frame id="4734:9073" name="Group 268" x="0" y="0" width="1193" height="9">
+      <rounded-rectangle id="4734:9074" name="Rectangle 39" x="0" y="0" width="1193" height="9" />
+      <rounded-rectangle id="4734:9075" name="Rectangle 40" x="0" y="0" width="276" height="9" />
+    </frame>
+    <text id="4734:9077" name="What would you like to tell to your future self?" x="248" y="48" width="698" height="48" />
+    <frame id="4802:3292" name="Group 345" x="696" y="174" width="443.13226318359375" height="414.99993896484375">
+      <rounded-rectangle id="4744:9087" name="Rectangle 110" x="726" y="223.99992752075195" width="348" height="135" />
+      <rounded-rectangle id="4744:9089" name="Rectangle 111" x="722" y="453.99993896484375" width="348" height="135" />
+      <frame id="4954:5927" name="Group 363" x="696" y="332" width="400" height="155">
+        <rounded-rectangle id="4744:9085" name="Rectangle 109" x="696" y="332" width="400" height="155" />
+        <rounded-rectangle id="4954:5925" name="Rectangle 112" x="701" y="335" width="391" height="149" />
+      </frame>
+      <text id="4744:9099" name="What would you like to remember today?" x="766" y="258" width="262" height="48" />
+      <text id="4744:9101" name="What do you hope happens between now and then?" x="765" y="510" width="262" height="48" />
+      <text id="4744:9091" name="What is one thing you hope you’ve accomplished?" x="745" y="382" width="302" height="48" />
+      <frame id="4734:6194" name="Group 259" x="1119" y="381.9999237060547" width="6.000004814537533" height="55.59997584820576" />
+      <text id="4734:6193" name="Idea Prompts" x="848" y="192.99992561340332" width="104" height="22" />
+      <frame id="4734:6208" name="Frame 23" x="1074" y="239.1322479248047" width="65.13225077182597" height="65.13225077182597" />
+      <frame id="4744:9093" name="Scroll" x="1051" y="385.9999237060547" width="45" height="55" />
+    </frame>
+    <frame id="4802:2731" name="logo-brand-text-mark 2" x="52" y="58" width="80" height="71" />
+    <frame id="4836:11035" name="Group 350" x="608" y="693" width="253" height="53">
+      <rounded-rectangle id="4836:11036" name="Rectangle 118" x="608" y="693" width="253" height="53" />
+      <text id="4836:11037" name="Preview" x="699" y="708" width="71" height="24" />
+    </frame>
+    <frame id="4836:11038" name="Group 349" x="333" y="693" width="253" height="53">
+      <rounded-rectangle id="4836:11039" name="Rectangle 119" x="333" y="693" width="253" height="53" />
+      <text id="4836:11040" name="Choose Design" x="393" y="708" width="133" height="24" />
+    </frame>
+  </frame>
+  <frame id="4734:9079" name="Group 4" x="4642" y="1138" width="43" height="24">
+    <rounded-rectangle id="4734:9080" name="Rectangle 1" x="4525" y="1114" width="280" height="71" hidden="true" />
+    <text id="4734:9081" name="Next" x="4642" y="1138" width="43" height="24" />
+  </frame>
+  <frame id="4836:11017" name="Group 346" x="8471" y="73" width="126.5" height="31.5">
+    <rounded-rectangle id="4836:11018" name="Rectangle 1" x="8395" y="49" width="280" height="71" hidden="true" />
+    <text id="4836:11019" name="Next" x="8512" y="73" width="43" height="24" />
+    <vector id="4836:11020" name="Vector 24" x="8471" y="104.5" width="126.5" height="0" />
+  </frame>
+  <frame id="4802:3248" name="writing setup" x="6730" y="155" width="1194" height="834">
+    <frame id="4844:12865" name="Texture" x="-21" y="-56" width="1479.53076171875" height="926">
+      <frame id="4844:12866" name="Layer 1" x="-21" y="-56" width="1479.53076171875" height="926">
+        <rounded-rectangle id="4844:12867" name="Rectangle" x="1458.5308837890625" y="870" width="1479.53076171875" height="926" />
+      </frame>
+    </frame>
+    <rounded-rectangle id="4844:12868" name="Rectangle 108" x="0" y="-1" width="1194" height="835" />
+    <text id="4802:3256" name="Privacy and Terms" x="52" y="783" width="127" height="19" />
+    <frame id="4802:3257" name="Group 268" x="0" y="0" width="1193" height="9">
+      <rounded-rectangle id="4802:3258" name="Rectangle 39" x="0" y="0" width="1193" height="9" />
+      <rounded-rectangle id="4802:3259" name="Rectangle 40" x="0" y="0" width="276" height="9" />
+    </frame>
+    <text id="4802:3260" name="What would you like to convey to your future self?" x="215" y="70" width="764" height="48" />
+    <frame id="4802:3261" name="Group 4" x="612" y="706" width="126.5" height="31.5">
+      <rounded-rectangle id="4802:3262" name="Rectangle 1" x="536" y="682" width="280" height="71" hidden="true" />
+      <text id="4802:3263" name="Next" x="653" y="706" width="43" height="24" />
+      <vector id="4802:3264" name="Vector 24" x="612" y="737.5" width="126.5" height="0" />
+    </frame>
+    <text id="4802:3265" name="Back" x="487" y="706" width="43" height="24" />
+    <frame id="4802:3287" name="logo-brand-text-mark 2" x="52" y="58" width="80" height="71" />
+    <text id="4802:3293" name="Idea Prompts" x="1103" y="110" width="57" height="36" />
+    <frame id="4802:3294" name="Group 306" x="1112" y="53" width="42" height="49.45977783203125" />
+    <frame id="4802:3300" name="Group 23" x="108" y="247.2236328125" width="944" height="311.7763671875">
+      <rounded-rectangle id="4802:3301" name="Rectangle 6" x="108" y="247.22364044189453" width="944" height="45" />
+      <rounded-rectangle id="4802:3302" name="Rectangle 7" x="108" y="336.22364044189453" width="944" height="45" />
+      <rounded-rectangle id="4802:3303" name="Rectangle 8" x="108" y="425.2236328125" width="944" height="45" />
+      <rounded-rectangle id="4802:3304" name="Rectangle 9" x="108" y="514" width="944" height="45" />
+    </frame>
+    <text id="4802:3305" name="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." x="108" y="217" width="944" height="129" />
+    <text id="4802:3306" name="231/600 characters" x="108" y="195" width="158" height="22" />
+    <instance id="4802:3308" name="System/Keyboards/iPad/Light/11&quot; - Landscape - Alphabetic" x="0" y="417" width="1194" height="418" />
+  </frame>
+  <frame id="4991:3777" name="writing setup" x="6730" y="1041" width="1194" height="834">
+    <frame id="4991:3778" name="Texture" x="-21" y="-56" width="1479.53076171875" height="926">
+      <frame id="4991:3779" name="Layer 1" x="-21" y="-56" width="1479.53076171875" height="926">
+        <rounded-rectangle id="4991:3780" name="Rectangle" x="1458.5308837890625" y="870" width="1479.53076171875" height="926" />
+      </frame>
+    </frame>
+    <rounded-rectangle id="4991:3781" name="Rectangle 108" x="0" y="-1" width="1194" height="835" />
+    <frame id="5023:4172" name="Group 350" x="608" y="693" width="253" height="53">
+      <rounded-rectangle id="5023:4173" name="Rectangle 118" x="608" y="693" width="253" height="53" />
+      <text id="5023:4174" name="Preview" x="684" y="708" width="101" height="24" />
+    </frame>
+    <frame id="5023:4175" name="Group 349" x="333" y="693" width="253" height="53">
+      <rounded-rectangle id="5023:4176" name="Rectangle 119" x="333" y="693" width="253" height="53" />
+      <text id="5023:4177" name="Choose Design" x="393" y="708" width="133" height="24" />
+    </frame>
+    <text id="4991:3782" name="Privacy and Terms" x="52" y="783" width="127" height="19" />
+    <frame id="4991:3783" name="Group 268" x="0" y="0" width="1193" height="9">
+      <rounded-rectangle id="4991:3784" name="Rectangle 39" x="0" y="0" width="1193" height="9" />
+      <rounded-rectangle id="4991:3785" name="Rectangle 40" x="0" y="0" width="276" height="9" />
+    </frame>
+    <text id="4991:3786" name="What would you like to convey to your future self?" x="215" y="70" width="764" height="48" />
+    <frame id="4991:3792" name="logo-brand-text-mark 2" x="52" y="58" width="80" height="71" />
+    <text id="4991:3795" name="Idea Prompts" x="1103" y="110" width="57" height="36" />
+    <frame id="4991:3796" name="Group 306" x="1112" y="53" width="42" height="49.45977783203125" />
+    <frame id="4991:3801" name="Group 23" x="108" y="247.2236328125" width="944" height="311.7763671875">
+      <rounded-rectangle id="4991:3802" name="Rectangle 6" x="108" y="247.22364044189453" width="944" height="45" />
+      <rounded-rectangle id="4991:3803" name="Rectangle 7" x="108" y="336.22364044189453" width="944" height="45" />
+      <rounded-rectangle id="4991:3804" name="Rectangle 8" x="108" y="425.2236328125" width="944" height="45" />
+      <rounded-rectangle id="4991:3805" name="Rectangle 9" x="108" y="514" width="944" height="45" />
+    </frame>
+    <text id="4991:3806" name="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." x="108" y="217" width="944" height="129" />
+    <text id="4991:3807" name="231/600 characters" x="108" y="195" width="158" height="22" />
+    <rounded-rectangle id="4991:4036" name="Rectangle 144" x="0" y="1" width="1194" height="833" />
+    <frame id="4991:4037" name="Group 356" x="172" y="220" width="850" height="395">
+      <rounded-rectangle id="4991:4038" name="Rectangle 115" x="172" y="220" width="850" height="395" />
+      <text id="4991:4039" name="Are you still there?" x="367" y="291" width="463" height="108" />
+      <text id="4991:4040" name="It looks like you’ve stopped writing for a while. This experience will be reset shortly." x="355" y="405" width="486" height="58" />
+      <text id="4991:4050" name="Tap anywhere on the screen to continue writing" x="388" y="491" width="418" height="24" />
+      <frame id="4991:4043" name="Frame 23" x="946" y="291.13232421875" width="65.13225077182597" height="65.13225077182597" />
+      <rounded-rectangle id="4991:4052" name="Rectangle 145" x="172" y="606" width="850" height="9" />
+      <rounded-rectangle id="4991:4053" name="Rectangle 146" x="172" y="606" width="295" height="9" />
+    </frame>
+  </frame>
+  <frame id="4802:3536" name="writing setup" x="7993" y="155" width="1194" height="834">
+    <frame id="4844:12870" name="Texture" x="-20.99951171875" y="-56" width="1479.53076171875" height="926">
+      <frame id="4844:12871" name="Layer 1" x="-20.99951171875" y="-56" width="1479.53076171875" height="926">
+        <rounded-rectangle id="4844:12872" name="Rectangle" x="1458.5308837890625" y="870" width="1479.53076171875" height="926" />
+      </frame>
+    </frame>
+    <rounded-rectangle id="4844:12873" name="Rectangle 108" x="0" y="-1" width="1194" height="835" />
+    <text id="4802:3537" name="Privacy and Terms" x="52" y="783" width="127" height="19" />
+    <frame id="4802:3538" name="Group 268" x="0" y="0" width="1193" height="9">
+      <rounded-rectangle id="4802:3539" name="Rectangle 39" x="0" y="0" width="1193" height="9" />
+      <rounded-rectangle id="4802:3540" name="Rectangle 40" x="0" y="0" width="276" height="9" />
+    </frame>
+    <text id="4802:3541" name="What would you like to convey to your future self?" x="215" y="70" width="764" height="48" />
+    <frame id="4802:3547" name="logo-brand-text-mark 2" x="52" y="58" width="80" height="71" />
+    <text id="4802:3550" name="Idea Prompts" x="1103" y="110" width="57" height="36" />
+    <frame id="4802:3551" name="Group 306" x="1112" y="53" width="42" height="49.45977783203125" />
+    <frame id="4802:3556" name="Group 23" x="108" y="247.2236328125" width="944" height="311.7763671875">
+      <rounded-rectangle id="4802:3557" name="Rectangle 6" x="108" y="247.22364044189453" width="944" height="45" />
+      <rounded-rectangle id="4802:3558" name="Rectangle 7" x="108" y="336.22364044189453" width="944" height="45" />
+      <rounded-rectangle id="4802:3559" name="Rectangle 8" x="108" y="425.2236328125" width="944" height="45" />
+      <rounded-rectangle id="4802:3560" name="Rectangle 9" x="108" y="514" width="944" height="45" />
+    </frame>
+    <text id="4802:3561" name="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." x="108" y="217" width="944" height="258" />
+    <text id="4802:3562" name="436/600 characters" x="108" y="195" width="158" height="22" />
+    <frame id="4836:11042" name="Group 350" x="608" y="693" width="253" height="53">
+      <rounded-rectangle id="4836:11043" name="Rectangle 118" x="608" y="693" width="253" height="53" />
+      <text id="4836:11044" name="Preview" x="684" y="708" width="101" height="24" />
+    </frame>
+    <frame id="4836:11045" name="Group 349" x="333" y="693" width="253" height="53">
+      <rounded-rectangle id="4836:11046" name="Rectangle 119" x="333" y="693" width="253" height="53" />
+      <text id="4836:11047" name="Choose Design" x="393" y="708" width="133" height="24" />
+    </frame>
+  </frame>
+  <frame id="4802:3876" name="preview" x="9256" y="155" width="1194" height="834">
+    <frame id="4844:12885" name="Texture" x="-20.99951171875" y="-56" width="1479.53076171875" height="926">
+      <frame id="4844:12886" name="Layer 1" x="-20.99951171875" y="-56" width="1479.53076171875" height="926">
+        <rounded-rectangle id="4844:12887" name="Rectangle" x="1458.5308837890625" y="870" width="1479.53076171875" height="926" />
+      </frame>
+    </frame>
+    <rounded-rectangle id="4844:12888" name="Rectangle 108" x="0" y="-1" width="1194" height="835" />
+    <text id="4802:3877" name="Privacy and Terms" x="52" y="783" width="127" height="19" />
+    <frame id="4802:3878" name="Group 268" x="0" y="0" width="1193" height="9">
+      <rounded-rectangle id="4802:3879" name="Rectangle 39" x="0" y="0" width="1193" height="9" />
+      <rounded-rectangle id="4802:3880" name="Rectangle 40" x="0" y="0" width="566" height="9" />
+    </frame>
+    <frame id="4802:3887" name="logo-brand-text-mark 2" x="52" y="58" width="80" height="71" />
+    <frame id="4836:11063" name="Group 351" x="254" y="152" width="691" height="489.542236328125">
+      <rounded-rectangle id="4802:3906" name="A6 - 6 4" x="254" y="152" width="691" height="489.542236328125" />
+    </frame>
+    <text id="4802:4031" name="Preview" x="536" y="70" width="122" height="48" />
+    <frame id="4836:11064" name="Group 352" x="333" y="693" width="528" height="53">
+      <frame id="4836:11049" name="Group 350" x="608" y="693" width="253" height="53">
+        <rounded-rectangle id="4836:11050" name="Rectangle 118" x="608" y="693" width="253" height="53" />
+        <text id="4836:11051" name="Confirm" x="699" y="708" width="71" height="24" />
+      </frame>
+      <frame id="4836:11052" name="Group 349" x="333" y="693" width="253" height="53">
+        <rounded-rectangle id="4836:11053" name="Rectangle 119" x="333" y="693" width="253" height="53" />
+        <text id="4836:11054" name="Edit Message" x="401" y="708" width="117" height="24" />
+      </frame>
+    </frame>
+  </frame>
+  <frame id="4808:8058" name="confirmation" x="11782" y="155" width="1194" height="834">
+    <frame id="4844:12900" name="Texture" x="-21" y="-56" width="1479.53076171875" height="926">
+      <frame id="4844:12901" name="Layer 1" x="-20.99951171875" y="-56" width="1479.53076171875" height="926">
+        <rounded-rectangle id="4844:12902" name="Rectangle" x="1458.5308837890625" y="870" width="1479.53076171875" height="926" />
+      </frame>
+    </frame>
+    <rounded-rectangle id="4844:12903" name="Rectangle 108" x="0" y="-1" width="1194" height="835" />
+    <text id="4808:8059" name="Privacy and Terms" x="52" y="783" width="127" height="19" />
+    <frame id="4808:8060" name="Group 268" x="0" y="0" width="1193" height="9">
+      <rounded-rectangle id="4808:8061" name="Rectangle 39" x="0" y="0" width="1193" height="9" />
+      <rounded-rectangle id="4808:8062" name="Rectangle 40" x="0" y="0" width="1134" height="9" />
+    </frame>
+    <frame id="4808:8068" name="logo-brand-text-mark 2" x="52" y="58" width="80" height="71" />
+    <text id="4808:8073" name="Confirmation" x="489" y="70" width="216" height="48" />
+    <frame id="4808:8105" name="Group 270" x="57" y="254" width="326" height="95">
+      <text id="4808:8106" name="John" x="64" y="254" width="42" height="24" />
+      <vector id="4808:8107" name="Vector 7" x="57" y="289" width="326" height="0" />
+      <text id="4808:8108" name="john@gmail.com" x="64" y="314" width="136" height="24" />
+      <vector id="4808:8109" name="Vector 8" x="57" y="349" width="326" height="0" />
+    </frame>
+    <frame id="4808:8110" name="Group 271" x="57" y="450" width="326" height="35">
+      <text id="4808:8111" name="1st of September 2027" x="70" y="450" width="196" height="24" />
+      <vector id="4808:8112" name="Vector 7" x="57" y="485" width="326" height="0" />
+    </frame>
+    <text id="4808:8113" name="This postcard will be sent to:" x="57" y="198" width="295" height="31" />
+    <text id="4808:8114" name="To be delivered on:" x="57" y="394" width="199" height="31" />
+    <frame id="5071:3589" name="Group 369" x="403" y="340" width="751" height="49">
+      <frame id="4808:8077" name="Group 344" x="449.00000381469727" y="386" width="46.00000402144724" height="46.00000402144815" />
+      <frame id="4808:8074" name="Group 343" x="1108" y="343" width="46" height="46" />
+    </frame>
+    <frame id="4815:9485" name="Group 259" x="798" y="630" width="29.999996185302734" height="9.999996185302734" />
+    <frame id="4836:11072" name="Group 350" x="608" y="693" width="253" height="53">
+      <rounded-rectangle id="4836:11073" name="Rectangle 118" x="608" y="693" width="253" height="53" />
+      <text id="4836:11074" name="Send" x="702" y="708" width="65" height="24" />
+    </frame>
+    <frame id="4836:11078" name="Group 349" x="333" y="693" width="253" height="53">
+      <rounded-rectangle id="4836:11079" name="Rectangle 119" x="333" y="693" width="253" height="53" />
+      <text id="4836:11080" name="Back" x="426" y="708" width="67" height="24" />
+    </frame>
+    <frame id="4954:5937" name="A6 - 1" x="481.0000305175781" y="574" width="595.0000183150696" height="418.999995490698">
+      <text id="5022:3586" name="Postcard Preview" x="239.99998474121094" y="180.00001525878906" width="234.10809326171875" height="38" />
+    </frame>
+  </frame>
+  <frame id="4836:10970" name="loading" x="13061" y="155" width="1194" height="834">
+    <frame id="4929:5550" name="Texture" x="-21" y="-56" width="1479.53076171875" height="926">
+      <frame id="4929:5551" name="Layer 1" x="-21" y="-56" width="1479.53076171875" height="926">
+        <rounded-rectangle id="4929:5552" name="Rectangle" x="1458.5308837890625" y="870" width="1479.53076171875" height="926" />
+      </frame>
+    </frame>
+    <rounded-rectangle id="4929:5554" name="Rectangle 108" x="0" y="-1" width="1194" height="835" />
+    <rounded-rectangle id="5023:4182" name="az1a9725_copy 1" x="346" y="143" width="503" height="996" />
+    <frame id="4836:10972" name="Group 268" x="0" y="0" width="1193" height="9">
+      <rounded-rectangle id="4836:10973" name="Rectangle 39" x="0" y="0" width="1193" height="9" />
+      <rounded-rectangle id="4836:10974" name="Rectangle 40" x="0" y="0" width="1193" height="9" />
+    </frame>
+    <frame id="4836:10980" name="logo-brand-text-mark 2" x="52" y="58" width="80" height="71" />
+    <text id="4836:10985" name="Delivering your postcard to the future..." x="293" y="70" width="609" height="48" />
+    <frame id="5071:3593" name="Group 370" x="253" y="632" width="431.5" height="442">
+      <vector id="5071:3591" name="Rectangle 149" x="253" y="632" width="431.5" height="442" />
+      <text id="5022:3589" name="Postcard Preview" x="488" y="730" width="38.00001023319055" height="234.10809492275166" />
+    </frame>
+  </frame>
+  <frame id="4814:8120" name="Thank you" x="14351" y="155" width="1194" height="834">
+    <frame id="4815:8131" name="Background" x="-313" y="-46" width="1771.662841796875" height="903.0000610351562">
+      <rounded-rectangle id="4815:8132" name="Raffles Artboard-01 1" x="-313.0000233501196" y="-46.00000000000091" width="1543.4581298828125" height="880.2534790039062" />
+      <rounded-rectangle id="4815:8133" name="Raffles Artboard-01 1" x="-84.794921875" y="-23.25341796875" width="1543.4581298828125" height="880.2534790039062" />
+    </frame>
+    <rounded-rectangle id="4815:8135" name="Rectangle 108" x="0" y="-1" width="1194" height="835" />
+    <text id="4814:8129" name="This window will close in 8s" x="476" y="756" width="242" height="24" />
+    <vector id="4929:5495" name="Rectangle 111" x="205" y="142.96817016601562" width="784.3442680123189" height="576.9998101280726" />
+    <vector id="4929:5496" name="Rectangle 112" x="231" y="135" width="733" height="517" />
+    <frame id="4815:9484" name="Group 347" x="301" y="212" width="594" height="237">
+      <frame id="4815:9483" name="Group 346" x="301" y="212" width="594" height="237">
+        <text id="4815:9479" name="Thank You" x="301" y="317" width="594" height="132" />
+        <frame id="4814:8121" name="logo-brand-text-mark 3" x="545" y="212" width="106" height="93" />
+      </frame>
+    </frame>
+  </frame>
+  <frame id="4815:9521" name="privacy and terms" x="1511" y="2915" width="1194" height="834">
+    <frame id="4815:9522" name="Background" x="-313" y="-56" width="1771.662841796875" height="903.0000610351562">
+      <rounded-rectangle id="4815:9523" name="Raffles Artboard-01 1" x="-313.0000233501196" y="-56.00000000000091" width="1543.4581298828125" height="880.2534790039062" />
+      <rounded-rectangle id="4815:9524" name="Raffles Artboard-01 1" x="-84.79522705078125" y="-33.253469467163086" width="1543.4581298828125" height="880.2534790039062" />
+    </frame>
+    <frame id="4815:9525" name="Texture" x="-21" y="-56" width="1479.53076171875" height="926">
+      <frame id="4815:9526" name="Layer 1" x="-21" y="-56" width="1479.53076171875" height="926">
+        <rounded-rectangle id="4815:9527" name="Rectangle" x="1458.5308837890625" y="870" width="1479.53076171875" height="926" />
+      </frame>
+    </frame>
+    <rounded-rectangle id="4815:9528" name="Rectangle 108" x="0" y="-1" width="1194" height="835" />
+    <text id="4815:9530" name="Every guest arrives with a story. Some celebrating a milestone, others beginning a new chapter, or simply stepping away from the rhythm of everyday life. Take a moment to reflect. Capture a thought, a promise, or a memory of who you are right now, and preserve it within this letter." x="186" y="386" width="822" height="130" />
+    <text id="4815:9531" name="One year from now, your message will find its way back to you, reminding you not only of where you were, but of who you hoped to become." x="186" y="621" width="822" height="48" />
+    <frame id="4815:9532" name="Group 268" x="0" y="0" width="1193" height="9">
+      <rounded-rectangle id="4815:9533" name="Rectangle 39" x="0" y="0" width="1193" height="9" />
+      <rounded-rectangle id="4815:9534" name="Rectangle 40" x="0" y="0" width="139" height="9" />
+    </frame>
+    <text id="4815:9535" name="Privacy and Terms" x="95" y="787" width="127" height="19" />
+    <frame id="4815:9540" name="logo-brand-text-mark 2" x="557" y="86" width="80" height="71" />
+    <text id="4815:9543" name="Letter to The Future" x="203" y="153" width="787" height="216" />
+    <rounded-rectangle id="4815:9545" name="Rectangle 114" x="-3" y="0" width="1200" height="834" />
+    <frame id="4885:3274" name="Group 356" x="119" y="107" width="952" height="600">
+      <rounded-rectangle id="4815:9546" name="Rectangle 115" x="119" y="107" width="952" height="600" />
+      <text id="4815:9548" name="Privacy and Terms" x="371" y="162" width="452" height="90" />
+      <text id="4815:9550" name="By clicking I Agree, you agree to our [Terms of Service] and consent to our handling of your data as outlined below: Data Collection &amp; Purpose: We collect your contact information (email address or WeChat username) and the content of your postcard solely to process, store, and deliver your postcard to you exactly one year from your submission date. Storage &amp; Security: Your data is stored securely using industry-standard encryption and security measures to prevent unauthorized access. Data Retention &amp; Deletion: We retain your information only as long as necessary to complete delivery. Once your postcard has been delivered, your contact details and message will be permanently deleted or anonymized, except where retention is required by applicable law." x="186" y="294" width="822" height="288" />
+      <frame id="4836:11026" name="Frame 23" x="997" y="178.13232421875" width="65.13225077182551" height="65.13225077182597" />
+    </frame>
+    <frame id="5000:4129" name="Group 365" x="328" y="608" width="534" height="53">
+      <frame id="5000:4121" name="Group 360" x="609" y="608" width="253" height="53">
+        <rounded-rectangle id="5000:4122" name="Rectangle 118" x="609" y="608" width="253" height="53" />
+        <text id="5000:4123" name="I Agree" x="704" y="623" width="62" height="24" />
+      </frame>
+      <frame id="5000:4125" name="Group 351" x="328" y="608" width="253" height="53">
+        <rounded-rectangle id="5000:4126" name="Rectangle 119" x="328" y="608" width="253" height="53" />
+        <text id="5000:4127" name="Decline" x="421" y="623" width="67" height="24" />
+      </frame>
+    </frame>
+  </frame>
+  <frame id="4929:5498" name="Frame 36" x="5467" y="1037" width="822" height="665">
+    <text id="4929:5542" name="Idea Prompts" x="39" y="32" width="185" height="38" />
+    <text id="4929:5544" name="What is one moment from today you hope you’ll never forget? Where do you hope life has taken you one year from now? What is something you quietly wish for your future self?" x="21" y="107" width="652" height="87" />
+    <text id="4929:5547" name="What would you like to remind your future self? What would make the year ahead truly meaningful to you? What would you tell yourself if you could speak to them one year from now? What do you hope your future self hasn’t forgotten?" x="21" y="214" width="736" height="145" />
+  </frame>
+  <frame id="5022:3581" name="Frame 37" x="4117" y="1037" width="1003" height="476">
+    <text id="5022:3582" name="Postcard categories" x="112" y="32" width="274" height="38" />
+    <text id="5022:3583" name="Culinary &amp; Dining Flavours, dining experiences and traditions. Architecture &amp; Design The iconic façade, courtyards, interiors and distinctive details that define Raffles. Heritage &amp; Stories The history, personalities and memorable moments that have shaped its legacy. Hospitality &amp; People The warmth, service and human encounters that make the Raffles experience personal. Atmosphere &amp; Moments The sense of place, ambience and memorable experiences that visitors carry with them." x="21" y="107" width="940" height="290" />
+  </frame>
+  <frame id="4734:6117" name="choose a design" x="4023" y="155" width="1194" height="834">
+    <frame id="4734:6149" name="Background" x="-313" y="-56" width="1771.662841796875" height="903.0000610351562" hidden="true">
+      <rounded-rectangle id="4734:6150" name="Raffles Artboard-01 1" x="-313.0000233501196" y="-56.00000000000091" width="1543.4581298828125" height="880.2534790039062" />
+      <rounded-rectangle id="4734:6151" name="Raffles Artboard-01 1" x="-84.79522705078125" y="-33.253469467163086" width="1543.4581298828125" height="880.2534790039062" />
+    </frame>
+    <frame id="4802:4023" name="Texture" x="-21" y="-56" width="1479.53076171875" height="926">
+      <frame id="4802:4024" name="Layer 1" x="-21" y="-56" width="1479.53076171875" height="926">
+        <rounded-rectangle id="4802:4025" name="Rectangle" x="1458.5308837890625" y="870" width="1479.53076171875" height="926" />
+      </frame>
+    </frame>
+    <rounded-rectangle id="4734:6152" name="Rectangle 108" x="0" y="-1" width="1194" height="835" />
+    <text id="4734:6127" name="Hi [Name], please pick a postcard that resonates with you" x="235" y="45" width="725" height="96" />
+    <frame id="4734:6135" name="Group 259" x="551" y="540" width="92.66650390625" height="9.999996185302734" />
+    <text id="4734:6141" name="Privacy and Terms" x="52" y="783" width="127" height="19" />
+    <frame id="4734:6154" name="Group 268" x="0" y="0" width="1193" height="9">
+      <rounded-rectangle id="4734:6155" name="Rectangle 39" x="0" y="0" width="1193" height="9" />
+      <rounded-rectangle id="4734:6156" name="Rectangle 40" x="0" y="0" width="139" height="9" />
+    </frame>
+    <rounded-rectangle id="4734:6159" name="Rectangle 1" x="536" y="682" width="280" height="71" hidden="true" />
+    <frame id="4802:2727" name="logo-brand-text-mark 2" x="52" y="58" width="80" height="71" />
+    <frame id="4836:11034" name="Group 350" x="608" y="693" width="253" height="53">
+      <rounded-rectangle id="4836:11030" name="Rectangle 118" x="608" y="693" width="253" height="53" />
+      <text id="4734:6160" name="Select" x="702" y="708" width="65" height="24" />
+    </frame>
+    <frame id="4836:11033" name="Group 349" x="333" y="693" width="253" height="53">
+      <rounded-rectangle id="4836:11031" name="Rectangle 119" x="333" y="693" width="253" height="53" />
+      <text id="4734:6163" name="Back" x="426" y="708" width="67" height="24" />
+    </frame>
+    <frame id="4929:5343" name="Group 343" x="1074" y="341" width="46" height="46" />
+    <frame id="4929:5346" name="Group 344" x="120" y="387" width="46.00000402144815" height="46.00000402144815" />
+    <text id="5022:3579" name="Celebrating Raffles Singapore through the flavours, memorable dining experiences and traditions that have shaped its story." x="326" y="594" width="583" height="48" />
+    <frame id="5071:3588" name="Group 368" x="258" y="168" width="679" height="355">
+      <frame id="5071:3587" name="Group 367" x="258" y="209" width="679" height="273">
+        <rounded-rectangle id="5071:3576" name="Property 1=Variant2 1" x="258" y="209" width="387" height="273" />
+        <rounded-rectangle id="5071:3584" name="Property 1=Variant2 2" x="550" y="209" width="387" height="273" />
+      </frame>
+      <frame id="5071:3586" name="Group 367" x="346" y="168" width="502.7567138671875" height="355">
+        <frame id="5071:3578" name="Group 366" x="346" y="168" width="502.7567138671875" height="355">
+          <rounded-rectangle id="5071:3579" name="Property 1=Default 3" x="346.000061057508" y="167.99999999999818" width="502.7567138671875" height="355" />
+          <rounded-rectangle id="5071:3580" name="Rectangle 147" x="366.62862968444824" y="190.54736137390137" width="141.04054260253906" height="90.6689224243164" />
+          <rounded-rectangle id="5071:3581" name="Rectangle 148" x="495.87841796875" y="281" width="191" height="168" />
+          <text id="5071:3582" name="Postcard Preview Theme 1 (Culinary)" x="479.87841796875" y="290" width="234.10809326171875" height="114" />
+        </frame>
+      </frame>
+    </frame>
+  </frame>
+  <rounded-rectangle id="4969:3556" name="image 10" x="13423" y="-166" width="479" height="262" />
+  <text id="5018:2253" name="One year from now, your message will find its way back to you." x="14608" y="631" width="697" height="58" />
+</section>

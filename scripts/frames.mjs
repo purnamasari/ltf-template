@@ -14,8 +14,11 @@
  * so the two can never drift.
  */
 import { readFileSync, writeFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 
-const ROOT = new URL("..", import.meta.url).pathname;
+// fileURLToPath, not URL.pathname: on Windows the latter yields "/D:/repo/",
+// which Node then resolves against the drive root as "D:\D:\repo".
+const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const REGISTRY = `${ROOT}docs/design/frames.json`;
 const DOC = `${ROOT}docs/design/frames.md`;
 

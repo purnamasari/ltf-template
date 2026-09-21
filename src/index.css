@@ -110,39 +110,44 @@ button {
   font-family: inherit;
 }
 
-/* Posting the card: it lifts towards the viewer, squares up over the slot and
-   then slides straight down into it. Everything below the mouth is clipped
-   away by the frame around it, so the card is swallowed edge first. */
+/*
+ * Posting the card. It comes up from the guest's hand at full size, squares up
+ * and shrinks over the box, then drops into the slot on the top face.
+ *
+ * The clip is what sells the insertion: it is off while the card rises up the
+ * front of the box, and switches to a cut at the slot line for the descent, so
+ * the card is swallowed edge first. The switch is instantaneous, at the one
+ * moment the card is entirely above the line, so it cannot be seen happening.
+ */
 @keyframes postcard-post {
   0% {
-    transform: translate3d(0, 0, 0) rotateX(0deg) rotateZ(0deg) scale(1);
-    filter: drop-shadow(0 18px 26px rgba(58, 37, 23, 0.2));
+    transform: translate(-50%, calc(-50% + 484px)) scale(1) rotate(-5deg);
+    clip-path: inset(0 0 0 0);
+    filter: drop-shadow(0 22px 30px rgba(58, 37, 23, 0.28));
   }
-  26% {
-    transform: translate3d(0, -30px, 120px) rotateX(-12deg) rotateZ(-4deg) scale(1);
-    filter: drop-shadow(0 30px 34px rgba(58, 37, 23, 0.16));
+  55% {
+    transform: translate(-50%, calc(-50% - 76px)) scale(0.3) rotate(0deg);
+    clip-path: inset(0 0 0 0);
+    filter: drop-shadow(0 12px 16px rgba(58, 37, 23, 0.3));
   }
-  58% {
-    transform: translate3d(0, 188px, 0) rotateX(0deg) rotateZ(0deg) scale(0.42);
-    filter: drop-shadow(0 10px 14px rgba(58, 37, 23, 0.38));
+  56% {
+    clip-path: inset(0 0 var(--below-slot) 0);
   }
   100% {
-    transform: translate3d(0, 340px, 0) rotateX(0deg) rotateZ(0deg) scale(0.42);
-    filter: drop-shadow(0 4px 8px rgba(58, 37, 23, 0.45));
+    transform: translate(-50%, calc(-50% + 60px)) scale(0.3) rotate(0deg);
+    clip-path: inset(0 0 var(--below-slot) 0);
+    filter: drop-shadow(0 4px 8px rgba(58, 37, 23, 0.4));
   }
 }
 
 /* The box takes the weight of the card as the last of it goes in. */
 @keyframes postbox-receive {
   0%,
-  78% {
+  80% {
     transform: translateY(0) scale(1);
   }
-  88% {
-    transform: translateY(4px) scale(1.012, 0.988);
-  }
-  95% {
-    transform: translateY(-2px) scale(0.996, 1.006);
+  90% {
+    transform: translateY(3px) scale(1.008, 0.992);
   }
   100% {
     transform: translateY(0) scale(1);
@@ -203,9 +208,19 @@ button {
     beat-rise 1400ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/*
+ * The category line under the design picker. Same fade as a narration beat but
+ * far shorter: it is swapped as the carousel moves, so it has to keep up with
+ * the card rather than being read as an arrival of its own.
+ */
+.animate-caption-in {
+  animation: beat-fade 380ms cubic-bezier(0.33, 0.12, 0.3, 1) both;
+}
+
 /* Still fires animationend, so the "Tap to continue" line still appears. */
 @media (prefers-reduced-motion: reduce) {
-  .animate-beat-in {
+  .animate-beat-in,
+  .animate-caption-in {
     animation-duration: 1ms;
   }
 }

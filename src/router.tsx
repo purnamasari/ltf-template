@@ -53,10 +53,10 @@ const introRoute = createRoute({
 /** One route per screen of the flow, in the order a guest walks through it. */
 const screens = [
   { path: "/", component: Cover },
+  { path: "/name", component: YourName },
   { path: "/design", component: ChooseDesign },
   { path: "/write", component: Write },
   { path: "/preview", component: Preview },
-  { path: "/name", component: YourName },
   { path: "/delivery", component: Delivery },
   { path: "/confirm", component: Confirmation },
   { path: "/sending", component: Sending },

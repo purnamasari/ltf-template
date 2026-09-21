@@ -12,7 +12,7 @@ export function YourName() {
   return (
     <>
       <Backdrop />
-      <ProgressBar value={767 / 1193} />
+      <ProgressBar step="name" />
       <LogoMark className="left-[52px] top-[58px]" />
 
       <h1 className="absolute left-1/2 top-[313px] -translate-x-1/2 whitespace-nowrap text-center font-display text-[46px] font-light leading-[58px] text-ink">
@@ -28,8 +28,8 @@ export function YourName() {
       />
 
       <StepNav
-        onBack={() => navigate({ to: "/preview" })}
-        onNext={() => navigate({ to: "/delivery" })}
+        onBack={() => navigate({ to: "/intro", search: { beat: 2 } })}
+        onNext={() => navigate({ to: "/design" })}
         nextDisabled={draft.name.trim().length === 0}
       />
 

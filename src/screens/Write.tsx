@@ -6,6 +6,8 @@ import { Backdrop } from "../components/Backdrop";
 import { CloseButton, LogoMark, PrivacyLink, ProgressBar, StepNav } from "../components/chrome";
 import { ASSETS } from "../lib/assets";
 import { useFlow } from "../lib/flow";
+import { useIdleReset } from "../lib/idle/useIdleReset";
+import { IdleOverlay } from "../components/IdleOverlay";
 import { useSwipe, wrapIndex } from "../lib/useSwipe";
 
 /** Ruled writing area, measured off the Figma rules (44.58px apart). */
@@ -26,10 +28,13 @@ const PROMPT_RESTING = { width: 348, height: 135 };
 const PROMPT_SLOTS = [-2, -1, 0, 1, 2];
 
 const IDEA_PROMPTS = [
-  "What would you like to remember today?",
-  "What is one thing you hope you’ve accomplished?",
-  "What do you hope happens between now and then?",
-  "What are you grateful for at this very moment?",
+  "What is one moment from today you hope you’ll never forget?",
+  "Where do you hope life has taken you one year from now?",
+  "What is something you quietly wish for your future self?",
+  "What would you like to remind your future self?",
+  "What would make the year ahead truly meaningful to you?",
+  "What would you tell yourself if you could speak to them one year from now?",
+  "What do you hope your future self hasn’t forgotten?",
 ];
 
 export function Write() {
@@ -39,6 +44,7 @@ export function Write() {
   const [position, setPosition] = useState(1);
   const [showPrompts, setShowPrompts] = useState(true);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const idle = useIdleReset();
 
   const movePrompt = (delta: number) => setPosition((current) => current + delta);
   const promptSwipe = useSwipe({
@@ -58,7 +64,7 @@ export function Write() {
   return (
     <>
       <Backdrop />
-      <ProgressBar value={276 / 1193} />
+      <ProgressBar step="write" />
       <LogoMark className="left-[52px] top-[58px]" />
 
       <h1 className="absolute left-1/2 top-[70px] -translate-x-1/2 whitespace-nowrap text-center font-display text-[40px] font-[100] leading-normal text-ink">
@@ -183,9 +189,13 @@ export function Write() {
         onBack={() => navigate({ to: "/design" })}
         onNext={() => navigate({ to: "/preview" })}
         nextDisabled={draft.letter.trim().length === 0}
+        backLabel="Choose Design"
+        nextLabel="Preview"
       />
 
       <PrivacyLink />
+
+      {idle.asking && <IdleOverlay elapsed={idle.elapsed} onDismiss={idle.keepGoing} />}
     </>
   );
 }

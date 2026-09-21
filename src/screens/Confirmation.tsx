@@ -35,7 +35,7 @@ export function Confirmation() {
   return (
     <>
       <Backdrop />
-      <ProgressBar value={1134 / 1193} />
+      <ProgressBar step="confirm" />
       <LogoMark className="left-[52px] top-[58px]" />
 
       <h1 className="absolute left-1/2 top-[70px] -translate-x-1/2 whitespace-nowrap text-center font-display text-[40px] font-[100] leading-normal text-ink">

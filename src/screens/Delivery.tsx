@@ -48,7 +48,7 @@ export function Delivery() {
   return (
     <>
       <Backdrop />
-      <ProgressBar value={1016 / 1193} />
+      <ProgressBar step="delivery" />
       <LogoMark className="left-[52px] top-[58px]" />
 
       <h1 className="absolute left-1/2 top-[234px] -translate-x-1/2 whitespace-nowrap text-center font-display text-[46px] font-light leading-[58px] text-ink">
@@ -106,7 +106,7 @@ export function Delivery() {
       />
 
       <StepNav
-        onBack={() => navigate({ to: "/name" })}
+        onBack={() => navigate({ to: "/preview" })}
         onNext={() => navigate({ to: "/confirm" })}
         nextDisabled={!isContactValid(draft.channel, draft.contact)}
       />

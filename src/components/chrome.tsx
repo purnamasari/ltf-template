@@ -2,19 +2,38 @@ import type { ReactNode } from "react";
 import { ASSETS } from "../lib/assets";
 import { useTerms } from "./terms";
 
-/** Track is 1193px wide in the design; progress is given as a fraction. */
-export function ProgressBar({
-  value,
-  tone = "forest",
-}: {
-  value: number;
-  tone?: "forest" | "gold";
-}) {
+/** The track the frames draw, in frame px. */
+const TRACK = 1193;
+
+/**
+ * Fill width per step, in the order the guest walks through the flow.
+ *
+ * The section now lays the frames out cover → intro → name → design → write →
+ * preview → delivery → confirm → sending, but the bars drawn inside them were
+ * not re-laddered when `name` moved: that frame still carries the 767 it had
+ * when it came after preview. The progression below is the file's own ladder of
+ * values, re-assigned to the file's own order. See "Deliberate departures" in
+ * docs/design/frames.md.
+ */
+export const STEP_FILL = {
+  intro: 45,
+  name: 139,
+  design: 276,
+  write: 566,
+  preview: 767,
+  delivery: 1015,
+  confirm: 1134,
+  sending: TRACK,
+} as const;
+
+export type Step = keyof typeof STEP_FILL;
+
+export function ProgressBar({ step, tone = "forest" }: { step: Step; tone?: "forest" | "gold" }) {
   return (
-    <div aria-hidden className="absolute left-0 top-0 h-[9px] w-[1193px] bg-track">
+    <div aria-hidden className="absolute left-0 top-0 h-[9px] bg-track" style={{ width: TRACK }}>
       <div
         className={`h-full ${tone === "gold" ? "bg-gold" : "bg-forest"}`}
-        style={{ width: `${Math.min(Math.max(value, 0), 1) * 1193}px` }}
+        style={{ width: STEP_FILL[step] }}
       />
     </div>
   );
@@ -103,17 +122,20 @@ export function StepNav({
   onBack,
   onNext,
   nextDisabled = false,
+  backLabel = "Back",
   nextLabel = "Next",
 }: {
   onBack: () => void;
   onNext: () => void;
   nextDisabled?: boolean;
+  /** Some frames name the pills after where they go, e.g. "Choose Design". */
+  backLabel?: string;
   nextLabel?: string;
 }) {
   return (
     <>
       <PillButton className="left-[333px] top-[693px]" onClick={onBack}>
-        Back
+        {backLabel}
       </PillButton>
       <PillButton
         className="left-[608px] top-[693px]"

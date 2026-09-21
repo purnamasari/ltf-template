@@ -26,14 +26,32 @@ export function PostcardFront({
   className = "",
   style,
 }: SideProps & { design: PostcardDesign; fill?: boolean }) {
+  const shared = `block max-w-none shadow-[0px_4px_4px_0px_rgba(0,0,0,0.08)] ${
+    fill ? "size-full" : ""
+  } ${className}`;
+  const sizing = fill ? style : { width, height: (width / BASE_WIDTH) * BASE_HEIGHT, ...style };
+
+  // A category whose artwork is not in the file yet keeps the frame's own grey
+  // stand-in, so the picker reads as unfinished rather than mis-illustrated.
+  if (!design.image) {
+    return (
+      <div
+        role="img"
+        aria-label={`${design.title} — artwork to come`}
+        className={`grid place-items-center bg-[#dadada] px-[40px] text-center text-[28px] italic leading-[1.3] text-black/45 ${shared}`}
+        style={sizing}
+      >
+        {design.title}
+      </div>
+    );
+  }
+
   return (
     <img
       src={design.image}
       alt={`Raffles Singapore — ${design.title}`}
-      className={`block max-w-none object-cover shadow-[0px_4px_4px_0px_rgba(0,0,0,0.08)] ${
-        fill ? "size-full" : ""
-      } ${className}`}
-      style={fill ? style : { width, height: (width / BASE_WIDTH) * BASE_HEIGHT, ...style }}
+      className={`object-cover ${shared}`}
+      style={sizing}
     />
   );
 }

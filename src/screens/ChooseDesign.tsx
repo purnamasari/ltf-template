@@ -9,11 +9,11 @@ import { useFlow } from "../lib/flow";
 import { useSwipe, wrapIndex } from "../lib/useSwipe";
 
 /** Centre of the carousel and the gap between neighbouring cards, from Figma. */
-const CENTRE_X = 591.5;
-const CENTRE_Y = 378.5;
-const STEP = 160;
-const ACTIVE = { width: 617, height: 435 };
-const RESTING = { width: 515, height: 363 };
+const CENTRE_X = 597.5;
+const CENTRE_Y = 345.5;
+const STEP = 146;
+const ACTIVE = { width: 503, height: 355 };
+const RESTING = { width: 387, height: 273 };
 
 /**
  * Slots either side of the selected design. The outermost pair is mounted
@@ -38,18 +38,23 @@ export function ChooseDesign() {
   };
 
   const swipe = useSwipe({ axis: "x", onNext: () => go(1), onPrevious: () => go(-1) });
+  const selected = POSTCARD_DESIGNS[wrapIndex(position, POSTCARD_DESIGNS.length)];
 
   return (
     <>
       <Backdrop />
-      <ProgressBar value={139 / 1193} />
+      <ProgressBar step="design" />
       <LogoMark className="left-[52px] top-[58px]" />
 
-      <h1 className="absolute left-1/2 top-[70px] -translate-x-1/2 whitespace-nowrap text-center font-display text-[40px] font-light leading-normal text-ink">
-        Pick a postcard design that resonates with you
+      {/* The frame writes this as "Hi [Name], …" — the name is the one the
+          guest gave on the step before. */}
+      <h1 className="absolute left-1/2 top-[45px] w-[725px] -translate-x-1/2 text-center font-display text-[40px] font-light leading-[48px] text-ink">
+        Hi {draft.name.trim() || "there"},
+        <br />
+        please pick a postcard that resonates with you
       </h1>
 
-      <div {...swipe} className="absolute inset-x-0 top-[140px] h-[460px]">
+      <div {...swipe} className="absolute inset-x-0 top-[150px] h-[400px]">
         {SLOTS.map((offset) => {
           const slot = position + offset;
           const design = POSTCARD_DESIGNS[wrapIndex(slot, POSTCARD_DESIGNS.length)];
@@ -67,7 +72,7 @@ export function ChooseDesign() {
               className="absolute transition-[transform,width,height,opacity] duration-[450ms] ease-out"
               style={{
                 left: CENTRE_X,
-                top: CENTRE_Y - 140,
+                top: CENTRE_Y - 150,
                 width: size.width,
                 height: size.height,
                 transform: `translate(calc(-50% + ${offset * STEP}px), -50%)`,
@@ -86,24 +91,32 @@ export function ChooseDesign() {
         direction="left"
         onClick={() => go(-1)}
         label="Previous design"
-        className="z-20 left-[74px] top-[355px]"
+        className="z-20 left-[74px] top-[353px]"
       />
       <CarouselArrow
         direction="right"
         onClick={() => go(1)}
         label="Next design"
-        className="z-20 left-[1074px] top-[355px]"
+        className="z-20 left-[1074px] top-[353px]"
       />
 
       <Dots
         count={POSTCARD_DESIGNS.length}
         active={wrapIndex(position, POSTCARD_DESIGNS.length)}
-        className="left-1/2 top-[622px] -translate-x-1/2"
+        className="left-1/2 top-[540px] -translate-x-1/2"
       />
 
+      <p
+        key={selected.id}
+        className="absolute left-1/2 top-[594px] w-[583px] -translate-x-1/2 animate-caption-in text-center text-[20px] italic leading-[1.2] text-ink"
+      >
+        {selected.caption}
+      </p>
+
       <StepNav
-        onBack={() => navigate({ to: "/intro", search: { beat: 2 } })}
+        onBack={() => navigate({ to: "/name" })}
         onNext={() => navigate({ to: "/write" })}
+        nextLabel="Select"
       />
 
       <PrivacyLink />

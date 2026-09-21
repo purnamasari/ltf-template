@@ -34,7 +34,7 @@ export function Narration() {
 
   return (
     <>
-      <IntroScene progress={45 / 1193}>
+      <IntroScene step="intro">
         <img
           src={ASSETS.introGlow}
           alt=""
@@ -95,7 +95,7 @@ export function Narration() {
       {isLast && (
         <button
           type="button"
-          onClick={() => navigate({ to: "/design" })}
+          onClick={() => navigate({ to: "/name" })}
           className="absolute left-[466px] top-[603px] z-20 h-[53px] w-[253px] rounded-[48px] bg-forest-dark text-[20px] text-on-forest"
         >
           Start Writing

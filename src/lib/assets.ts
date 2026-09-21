@@ -17,6 +17,7 @@ export const ASSETS = {
   scrollHand: "/assets/scroll-hand.svg",
   promptsStack: "/assets/prompts-stack.svg",
   stamp: "/assets/stamp.png",
+  postbox: "/assets/postbox.png",
   postcardTiffin: "/assets/postcard-photo-side.png",
   postcardGreetings: "/assets/postcard-carousel-item.png",
   coverCardBack: "/assets/cover-card-back.svg",

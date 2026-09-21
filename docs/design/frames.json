@@ -20,7 +20,7 @@
       "file": "src/screens/Narration.tsx",
       "nodeId": "4734:4631",
       "figmaName": "Introduction",
-      "synced": "2026-09-17",
+      "synced": "2026-09-21",
       "describes": "Narration beat 1"
     },
     {
@@ -29,7 +29,7 @@
       "file": "src/screens/Narration.tsx",
       "nodeId": "4929:5286",
       "figmaName": "Introduction",
-      "synced": "2026-09-17",
+      "synced": "2026-09-21",
       "describes": "Narration beat 2"
     },
     {
@@ -38,7 +38,7 @@
       "file": "src/screens/Narration.tsx",
       "nodeId": "4929:5308",
       "figmaName": "Introduction",
-      "synced": "2026-09-17",
+      "synced": "2026-09-21",
       "describes": "Narration beat 3"
     },
     {
@@ -47,7 +47,7 @@
       "file": "src/screens/ChooseDesign.tsx",
       "nodeId": "4734:6117",
       "figmaName": "choose a design",
-      "synced": "2026-09-17",
+      "synced": "2026-09-21",
       "describes": "Design picker"
     },
     {
@@ -56,7 +56,7 @@
       "file": "src/screens/Write.tsx",
       "nodeId": "4734:6165",
       "figmaName": "writing setup",
-      "synced": "2026-09-17",
+      "synced": "2026-09-21",
       "describes": "Write, prompts open"
     },
     {
@@ -65,7 +65,7 @@
       "file": "src/screens/Write.tsx",
       "nodeId": "4802:3536",
       "figmaName": "writing setup",
-      "synced": "2026-09-17",
+      "synced": "2026-09-21",
       "describes": "Write, prompts folded"
     },
     {
@@ -74,7 +74,7 @@
       "file": "src/screens/Preview.tsx",
       "nodeId": "4802:3876",
       "figmaName": "preview",
-      "synced": "2026-09-17",
+      "synced": "2026-09-21",
       "describes": "Preview written side"
     },
     {
@@ -83,7 +83,7 @@
       "file": "src/screens/YourName.tsx",
       "nodeId": "4808:4040",
       "figmaName": "name",
-      "synced": "2026-09-17",
+      "synced": "2026-09-21",
       "describes": "How to be addressed"
     },
     {
@@ -92,7 +92,7 @@
       "file": "src/screens/Delivery.tsx",
       "nodeId": "4808:5417",
       "figmaName": "email/wechat",
-      "synced": "2026-09-17",
+      "synced": "2026-09-21",
       "describes": "E-mail or Wechat"
     },
     {
@@ -101,7 +101,7 @@
       "file": "src/screens/Confirmation.tsx",
       "nodeId": "4808:8058",
       "figmaName": "confirmation",
-      "synced": "2026-09-17",
+      "synced": "2026-09-21",
       "describes": "Confirmation summary"
     },
     {
@@ -110,7 +110,7 @@
       "file": "src/screens/Sending.tsx",
       "nodeId": "4836:10970",
       "figmaName": "loading",
-      "synced": "2026-09-17",
+      "synced": "2026-09-21",
       "describes": "Posting the card"
     },
     {

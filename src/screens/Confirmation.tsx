@@ -49,7 +49,7 @@ export function Confirmation() {
       <SummaryRow value={draft.contact} top={314} italic />
 
       <p className="absolute left-[57px] top-[394px] whitespace-nowrap font-display text-[26px] font-light text-ink">
-        We will deliver it on:
+        To be delivered on:
       </p>
       <SummaryRow
         top={450}
@@ -96,6 +96,7 @@ export function Confirmation() {
       <StepNav
         onBack={() => navigate({ to: "/delivery" })}
         onNext={() => navigate({ to: "/sending" })}
+        nextLabel="Send"
       />
 
       <PrivacyLink />

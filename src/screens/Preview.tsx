@@ -28,7 +28,12 @@ export function Preview() {
         className="absolute left-1/2 top-[167px] -translate-x-1/2"
       />
 
-      <StepNav onBack={() => navigate({ to: "/write" })} onNext={() => navigate({ to: "/delivery" })} />
+      <StepNav
+        onBack={() => navigate({ to: "/write" })}
+        onNext={() => navigate({ to: "/delivery" })}
+        backLabel="Edit Message"
+        nextLabel="Confirm"
+      />
 
       <PrivacyLink />
     </>

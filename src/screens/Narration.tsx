@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useNavigate, useSearch } from "@tanstack/react-router";
 import { IntroScene } from "../components/IntroScene";
-import { CarouselArrow, PrivacyLink } from "../components/chrome";
+import { CarouselArrow, Dots, PillButton, PrivacyLink } from "../components/chrome";
 import { ASSETS } from "../lib/assets";
 import { useFadeIn } from "../lib/useFadeIn";
 
@@ -11,10 +11,17 @@ import { useFadeIn } from "../lib/useFadeIn";
  * place; a tap finishes the fade, and the next tap moves on.
  */
 const BEATS = [
-  "Every guest arrives with a story. Some celebrating a milestone, others beginning a new chapter, or simply stepping away from the rhythm of everyday life.",
-  "Take a moment to reflect. Capture a thought, a promise, or a memory of who you are right now, and preserve it within this letter.",
-  "One year from now, your message will find its way back to you, reminding you not only of where you were, but of who you hoped to become.",
+  "Every guest arrives with a story. Some are celebrating a milestone, others beginning a new chapter, or simply stepping away from the rhythm of everyday life.",
+  "Take a moment to reflect. Capture a thought, a promise, or a memory of who you are right now and preserve it within this letter.",
+  "One year from now, your message will remind you not only of where you were, but of who you hoped to become.",
 ];
+
+/**
+ * The card the line sits on. The beats run to two or three lines, so the text
+ * is centred in the card rather than pinned to a top — which is what the frames
+ * do by hand, nudging the paragraph down as it gets shorter.
+ */
+const CARD = { left: 112, top: 326, width: 974, height: 203 };
 
 export function Narration() {
   const navigate = useNavigate();
@@ -40,11 +47,12 @@ export function Narration() {
           alt=""
           aria-hidden
           className="absolute left-1/2 max-w-none -translate-x-1/2"
-          style={
-            isLast
-              ? { top: 348, width: 988, height: 191 }
-              : { top: 347, width: 988, height: 215 }
-          }
+          style={{ top: 320, width: 988, height: 215 }}
+        />
+        <div
+          aria-hidden
+          className="absolute border border-gold/45 bg-cream"
+          style={CARD}
         />
         {/*
           The line rises a few pixels as it arrives, which reads as settling onto
@@ -52,27 +60,23 @@ export function Narration() {
           restarts; dropping the class on a tap ends it at once, since the base
           styles are the animation's final values.
         */}
-        <p
-          key={beat}
-          aria-live="polite"
-          onAnimationEnd={settle}
-          className={`absolute left-1/2 w-[848px] -translate-x-1/2 text-center text-[24px] leading-normal text-ink ${
-            settled ? "" : "animate-beat-in"
-          }`}
-          style={{ top: isLast ? 414 : 419 }}
+        <div
+          className="absolute grid place-items-center"
+          style={{ left: CARD.left, top: CARD.top, width: CARD.width, height: CARD.height }}
         >
-          {BEATS[beat]}
-        </p>
-
-        {!isLast && (
           <p
-            className={`absolute left-1/2 top-[597px] -translate-x-1/2 whitespace-nowrap text-[20px] font-light italic text-ink transition-opacity duration-500 ${
-              settled ? "opacity-100" : "opacity-0"
+            key={beat}
+            aria-live="polite"
+            onAnimationEnd={settle}
+            className={`w-[848px] text-center text-[24px] leading-normal text-ink ${
+              settled ? "" : "animate-beat-in"
             }`}
           >
-            Tap to continue
+            {BEATS[beat]}
           </p>
-        )}
+        </div>
+
+        <Dots count={BEATS.length} active={beat} className="left-1/2 top-[549px] -translate-x-1/2" />
       </IntroScene>
 
       {/* Tap anywhere: finish the line, then move to the next beat. */}
@@ -92,15 +96,16 @@ export function Narration() {
         />
       )}
 
-      {isLast && (
-        <button
-          type="button"
-          onClick={() => navigate({ to: "/name" })}
-          className="absolute left-[466px] top-[603px] z-20 h-[53px] w-[253px] rounded-[48px] bg-forest-dark text-[20px] text-on-forest"
-        >
-          Start Writing
-        </button>
-      )}
+      {/* Present from the first beat, but only live on the last: the frames draw
+          it greyed until the narration has been read through. */}
+      <PillButton
+        className="z-20 left-[471px] top-[595px]"
+        variant={isLast ? "primary" : "secondary"}
+        disabled={!isLast}
+        onClick={() => navigate({ to: "/name" })}
+      >
+        Start Writing
+      </PillButton>
 
       <PrivacyLink tone="gold" className="z-20 left-[59px] top-[782px]" />
     </>

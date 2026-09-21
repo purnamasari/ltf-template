@@ -9,8 +9,8 @@ import type { DeliveryChannel } from "../lib/flow";
 import { meta } from "../lib/meta";
 
 const ALL_CHANNELS: { id: DeliveryChannel; label: string; placeholder: string }[] = [
-  { id: "email", label: "E-mail", placeholder: "Your E-mail Address" },
-  { id: "wechat", label: "Wechat", placeholder: "Your Wechat Username" },
+  { id: "email", label: "E-mail", placeholder: "E-mail Address" },
+  { id: "wechat", label: "Wechat", placeholder: "Wechat Username" },
 ];
 
 export function Delivery() {

@@ -16,15 +16,16 @@ export function YourName() {
       <LogoMark className="left-[52px] top-[58px]" />
 
       <h1 className="absolute left-1/2 top-[313px] -translate-x-1/2 whitespace-nowrap text-center font-display text-[46px] font-light leading-[58px] text-ink">
-        How would you like to be addressed?
+        What’s your name?
       </h1>
 
       <UnderlinedField
         label="Your name"
-        placeholder="Your Name"
+        placeholder="Name"
         value={draft.name}
         onChange={(name) => update({ name })}
         autoFocus
+        align="center"
       />
 
       <StepNav

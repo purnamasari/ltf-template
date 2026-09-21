@@ -32,17 +32,17 @@ commit as the change.
 | Route | Frame | Figma name | Node id | Implemented in | Synced |
 | --- | --- | --- | --- | --- | --- |
 | `/` | Cover / attract | alt 1 | `4734:6213` | `src/screens/Cover.tsx` | 2026-09-17 |
-| `/intro` | Narration beat 1 | Introduction | `4734:4631` | `src/screens/Narration.tsx` | 2026-09-17 |
-| `/intro` | Narration beat 2 | Introduction | `4929:5286` | `src/screens/Narration.tsx` | 2026-09-17 |
-| `/intro` | Narration beat 3 | Introduction | `4929:5308` | `src/screens/Narration.tsx` | 2026-09-17 |
-| `/design` | Design picker | choose a design | `4734:6117` | `src/screens/ChooseDesign.tsx` | 2026-09-17 |
-| `/write` | Write, prompts open | writing setup | `4734:6165` | `src/screens/Write.tsx` | 2026-09-17 |
-| `/write` | Write, prompts folded | writing setup | `4802:3536` | `src/screens/Write.tsx` | 2026-09-17 |
-| `/preview` | Preview written side | preview | `4802:3876` | `src/screens/Preview.tsx` | 2026-09-17 |
-| `/name` | How to be addressed | name | `4808:4040` | `src/screens/YourName.tsx` | 2026-09-17 |
-| `/delivery` | E-mail or Wechat | email/wechat | `4808:5417` | `src/screens/Delivery.tsx` | 2026-09-17 |
-| `/confirm` | Confirmation summary | confirmation | `4808:8058` | `src/screens/Confirmation.tsx` | 2026-09-17 |
-| `/sending` | Posting the card | loading | `4836:10970` | `src/screens/Sending.tsx` | 2026-09-17 |
+| `/intro` | Narration beat 1 | Introduction | `4734:4631` | `src/screens/Narration.tsx` | 2026-09-21 |
+| `/intro` | Narration beat 2 | Introduction | `4929:5286` | `src/screens/Narration.tsx` | 2026-09-21 |
+| `/intro` | Narration beat 3 | Introduction | `4929:5308` | `src/screens/Narration.tsx` | 2026-09-21 |
+| `/design` | Design picker | choose a design | `4734:6117` | `src/screens/ChooseDesign.tsx` | 2026-09-21 |
+| `/write` | Write, prompts open | writing setup | `4734:6165` | `src/screens/Write.tsx` | 2026-09-21 |
+| `/write` | Write, prompts folded | writing setup | `4802:3536` | `src/screens/Write.tsx` | 2026-09-21 |
+| `/preview` | Preview written side | preview | `4802:3876` | `src/screens/Preview.tsx` | 2026-09-21 |
+| `/name` | How to be addressed | name | `4808:4040` | `src/screens/YourName.tsx` | 2026-09-21 |
+| `/delivery` | E-mail or Wechat | email/wechat | `4808:5417` | `src/screens/Delivery.tsx` | 2026-09-21 |
+| `/confirm` | Confirmation summary | confirmation | `4808:8058` | `src/screens/Confirmation.tsx` | 2026-09-21 |
+| `/sending` | Posting the card | loading | `4836:10970` | `src/screens/Sending.tsx` | 2026-09-21 |
 | `/thank-you` | Thank You (8s timeout) | Thank you | `4814:8120` | `src/screens/ThankYou.tsx` | 2026-09-17 |
 
 <!-- frames:end -->
@@ -56,12 +56,21 @@ drift, and a blind re-sync will undo them.
   and line breaks differ slightly from every frame. See `src/index.css`.
 - **Privacy and Terms is not a step.** It is a dialog above the flow
   (`src/components/terms.tsx`), opened from the footer link on every screen.
-- **The postbox on `/sending` is drawn in CSS** (`src/components/Postbox.tsx`) —
-  the file has no postbox artwork.
+- **Progress bar widths are re-laddered, not taken from each frame.** The
+  section moved `name` ahead of the picker, but the bars drawn inside the frames
+  were not updated — `name` still carries the 767 it had when it came after
+  preview. `STEP_FILL` in `src/components/chrome.tsx` holds the file's own
+  ladder of values re-assigned to the file's own order. If the designer
+  re-ladders the frames, take the widths from them again and delete this note.
 - **Keyboard states in the frames are the iPadOS system keyboard.** Fields are
   ordinary `input`/`textarea`; nothing is drawn for it.
-- **Two additions the frames do not draw:** the back chevron on narration beats
-  2 and 3, and the "Tap to continue" line that fades in once a beat settles.
+- **Three postcard categories have no artwork.** Architecture & Design,
+  Hospitality & People and Atmosphere & Moments are placeholders in the file, so
+  `PostcardFront` draws the frame's own grey stand-in rather than borrowing a
+  picture from another category. `src/lib/designs.ts`.
+- **One addition the frames do not draw:** the back chevron on narration beats 2
+  and 3. The "Tap to continue" line is gone — the frames now put a Start Writing
+  pill on every beat, greyed until the last.
 - **The narration fades rather than types.** The frames are still, so motion is
   not the file's to specify; a typewriter read as a terminal rather than a
   heritage piece. Each beat fades up over 1.4s with a 14px rise, and a tap

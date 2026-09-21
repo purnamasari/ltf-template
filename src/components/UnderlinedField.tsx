@@ -5,6 +5,8 @@ type UnderlinedFieldProps = {
   type?: "text" | "email";
   label: string;
   autoFocus?: boolean;
+  /** The name step centres its value on the rule; delivery sits left. */
+  align?: "left" | "center";
 };
 
 /**
@@ -18,6 +20,7 @@ export function UnderlinedField({
   type = "text",
   label,
   autoFocus = false,
+  align = "left",
 }: UnderlinedFieldProps) {
   return (
     <div className="absolute left-[232px] top-[408px] w-[730px]">
@@ -34,7 +37,9 @@ export function UnderlinedField({
         autoComplete="off"
         autoCapitalize={type === "email" ? "none" : "words"}
         spellCheck={false}
-        className="h-[55px] w-full bg-transparent px-[13px] font-display text-[30px] font-light text-ink outline-none placeholder:text-[#9a9384]"
+        className={`h-[55px] w-full bg-transparent px-[25px] font-display text-[30px] font-light text-ink outline-none placeholder:text-[#9a9384] ${
+          align === "center" ? "text-center" : ""
+        }`}
       />
       <div aria-hidden className="h-px w-full bg-gold" />
     </div>

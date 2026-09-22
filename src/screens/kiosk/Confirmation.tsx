@@ -2,13 +2,13 @@
 import { useState } from "react";
 import type { ReactNode } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { Backdrop } from "../components/Backdrop";
-import { CarouselArrow, Dots, LogoMark, PrivacyLink, StepNav } from "../components/chrome";
-import { PostcardBack, PostcardFront } from "../components/Postcard";
-import { deliveryDate, formatDeliveryDate } from "../lib/date";
-import { meta } from "../lib/meta";
-import { useFlow, useSelectedDesign } from "../lib/flow";
-import { useSwipe, wrapIndex } from "../lib/useSwipe";
+import { Backdrop } from "../../components/kiosk/Backdrop";
+import { CarouselArrow, Dots, LogoMark, PrivacyLink, StepNav } from "../../components/kiosk/chrome";
+import { PostcardBack, PostcardFront } from "../../components/Postcard";
+import { deliveryDate, formatDeliveryDate } from "../../lib/date";
+import { meta } from "../../lib/meta";
+import { useFlow, useSelectedDesign } from "../../lib/flow";
+import { useSwipe, wrapIndex } from "../../lib/useSwipe";
 
 /** Where the card in front sits, and how far the one behind is offset. */
 const FRONT = { left: 471, top: 180 };

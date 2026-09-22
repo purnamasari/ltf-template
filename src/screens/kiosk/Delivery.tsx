@@ -1,12 +1,12 @@
 // FIGMA: 4808:5417 — see docs/design/frames.md
 import { useEffect, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { Backdrop } from "../components/Backdrop";
-import { LogoMark, PrivacyLink, StepNav } from "../components/chrome";
-import { UnderlinedField } from "../components/UnderlinedField";
-import { isContactValid, useFlow } from "../lib/flow";
-import type { DeliveryChannel } from "../lib/flow";
-import { meta } from "../lib/meta";
+import { Backdrop } from "../../components/kiosk/Backdrop";
+import { LogoMark, PrivacyLink, StepNav } from "../../components/kiosk/chrome";
+import { UnderlinedField } from "../../components/kiosk/UnderlinedField";
+import { isContactValid, useFlow } from "../../lib/flow";
+import type { DeliveryChannel } from "../../lib/flow";
+import { meta } from "../../lib/meta";
 
 const ALL_CHANNELS: { id: DeliveryChannel; label: string; placeholder: string }[] = [
   { id: "email", label: "E-mail", placeholder: "E-mail Address" },

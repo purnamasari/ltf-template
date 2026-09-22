@@ -83,7 +83,7 @@ transient, backoff, limits — is in
 - Colours, fonts and the stage size live as tokens in `src/index.css`
   (`@theme`), so screens use `bg-parchment`, `text-ink`, `font-display` rather
   than raw hex.
-- **Privacy and Terms is not a step.** The dialog (`src/components/terms.tsx`)
+- **Privacy and Terms is not a step.** The dialog (`src/components/kiosk/terms.tsx`)
   is mounted above the whole flow and opens from the footer link that sits on
   every screen; the tick is remembered for the session.
 - `src/lib/flow.tsx` holds the in-progress postcard (design, letter, name,
@@ -116,7 +116,7 @@ the prompts fold away to the mark in the top-right corner, the rules open up to
 full width and the character counter appears — the state drawn in `4802:3536`.
 Tapping that corner mark brings the prompts back. The letter is capped at **512
 characters**; the frame reads "436/600 characters", so if 600 is the number you
-want, change `MAX_CHARACTERS` in [`Write.tsx`](src/screens/Write.tsx).
+want, change `MAX_CHARACTERS` in [`Write.tsx`](src/screens/kiosk/Write.tsx).
 
 ### Screens
 
@@ -158,12 +158,12 @@ want, change `MAX_CHARACTERS` in [`Write.tsx`](src/screens/Write.tsx).
   delay. Point it at the real delivery endpoint and the Sending screen works
   unchanged.
 - **The postbox on `/sending` is drawn in CSS**
-  ([`Postbox.tsx`](src/components/Postbox.tsx)) — the Figma file has no postbox
+  (in [`Sending.tsx`](src/screens/kiosk/Sending.tsx)) — the Figma file has no postbox
   artwork, so it is built from plain shapes in the house palette. The card lifts
   towards the viewer in 3D, squares up over the slot and then slides straight
   down into it: the frame around the card is clipped at the mouth, so the card
   is cut off at the slot line and goes in edge first rather than passing behind
-  the box. `MOUTH_Y` in [`Sending.tsx`](src/screens/Sending.tsx) is derived from
+  the box. `MOUTH_Y` in [`Sending.tsx`](src/screens/kiosk/Sending.tsx) is derived from
   the box's own `slotTop`, so moving or resizing the box keeps the two in step.
   Drop in an exported illustration and the animation is unchanged.
 - **`/preview` shows only the written side**, centred. The guest is checking

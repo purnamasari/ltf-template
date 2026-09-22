@@ -1,9 +1,9 @@
 // FIGMA: 4802:3876 — see docs/design/frames.md
 import { useNavigate } from "@tanstack/react-router";
-import { Backdrop } from "../components/Backdrop";
-import { LogoMark, PrivacyLink, StepNav } from "../components/chrome";
-import { PostcardBack } from "../components/Postcard";
-import { useFlow } from "../lib/flow";
+import { Backdrop } from "../../components/kiosk/Backdrop";
+import { LogoMark, PrivacyLink, StepNav } from "../../components/kiosk/chrome";
+import { PostcardBack } from "../../components/Postcard";
+import { useFlow } from "../../lib/flow";
 
 export function Preview() {
   const navigate = useNavigate();

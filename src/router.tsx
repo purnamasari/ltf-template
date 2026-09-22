@@ -1,27 +1,53 @@
-import { Outlet, createRootRoute, createRoute, createRouter } from "@tanstack/react-router";
-import { Stage } from "./components/Stage";
-import { TermsProvider } from "./components/terms";
-import { FlowProgress } from "./components/FlowProgress";
-import { StaffAccessProvider } from "./components/StaffAccess";
+import {
+  Outlet,
+  createRootRoute,
+  createRoute,
+  createRouter,
+  useRouterState,
+} from "@tanstack/react-router";
+import { Stage } from "./components/kiosk/Stage";
+import { TermsProvider } from "./components/kiosk/terms";
+import { FlowProgress } from "./components/kiosk/FlowProgress";
+import { StaffAccessProvider } from "./components/kiosk/StaffAccess";
 import { useKioskBoot } from "./lib/boot";
 import { useOutboxSync } from "./lib/outbox/useOutboxSync";
-import { Cover } from "./screens/Cover";
-import { Narration } from "./screens/Narration";
-import { ChooseDesign } from "./screens/ChooseDesign";
-import { Write } from "./screens/Write";
-import { Preview } from "./screens/Preview";
-import { YourName } from "./screens/YourName";
-import { Delivery } from "./screens/Delivery";
-import { Confirmation } from "./screens/Confirmation";
-import { Sending } from "./screens/Sending";
-import { ThankYou } from "./screens/ThankYou";
-import { Pair } from "./screens/Pair";
+import { Cover } from "./screens/kiosk/Cover";
+import { Narration } from "./screens/kiosk/Narration";
+import { ChooseDesign } from "./screens/kiosk/ChooseDesign";
+import { Write } from "./screens/kiosk/Write";
+import { Preview } from "./screens/kiosk/Preview";
+import { YourName } from "./screens/kiosk/YourName";
+import { Delivery } from "./screens/kiosk/Delivery";
+import { Confirmation } from "./screens/kiosk/Confirmation";
+import { Sending } from "./screens/kiosk/Sending";
+import { ThankYou } from "./screens/kiosk/ThankYou";
+import { Pair } from "./screens/kiosk/Pair";
+import { Story } from "./screens/preview/Story";
+
+/**
+ * Two surfaces share this bundle and have almost nothing in common.
+ *
+ * The kiosk is the tablet in the hotel: a fixed 1194 x 834 frame, scaled to fit,
+ * nothing scrolling, a flow the guest is walked through. The preview is the link
+ * the recipient opens years later, on a phone or a laptop, and is responsive in
+ * the ordinary way. So the root holds neither: it is a bare outlet, and each
+ * surface brings its own layout route.
+ */
+function Root() {
+  const story = useRouterState({
+    select: (state) => state.location.pathname.startsWith("/story"),
+  });
+
+  return story ? <Outlet /> : <KioskShell />;
+}
 
 /**
  * Boot and the outbox live above the flow: the queue drains whatever screen the
- * kiosk happens to be on, including while it sits on the cover overnight.
+ * kiosk happens to be on, including while it sits on the cover overnight. Both
+ * belong to the kiosk alone — opening the preview link must not pair a device
+ * or drain anyone's outbox.
  */
-function Root() {
+function KioskShell() {
   useKioskBoot();
   useOutboxSync();
 
@@ -67,11 +93,19 @@ const screens = [
   { path: "/pair", component: Pair },
 ] as const;
 
+/** The recipient's surface. Outside the kiosk layout: no Stage, no progress. */
+const storyRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/story",
+  component: Story,
+});
+
 const routeTree = rootRoute.addChildren([
   introRoute,
   ...screens.map(({ path, component }) =>
     createRoute({ getParentRoute: () => rootRoute, path, component }),
   ),
+  storyRoute,
 ]);
 
 export const router = createRouter({ routeTree, defaultPreload: false });

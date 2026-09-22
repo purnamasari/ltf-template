@@ -1,12 +1,12 @@
 // FIGMA: 4734:6117 — see docs/design/frames.md
 import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { Backdrop } from "../components/Backdrop";
-import { CarouselArrow, Dots, LogoMark, PrivacyLink, StepNav } from "../components/chrome";
-import { PostcardFront } from "../components/Postcard";
-import { POSTCARD_DESIGNS } from "../lib/designs";
-import { useFlow } from "../lib/flow";
-import { useSwipe, wrapIndex } from "../lib/useSwipe";
+import { Backdrop } from "../../components/kiosk/Backdrop";
+import { CarouselArrow, Dots, LogoMark, PrivacyLink, StepNav } from "../../components/kiosk/chrome";
+import { PostcardFront } from "../../components/Postcard";
+import { POSTCARD_DESIGNS } from "../../lib/designs";
+import { useFlow } from "../../lib/flow";
+import { useSwipe, wrapIndex } from "../../lib/useSwipe";
 
 /** Centre of the carousel and the gap between neighbouring cards, from Figma. */
 const CENTRE_X = 597.5;

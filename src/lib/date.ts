@@ -34,3 +34,14 @@ export function formatDeliveryDate(date: Date) {
     rest: ` of ${MONTHS[date.getMonth()]} ${date.getFullYear()}`,
   };
 }
+
+/* The dateline abbreviations the file uses — "1 Sept 2026", not "1 Sep 2026". */
+const SHORT_MONTHS = [
+  "Jan", "Feb", "Mar", "Apr", "May", "June",
+  "July", "Aug", "Sept", "Oct", "Nov", "Dec",
+];
+
+/** "1 Sept 2026" — the dateline at the head of the letter, as it is read. */
+export function formatLetterDate(date: Date): string {
+  return `${date.getDate()} ${SHORT_MONTHS[date.getMonth()]} ${date.getFullYear()}`;
+}

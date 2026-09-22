@@ -1,10 +1,10 @@
 // FIGMA: 4734:6213 — see docs/design/frames.md
 import { useNavigate } from "@tanstack/react-router";
-import { ASSETS } from "../lib/assets";
-import { useApplyUpdateWhenIdle } from "../lib/updates/useApplyUpdateWhenIdle";
-import { useStaffAccess } from "../components/StaffAccess";
-import { Bleed } from "../components/Stage";
-import { useStageTone } from "../lib/stageTone";
+import { ASSETS } from "../../lib/assets";
+import { useApplyUpdateWhenIdle } from "../../lib/updates/useApplyUpdateWhenIdle";
+import { useStaffAccess } from "../../components/kiosk/StaffAccess";
+import { Bleed } from "../../components/kiosk/Stage";
+import { useStageTone } from "../../lib/stageTone";
 
 /**
  * The attract screen a guest walks up to: the title set large on a tilted

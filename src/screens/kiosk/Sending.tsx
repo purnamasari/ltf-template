@@ -1,10 +1,10 @@
 // FIGMA: 4836:10970 — see docs/design/frames.md
-import { Backdrop } from "../components/Backdrop";
-import { LogoMark } from "../components/chrome";
-import { PostcardFront } from "../components/Postcard";
-import { ASSETS } from "../lib/assets";
-import { useSealPostcard } from "../lib/outbox/useSealPostcard";
-import { useSelectedDesign } from "../lib/flow";
+import { Backdrop } from "../../components/kiosk/Backdrop";
+import { LogoMark } from "../../components/kiosk/chrome";
+import { PostcardFront } from "../../components/Postcard";
+import { ASSETS } from "../../lib/assets";
+import { useSealPostcard } from "../../lib/outbox/useSealPostcard";
+import { useSelectedDesign } from "../../lib/flow";
 
 /**
  * The only refusals a guest can see. Everything else is either retried in the

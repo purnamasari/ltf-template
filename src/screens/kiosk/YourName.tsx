@@ -1,9 +1,9 @@
 // FIGMA: 4808:4040 — see docs/design/frames.md
 import { useNavigate } from "@tanstack/react-router";
-import { Backdrop } from "../components/Backdrop";
-import { LogoMark, PrivacyLink, StepNav } from "../components/chrome";
-import { UnderlinedField } from "../components/UnderlinedField";
-import { useFlow } from "../lib/flow";
+import { Backdrop } from "../../components/kiosk/Backdrop";
+import { LogoMark, PrivacyLink, StepNav } from "../../components/kiosk/chrome";
+import { UnderlinedField } from "../../components/kiosk/UnderlinedField";
+import { useFlow } from "../../lib/flow";
 
 export function YourName() {
   const navigate = useNavigate();

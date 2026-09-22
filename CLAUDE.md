@@ -7,11 +7,22 @@ file. Vite + React 19 + TypeScript, Tailwind v4, TanStack Router + Query.
 
 ## Layout of the code
 
-- `src/screens/*` — one file per route, each one a Figma frame.
-- `src/components/*` — shared pieces (`Stage` scales the fixed 1194 × 834 frame
-  to the viewport; `chrome.tsx` is the footer, pills and carousel parts that sit
-  on every screen; `FlowProgress.tsx` is the progress bar, mounted once above
-  the routes).
+Two surfaces share the bundle and are kept apart by folder. The **kiosk** is the
+tablet in the hotel: a fixed frame, scaled to fit, nothing scrolling. The
+**preview** is the link the recipient opens years later, on a phone or a laptop,
+and is responsive in the ordinary way. Neither folder imports from the other.
+
+- `src/screens/kiosk/*` — one file per kiosk route, each one a Figma frame.
+- `src/screens/preview/*` — the recipient's page (`/story`).
+- `src/components/kiosk/*` — the kiosk's shared pieces (`Stage` scales the fixed
+  1194 × 834 frame to the viewport; `chrome.tsx` is the footer, pills and
+  carousel parts that sit on every screen; `FlowProgress.tsx` is the progress
+  bar, mounted once above the routes). All of it is absolutely positioned in the
+  frame and none of it is reusable off the kiosk.
+- `src/components/preview/*` — the same job for the responsive page, in flow
+  rather than absolutely positioned.
+- `src/components/*` (top level) — the few pieces both surfaces draw, today just
+  `Postcard.tsx`.
 - `src/lib/*` — `flow.tsx` (session draft), `api.ts` (the backend seam),
   `designs.ts`, `assets.ts` (the single registry of exported artwork paths).
 - `src/index.css` — `@theme` tokens: colours, fonts, stage size.
@@ -55,15 +66,16 @@ The features not yet built go the same way, one folder each:
 | Device pairing and the bearer token | `src/lib/pairing/` | `startPairing()`, `bearer()` |
 | The server's rules, read at launch | `src/lib/meta/` | `meta()` |
 | Durable storage (IndexedDB) | `src/lib/storage.ts` | `get`/`put`/`getAll`/`remove` |
+| The delivered card the recipient opens | `src/lib/preview/` | `usePostcard()`, `downloadPostcard()`, `useViewport()` |
 | Service worker and the update policy | `src/lib/updates/` | `useApplyUpdateWhenIdle()` |
 
 Two things stay out of this rule, because they genuinely belong to the layout:
 
 - **Interaction primitives** — `useSwipe`, `useFadeIn`. Behaviour, but
   behaviour the design specifies; they live in `src/lib` and screens call them.
-- **The progress bar** — `src/components/FlowProgress.tsx`, mounted in the root
-  route rather than by each screen, so that it survives a navigation and can
-  animate between steps.
+- **The progress bar** — `src/components/kiosk/FlowProgress.tsx`, mounted in the
+  kiosk shell rather than by each screen, so that it survives a navigation and
+  can animate between steps.
 - **Geometry** — `MOUTH_Y` in `Sending.tsx` derived from the postbox's own
   `slotTop`, the carousel offsets. These must move when the frame moves, so
   they belong beside the layout, not behind a hook.
@@ -101,7 +113,7 @@ quietly adding what the design left out.
    house idiom. Generated absolutely-positioned divs are rejected on review.
 5. **Canela is licensed and not bundled** — headings fall back to Cormorant
    Garamond, so line breaks may differ slightly from the frames. Not a bug.
-6. **The progress bar is ours, not the file's.** `src/components/FlowProgress.tsx`
+6. **The progress bar is ours, not the file's.** `src/components/kiosk/FlowProgress.tsx`
    is the only place it is drawn. Every frame draws a bar of its own, and those
    are to be ignored on a sync: the widths stopped forming a ladder when `name`
    moved ahead of the picker, and a fill fixed per frame cannot animate between

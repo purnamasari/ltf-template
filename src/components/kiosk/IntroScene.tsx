@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { Backdrop } from "./Backdrop";
 import { LogoMark } from "./chrome";
-import { ASSETS } from "../lib/assets";
+import { ASSETS } from "../../lib/assets";
 
 /**
  * Cover-page furniture behind the narration: washed facade, centred mark and

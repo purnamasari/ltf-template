@@ -8,7 +8,7 @@
     {
       "key": "cover",
       "route": "/",
-      "file": "src/screens/Cover.tsx",
+      "file": "src/screens/kiosk/Cover.tsx",
       "nodeId": "4734:6213",
       "figmaName": "alt 1",
       "synced": "2026-09-17",
@@ -17,7 +17,7 @@
     {
       "key": "intro-1",
       "route": "/intro",
-      "file": "src/screens/Narration.tsx",
+      "file": "src/screens/kiosk/Narration.tsx",
       "nodeId": "4734:4631",
       "figmaName": "Introduction",
       "synced": "2026-09-21",
@@ -26,7 +26,7 @@
     {
       "key": "intro-2",
       "route": "/intro",
-      "file": "src/screens/Narration.tsx",
+      "file": "src/screens/kiosk/Narration.tsx",
       "nodeId": "4929:5286",
       "figmaName": "Introduction",
       "synced": "2026-09-21",
@@ -35,7 +35,7 @@
     {
       "key": "intro-3",
       "route": "/intro",
-      "file": "src/screens/Narration.tsx",
+      "file": "src/screens/kiosk/Narration.tsx",
       "nodeId": "4929:5308",
       "figmaName": "Introduction",
       "synced": "2026-09-21",
@@ -44,7 +44,7 @@
     {
       "key": "design",
       "route": "/design",
-      "file": "src/screens/ChooseDesign.tsx",
+      "file": "src/screens/kiosk/ChooseDesign.tsx",
       "nodeId": "4734:6117",
       "figmaName": "choose a design",
       "synced": "2026-09-21",
@@ -53,7 +53,7 @@
     {
       "key": "write",
       "route": "/write",
-      "file": "src/screens/Write.tsx",
+      "file": "src/screens/kiosk/Write.tsx",
       "nodeId": "4734:6165",
       "figmaName": "writing setup",
       "synced": "2026-09-21",
@@ -62,7 +62,7 @@
     {
       "key": "write-folded",
       "route": "/write",
-      "file": "src/screens/Write.tsx",
+      "file": "src/screens/kiosk/Write.tsx",
       "nodeId": "4802:3536",
       "figmaName": "writing setup",
       "synced": "2026-09-21",
@@ -71,7 +71,7 @@
     {
       "key": "preview",
       "route": "/preview",
-      "file": "src/screens/Preview.tsx",
+      "file": "src/screens/kiosk/Preview.tsx",
       "nodeId": "4802:3876",
       "figmaName": "preview",
       "synced": "2026-09-21",
@@ -80,7 +80,7 @@
     {
       "key": "name",
       "route": "/name",
-      "file": "src/screens/YourName.tsx",
+      "file": "src/screens/kiosk/YourName.tsx",
       "nodeId": "4808:4040",
       "figmaName": "name",
       "synced": "2026-09-21",
@@ -89,7 +89,7 @@
     {
       "key": "delivery",
       "route": "/delivery",
-      "file": "src/screens/Delivery.tsx",
+      "file": "src/screens/kiosk/Delivery.tsx",
       "nodeId": "4808:5417",
       "figmaName": "email/wechat",
       "synced": "2026-09-21",
@@ -98,7 +98,7 @@
     {
       "key": "confirm",
       "route": "/confirm",
-      "file": "src/screens/Confirmation.tsx",
+      "file": "src/screens/kiosk/Confirmation.tsx",
       "nodeId": "4808:8058",
       "figmaName": "confirmation",
       "synced": "2026-09-21",
@@ -107,7 +107,7 @@
     {
       "key": "sending",
       "route": "/sending",
-      "file": "src/screens/Sending.tsx",
+      "file": "src/screens/kiosk/Sending.tsx",
       "nodeId": "4836:10970",
       "figmaName": "loading",
       "synced": "2026-09-21",
@@ -116,7 +116,7 @@
     {
       "key": "thank-you",
       "route": "/thank-you",
-      "file": "src/screens/ThankYou.tsx",
+      "file": "src/screens/kiosk/ThankYou.tsx",
       "nodeId": "4814:8120",
       "figmaName": "Thank you",
       "synced": "2026-09-17",
@@ -125,7 +125,7 @@
     {
       "key": "terms",
       "route": "(dialog)",
-      "file": "src/components/terms.tsx",
+      "file": "src/components/kiosk/terms.tsx",
       "nodeId": "4815:9521",
       "figmaName": "privacy and terms",
       "synced": "2026-09-21",
@@ -134,7 +134,7 @@
     {
       "key": "write-idle",
       "route": "/write",
-      "file": "src/components/IdleOverlay.tsx",
+      "file": "src/components/kiosk/IdleOverlay.tsx",
       "nodeId": "4991:3777",
       "figmaName": "writing setup",
       "synced": "2026-09-21",

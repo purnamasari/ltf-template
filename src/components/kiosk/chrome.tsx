@@ -1,23 +1,30 @@
 import type { ReactNode } from "react";
-import { ASSETS } from "../lib/assets";
+import { ASSETS } from "../../lib/assets";
 import { useTerms } from "./terms";
 
-/** Raffles tree-and-wordmark. Sits top-left on flow screens, centred on covers. */
+/**
+ * Raffles tree-and-wordmark, stacked. Sits top-left on flow screens, centred on
+ * covers.
+ *
+ * Height only, with the width left to follow the artwork: Figma's SVG exports
+ * carry `preserveAspectRatio="none"`, so a box whose ratio is off the mark's own
+ * 80 : 71 flattens it rather than letter-boxing it. `object-contain` is the
+ * second guard. The preview's `Wordmark` is a different export, set wide — the
+ * two are not interchangeable.
+ */
 export function LogoMark({
   className = "",
-  width = 80,
   height = 71,
 }: {
   className?: string;
-  width?: number;
   height?: number;
 }) {
   return (
     <img
       src={ASSETS.logoMark}
       alt="Raffles"
-      className={`absolute max-w-none ${className}`}
-      style={{ width, height }}
+      className={`absolute w-auto max-w-none object-contain ${className}`}
+      style={{ height }}
     />
   );
 }

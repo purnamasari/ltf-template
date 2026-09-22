@@ -1,9 +1,9 @@
 // FIGMA: 4814:8120 — see docs/design/frames.md
 import { useEffect, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { Backdrop } from "../components/Backdrop";
-import { ASSETS } from "../lib/assets";
-import { useFlow } from "../lib/flow";
+import { Backdrop } from "../../components/kiosk/Backdrop";
+import { ASSETS } from "../../lib/assets";
+import { useFlow } from "../../lib/flow";
 
 /** Seconds the closing card stays up before the kiosk returns to attract mode. */
 const AUTO_CLOSE_SECONDS = 8;

@@ -1,10 +1,10 @@
 // FIGMA: 4734:4631, 4929:5286, 4929:5308 — see docs/design/frames.md
 import { useState } from "react";
 import { useNavigate, useSearch } from "@tanstack/react-router";
-import { IntroScene } from "../components/IntroScene";
-import { CarouselArrow, Dots, PillButton, PrivacyLink } from "../components/chrome";
-import { ASSETS } from "../lib/assets";
-import { useFadeIn } from "../lib/useFadeIn";
+import { IntroScene } from "../../components/kiosk/IntroScene";
+import { CarouselArrow, Dots, PillButton, PrivacyLink } from "../../components/kiosk/chrome";
+import { ASSETS } from "../../lib/assets";
+import { useFadeIn } from "../../lib/useFadeIn";
 
 /**
  * Three beats of narration on the same cover layout. Each one fades up into

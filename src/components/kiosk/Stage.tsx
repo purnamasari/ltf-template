@@ -115,6 +115,7 @@ export function Stage({ children }: { children: ReactNode }) {
 
   return (
     <div
+      data-surface="kiosk"
       className="relative h-full w-full overflow-hidden"
       style={{ background: "var(--stage-surround, var(--color-parchment))" }}
     >

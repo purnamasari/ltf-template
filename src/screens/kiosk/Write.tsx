@@ -1,14 +1,14 @@
 // FIGMA: 4734:6165, 4802:3536 — see docs/design/frames.md
 import { useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { meta } from "../lib/meta";
-import { Backdrop } from "../components/Backdrop";
-import { CloseButton, LogoMark, PrivacyLink, StepNav } from "../components/chrome";
-import { ASSETS } from "../lib/assets";
-import { useFlow } from "../lib/flow";
-import { useIdleReset } from "../lib/idle/useIdleReset";
-import { IdleOverlay } from "../components/IdleOverlay";
-import { useSwipe, wrapIndex } from "../lib/useSwipe";
+import { meta } from "../../lib/meta";
+import { Backdrop } from "../../components/kiosk/Backdrop";
+import { CloseButton, LogoMark, PrivacyLink, StepNav } from "../../components/kiosk/chrome";
+import { ASSETS } from "../../lib/assets";
+import { useFlow } from "../../lib/flow";
+import { useIdleReset } from "../../lib/idle/useIdleReset";
+import { IdleOverlay } from "../../components/kiosk/IdleOverlay";
+import { useSwipe, wrapIndex } from "../../lib/useSwipe";
 
 /**
  * The ruled writing area.

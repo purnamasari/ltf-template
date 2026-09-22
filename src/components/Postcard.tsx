@@ -7,6 +7,28 @@ import type { PostcardDesign } from "../lib/designs";
 const BASE_WIDTH = 595;
 const BASE_HEIGHT = 420;
 
+/**
+ * Where everything sits on the written side, in the 595 x 420 frame.
+ *
+ * Exported because the A5 download sheet re-draws this same composition onto a
+ * canvas, and a canvas cannot read a stylesheet. Geometry belongs beside the
+ * layout rather than behind a hook — so it stays here, and the renderer in
+ * `src/lib/preview/sheet.ts` imports it instead of carrying a second copy that
+ * would quietly drift the first time the frame moves.
+ */
+export const POSTCARD_ART = {
+  width: BASE_WIDTH,
+  height: BASE_HEIGHT,
+  textureOpacity: 0.61,
+  rule: { x: 385, y: 20, w: 1, h: 352, colour: "rgba(141, 110, 69, 0.45)" },
+  letter: { x: 28, y: 52, w: 330, size: 13, leading: 19.5 },
+  stamp: { x: 497, y: 0, w: 92, h: 122 },
+  mark: { x: 468, y: 167, w: 32, h: 38 },
+  dateline: { x: 435, y: 212, w: 98, colour: "#3f2a10", size: 12, dateSize: 14 },
+  /** The stand-in a category without artwork keeps on the picture side. */
+  placeholder: { fill: "#dadada", size: 28, colour: "rgba(0, 0, 0, 0.45)" },
+} as const;
+
 type SideProps = {
   /** Rendered width in px; the card scales proportionally from 595 x 420. */
   width?: number;
@@ -38,8 +60,8 @@ export function PostcardFront({
       <div
         role="img"
         aria-label={`${design.title} — artwork to come`}
-        className={`grid place-items-center bg-[#dadada] px-[40px] text-center text-[28px] italic leading-[1.3] text-black/45 ${shared}`}
-        style={sizing}
+        className={`grid place-items-center px-[40px] text-center text-[28px] italic leading-[1.3] text-black/45 ${shared}`}
+        style={{ backgroundColor: POSTCARD_ART.placeholder.fill, ...sizing }}
       >
         {design.title}
       </div>
@@ -89,7 +111,7 @@ export function PostcardBack({
         <div
           aria-hidden
           className="absolute left-[385px] top-[20px] h-[352px] w-px"
-          style={{ backgroundColor: "rgba(141, 110, 69, 0.45)" }}
+          style={{ backgroundColor: POSTCARD_ART.rule.colour }}
         />
 
         <p className="absolute left-[28px] top-[52px] w-[330px] whitespace-pre-wrap text-[13px] italic leading-[19.5px] text-ink">

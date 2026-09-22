@@ -8,6 +8,10 @@ export const ASSETS = {
   artboard: "/assets/raffles-artboard.jpg",
   hotelFacade: "/assets/hotel-facade.png",
   logoMark: "/assets/logo-brand-text-mark.svg",
+  /* The same lockup set wide, 190 x 47 — the preview frames use this one, and
+     `logoMark` is the stacked 80 x 71 the kiosk uses. They are not
+     interchangeable: forcing either into the other's box flattens it. */
+  logoWordmarkWide: "/assets/logo-wordmark-wide.svg",
   wordmark: "/assets/wordmark-postcard-to-the-future.png",
   introGlow: "/assets/intro-card-glow.svg",
   /** Single chevron; the left arrow is the same file rotated. */

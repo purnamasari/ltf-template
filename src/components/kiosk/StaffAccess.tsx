@@ -2,7 +2,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { STAFF_PASSCODE } from "../lib/config";
+import { STAFF_PASSCODE } from "../../lib/config";
 
 /** Five presses inside two seconds. Brisk enough that nobody finds it by accident. */
 const PRESSES = 5;

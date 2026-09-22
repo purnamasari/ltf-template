@@ -1,11 +1,11 @@
 // NOT FROM FIGMA — a staff screen; see docs/design/frames.md
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { Backdrop } from "../components/Backdrop";
-import { LogoMark } from "../components/chrome";
-import { KIOSK_LABEL } from "../lib/config";
-import { pollPairing, startPairing } from "../lib/pairing";
-import type { PairingStart } from "../lib/pairing";
+import { Backdrop } from "../../components/kiosk/Backdrop";
+import { LogoMark } from "../../components/kiosk/chrome";
+import { KIOSK_LABEL } from "../../lib/config";
+import { pollPairing, startPairing } from "../../lib/pairing";
+import type { PairingStart } from "../../lib/pairing";
 
 /** The code and its claim token expire together, two minutes after issue. */
 const WINDOW_SECONDS = 120;

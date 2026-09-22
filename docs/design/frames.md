@@ -31,23 +31,69 @@ commit as the change.
 
 | Route | Frame | Figma name | Node id | Implemented in | Synced |
 | --- | --- | --- | --- | --- | --- |
-| `/` | Cover / attract | alt 1 | `4734:6213` | `src/screens/Cover.tsx` | 2026-09-17 |
-| `/intro` | Narration beat 1 | Introduction | `4734:4631` | `src/screens/Narration.tsx` | 2026-09-21 |
-| `/intro` | Narration beat 2 | Introduction | `4929:5286` | `src/screens/Narration.tsx` | 2026-09-21 |
-| `/intro` | Narration beat 3 | Introduction | `4929:5308` | `src/screens/Narration.tsx` | 2026-09-21 |
-| `/design` | Design picker | choose a design | `4734:6117` | `src/screens/ChooseDesign.tsx` | 2026-09-21 |
-| `/write` | Write, prompts open | writing setup | `4734:6165` | `src/screens/Write.tsx` | 2026-09-21 |
-| `/write` | Write, prompts folded | writing setup | `4802:3536` | `src/screens/Write.tsx` | 2026-09-21 |
-| `/preview` | Preview written side | preview | `4802:3876` | `src/screens/Preview.tsx` | 2026-09-21 |
-| `/name` | How to be addressed | name | `4808:4040` | `src/screens/YourName.tsx` | 2026-09-21 |
-| `/delivery` | E-mail or Wechat | email/wechat | `4808:5417` | `src/screens/Delivery.tsx` | 2026-09-21 |
-| `/confirm` | Confirmation summary | confirmation | `4808:8058` | `src/screens/Confirmation.tsx` | 2026-09-21 |
-| `/sending` | Posting the card | loading | `4836:10970` | `src/screens/Sending.tsx` | 2026-09-21 |
-| `/thank-you` | Thank You (8s timeout) | Thank you | `4814:8120` | `src/screens/ThankYou.tsx` | 2026-09-17 |
-| `(dialog)` | Privacy and Terms dialog | privacy and terms | `4815:9521` | `src/components/terms.tsx` | 2026-09-21 |
-| `/write` | Are you still there? (idle) | writing setup | `4991:3777` | `src/components/IdleOverlay.tsx` | 2026-09-21 |
+| `/` | Cover / attract | alt 1 | `4734:6213` | `src/screens/kiosk/Cover.tsx` | 2026-09-17 |
+| `/intro` | Narration beat 1 | Introduction | `4734:4631` | `src/screens/kiosk/Narration.tsx` | 2026-09-21 |
+| `/intro` | Narration beat 2 | Introduction | `4929:5286` | `src/screens/kiosk/Narration.tsx` | 2026-09-21 |
+| `/intro` | Narration beat 3 | Introduction | `4929:5308` | `src/screens/kiosk/Narration.tsx` | 2026-09-21 |
+| `/design` | Design picker | choose a design | `4734:6117` | `src/screens/kiosk/ChooseDesign.tsx` | 2026-09-21 |
+| `/write` | Write, prompts open | writing setup | `4734:6165` | `src/screens/kiosk/Write.tsx` | 2026-09-21 |
+| `/write` | Write, prompts folded | writing setup | `4802:3536` | `src/screens/kiosk/Write.tsx` | 2026-09-21 |
+| `/preview` | Preview written side | preview | `4802:3876` | `src/screens/kiosk/Preview.tsx` | 2026-09-21 |
+| `/name` | How to be addressed | name | `4808:4040` | `src/screens/kiosk/YourName.tsx` | 2026-09-21 |
+| `/delivery` | E-mail or Wechat | email/wechat | `4808:5417` | `src/screens/kiosk/Delivery.tsx` | 2026-09-21 |
+| `/confirm` | Confirmation summary | confirmation | `4808:8058` | `src/screens/kiosk/Confirmation.tsx` | 2026-09-21 |
+| `/sending` | Posting the card | loading | `4836:10970` | `src/screens/kiosk/Sending.tsx` | 2026-09-21 |
+| `/thank-you` | Thank You (8s timeout) | Thank you | `4814:8120` | `src/screens/kiosk/ThankYou.tsx` | 2026-09-17 |
+| `(dialog)` | Privacy and Terms dialog | privacy and terms | `4815:9521` | `src/components/kiosk/terms.tsx` | 2026-09-21 |
+| `/write` | Are you still there? (idle) | writing setup | `4991:3777` | `src/components/kiosk/IdleOverlay.tsx` | 2026-09-21 |
 
 <!-- frames:end -->
+
+### The preview surface
+
+The recipient's page is drawn in two sections of its own, outside the kiosk
+parent — so `/scan-frames` does **not** see them, and these ids are not in
+`frames.json`. Re-resolve them by hand if the design team moves them.
+
+| Surface | Section | Frames | Implemented in |
+| --- | --- | --- | --- |
+| Mobile, 393 × 852 | `4844:12551` | `4844:12552` sealed · `4844:12591` front · `4844:12635` back · `4844:12691` letter open | `src/screens/preview/Story.tsx` |
+| Web, 1920 × 1080 | `4875:3062` | `4875:3107` sealed · `4875:3119` front · `4875:3146` back | same file |
+| Download sheet, A5 420 × 595 | `4875:3054` | `4875:3059` the sheet | `src/lib/preview/sheet.ts` |
+
+One screen, not two: the sections are the same page at two sizes, and every
+difference between them is a `lg:` in `Story.tsx`. Where the file genuinely
+disagrees, the narrow frame is the one with more in it, and the wide one is
+treated as dropping it rather than the narrow one as adding it:
+
+- **"Tap on the postcard to read" and the dots are mobile only.** The web frames
+  carry neither. The caption is `lg:hidden`, and so are the dots.
+- **The letter sheet is mobile only.** At 351px the written side cannot be read,
+  so tapping the card opens it over a dimmed page (`LetterSheet.tsx`). At
+  1048px it is read in place and the card is not a control at all.
+- **The browser chrome in the mobile frames is a mockup.** `Browser / Android /
+  Chrome / Dark / Nav Bar` is the phone's own address bar, drawn for the comp.
+  It is not implemented, so every y-offset taken from those frames is 73px less
+  than the number in the file.
+- **What Download saves is the A5 sheet, not the picture side.** Frame
+  `4875:3059` stacks both sides flush on one portrait page, 420 × 296 each.
+  `renderDownloadSheet()` draws it onto a canvas at 2× (840 × 1190, ~1.9MB PNG)
+  and reads its geometry from `POSTCARD_ART`, exported by
+  `src/components/Postcard.tsx` — one set of numbers for the DOM card and the
+  canvas copy, so the two cannot drift.
+- **The sheet's written side is ours, not the comp's.** `4875:3059` mocks the
+  back as a full-width letter under a header band; the kiosk's real written
+  side puts the message left of a rule with the stamp block to its right, and
+  that is what the sheet draws. Worth settling — the comp may simply be an
+  older mock, or it may be a second layout meant for print.
+- **The arrival is animated; the file is not.** Neither section draws motion.
+  The card rises from below the fold into the middle of the page, the gold seal
+  then dissolves off the artwork over ~1.9s rather than being swapped for it,
+  and the title, arrows and button follow once the picture is legible. The
+  keyframes are `story-card-rise`, `story-seal-lift` and `story-chrome-in` in
+  `src/index.css`. Asked for directly — do not drop them on a re-sync.
+- **The sealed card is flat gold.** The frame layers the linen grain beneath an
+  opaque `#af9169` fill, so none of it comes through and it is not drawn.
 
 ### Deliberate departures from the file
 
@@ -57,13 +103,13 @@ drift, and a blind re-sync will undo them.
 - **Canela → Cormorant Garamond.** Licensed face, not bundled. Headline widths
   and line breaks differ slightly from every frame. See `src/index.css`.
 - **Privacy and Terms is not a step.** Frame `4815:9521` draws it as a screen of
-  its own; here it is a dialog above the flow (`src/components/terms.tsx`),
+  its own; here it is a dialog above the flow (`src/components/kiosk/terms.tsx`),
   opened from the footer link on every screen. Only the card is implemented —
   the cover behind it in that frame is the narration's.
 - **The progress bar is not taken from the frames at all.** Each frame draws its
   own fill, and those widths stopped forming a ladder when `name` moved ahead of
   the picker — that frame still carries the 767 it had when it came after
-  preview. `src/components/FlowProgress.tsx` owns the bar instead: it lives
+  preview. `src/components/kiosk/FlowProgress.tsx` owns the bar instead: it lives
   above the routes, reads the current one, and fills to how far through the
   steps the guest is. Living above the routes is what lets it animate — the
   element survives the navigation, so the width transitions between steps
@@ -103,7 +149,7 @@ drift, and a blind re-sync will undo them.
   the stage at half the height of the screen. `Stage` covers that rather than
   letting it read as a fault.
 - **`/pair` has no frame at all.** It is a staff screen, deliberately plain —
-  see `src/screens/Pair.tsx`. Do not style it from the guest-facing frames.
+  see `src/screens/kiosk/Pair.tsx`. Do not style it from the guest-facing frames.
 - **The picture side of a postcard is flat artwork** exported at 595 × 420 with
   its caption and date baked in. The written side is composed at runtime.
 

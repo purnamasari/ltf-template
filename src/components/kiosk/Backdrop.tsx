@@ -1,5 +1,5 @@
-import { ASSETS } from "../lib/assets";
-import { useStageTone } from "../lib/stageTone";
+import { ASSETS } from "../../lib/assets";
+import { useStageTone } from "../../lib/stageTone";
 import { Bleed } from "./Stage";
 
 type BackdropProps = {

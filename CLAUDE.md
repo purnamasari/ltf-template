@@ -106,6 +106,15 @@ quietly adding what the design left out.
    rectangle on an edge have no geometry to get wrong, unlike type or a circle.
    A screen that draws its own backdrop wraps it in `<Bleed>` and keeps its type
    in the frame.
+
+   **A keyboard never changes the scale.** `Stage` measures the layout viewport,
+   never `visualViewport` (which is exactly what a keyboard shrinks), and ignores
+   a screen that only gets shorter while a field has focus. The whole sheet —
+   ground and frame together — is lifted just far enough to keep the focused
+   field clear of the keyboard instead, and a tall field (the letter) trims
+   itself to the lines above it with `useKeyboardTop()`. Fields are found by
+   their layout offsets inside `[data-stage-frame]`, so a new form screen gets
+   this without doing anything.
 3. **Artwork goes through `src/lib/assets.ts`.** Export to `public/assets`,
    downscale for the kiosk, register the path there — never inline base64 or a
    Figma URL.

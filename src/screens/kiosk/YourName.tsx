@@ -9,6 +9,11 @@ export function YourName() {
   const navigate = useNavigate();
   const { draft, update } = useFlow();
 
+  const named = draft.name.trim().length > 0;
+  const next = () => {
+    if (named) navigate({ to: "/design" });
+  };
+
   return (
     <>
       <Backdrop />
@@ -25,12 +30,13 @@ export function YourName() {
         onChange={(name) => update({ name })}
         autoFocus
         align="center"
+        onSubmit={next}
       />
 
       <StepNav
         onBack={() => navigate({ to: "/intro", search: { beat: 2 } })}
-        onNext={() => navigate({ to: "/design" })}
-        nextDisabled={draft.name.trim().length === 0}
+        onNext={next}
+        nextDisabled={!named}
       />
 
       <PrivacyLink />

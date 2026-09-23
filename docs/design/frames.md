@@ -100,6 +100,12 @@ treated as dropping it rather than the narrow one as adding it:
 Re-read these before "fixing" a screen to match Figma — they are decisions, not
 drift, and a blind re-sync will undo them.
 
+- **With a keyboard up, the page scrolls instead of shrinking.** The frames
+  draw no keyboard state for the name or e-mail steps. The design keeps its
+  size and rises just enough for the field to clear the keyboard; the letter
+  keeps its size and stops at the last whole rule above it.
+- **The keyboard's return key does what Next does** on the name and e-mail
+  steps, since Next is under the keyboard while typing. Nothing is drawn for it.
 - **Canela → Cormorant Garamond.** Licensed face, not bundled. Headline widths
   and line breaks differ slightly from every frame. See `src/index.css`.
 - **Privacy and Terms is not a step.** Frame `4815:9521` draws it as a screen of

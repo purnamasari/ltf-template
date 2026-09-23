@@ -42,6 +42,13 @@ throw away a half-written letter, so `registerType` is `prompt` and
 `src/lib/updates` takes the waiting build only once the app is back on the cover
 with nobody using it.
 
+**Which build a tablet is running** is set small in the top-right corner — the
+short commit it was built from. A tablet that has visited before keeps its own
+copy and only switches after sitting on the cover, so if the corner does not
+match the latest deploy, go to the cover and leave it for five seconds, or close
+every tab on the site and reopen. Adding `?debug` to the address also shows the
+screen size, the visible height, the scale and the keyboard lift.
+
 ## Demo mode
 
 **On by default.** `src/lib/demo.ts` fakes every seam the server sits behind, so

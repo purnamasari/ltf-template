@@ -40,6 +40,16 @@ export function Delivery() {
   const live = ALL_CHANNELS.filter(isLive);
   const channel = live.find((option) => option.id === draft.channel) ?? live[0];
 
+  /** Checked on the tap, or the keyboard's return key — never while typing. */
+  const next = () => {
+    if (draft.contact.trim().length === 0) return;
+    if (!isContactValid(draft.channel, draft.contact)) {
+      setMalformed(true);
+      return;
+    }
+    navigate({ to: "/confirm" });
+  };
+
   /** A draft left on a channel that has since gone away falls back to a live one. */
   useEffect(() => {
     if (channel && channel.id !== draft.channel) update({ channel: channel.id, contact: "" });
@@ -113,6 +123,7 @@ export function Delivery() {
           update({ contact });
         }}
         invalid={malformed}
+        onSubmit={next}
       />
 
       {malformed && (
@@ -134,13 +145,7 @@ export function Delivery() {
       */}
       <StepNav
         onBack={() => navigate({ to: "/preview" })}
-        onNext={() => {
-          if (!isContactValid(draft.channel, draft.contact)) {
-            setMalformed(true);
-            return;
-          }
-          navigate({ to: "/confirm" });
-        }}
+        onNext={next}
         nextDisabled={draft.contact.trim().length === 0}
       />
 

@@ -9,6 +9,11 @@ type UnderlinedFieldProps = {
   align?: "left" | "center";
   /** Colours the rule when what has been typed has been rejected. */
   invalid?: boolean;
+  /**
+   * What the keyboard's return key does. With the keyboard up, the Next button
+   * is under it, so the key on the keyboard is the one a guest can reach.
+   */
+  onSubmit?: () => void;
 };
 
 /**
@@ -24,6 +29,7 @@ export function UnderlinedField({
   autoFocus = false,
   align = "left",
   invalid = false,
+  onSubmit,
 }: UnderlinedFieldProps) {
   return (
     <div className="absolute left-[232px] top-[408px] w-[730px]">
@@ -38,6 +44,12 @@ export function UnderlinedField({
         placeholder={placeholder}
         autoFocus={autoFocus}
         aria-invalid={invalid || undefined}
+        enterKeyHint={onSubmit ? "next" : undefined}
+        onKeyDown={(event) => {
+          if (event.key !== "Enter" || !onSubmit) return;
+          event.preventDefault();
+          onSubmit();
+        }}
         autoComplete="off"
         autoCapitalize={type === "email" ? "none" : "words"}
         spellCheck={false}

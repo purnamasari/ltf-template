@@ -1,4 +1,5 @@
 // FIGMA: 4734:6165, 4802:3536 — see docs/design/frames.md
+import { useKeyboardTop } from "../../components/kiosk/Stage";
 import { useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { meta } from "../../lib/meta";
@@ -22,6 +23,13 @@ import { useSwipe, wrapIndex } from "../../lib/useSwipe";
  */
 const LINE_HEIGHT = 45;
 const LINES = 8;
+
+/** Where the ruled area starts, in the design's coordinates. */
+const WRITING_TOP = 203;
+
+/** The least of the letter kept on screen above a keyboard, and the gap under it. */
+const MIN_LINES = 2;
+const KEYBOARD_GAP = 12;
 const RULE_COLOR = "rgba(141, 110, 69, 0.65)";
 
 /**
@@ -55,6 +63,18 @@ export function Write() {
   const [position, setPosition] = useState(1);
   const [showPrompts, setShowPrompts] = useState(true);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  /*
+   * With a keyboard up, the typing area stops at the last whole rule above it.
+   * A textarea scrolls its caret into view only within its own box, so a box
+   * running on under the keyboard lets the line being written slip beneath it.
+   * The rules themselves carry on under the keyboard, as the frame draws them.
+   */
+  const keyboardTop = useKeyboardTop();
+  const lines =
+    keyboardTop === null
+      ? LINES
+      : Math.min(LINES, Math.max(MIN_LINES, Math.floor((keyboardTop - WRITING_TOP - KEYBOARD_GAP) / LINE_HEIGHT)));
   const idle = useIdleReset();
 
   const movePrompt = (delta: number) => setPosition((current) => current + delta);
@@ -116,8 +136,8 @@ export function Write() {
           placeholder="Start writing"
           maxLength={MAX_CHARACTERS}
           spellCheck={false}
-          className="no-scrollbar absolute inset-0 h-full w-full resize-none bg-transparent text-[20px] text-ink outline-none placeholder:italic placeholder:text-[#423418] placeholder:opacity-25"
-          style={{ lineHeight: `${LINE_HEIGHT}px` }}
+          className="no-scrollbar absolute inset-x-0 top-0 w-full resize-none bg-transparent text-[20px] text-ink outline-none placeholder:italic placeholder:text-[#423418] placeholder:opacity-25"
+          style={{ lineHeight: `${LINE_HEIGHT}px`, height: lines * LINE_HEIGHT }}
         />
       </div>
 

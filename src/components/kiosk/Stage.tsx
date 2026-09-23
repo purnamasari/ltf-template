@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { createPortal } from "react-dom";
+import { BuildLabel } from "./BuildLabel";
 
 const STAGE_WIDTH = 1194;
 const STAGE_HEIGHT = 834;
@@ -331,6 +332,9 @@ export function Stage({ children }: { children: ReactNode }) {
       <div ref={setSky} className="pointer-events-none absolute inset-0 overflow-hidden" />
 
       {portrait && <TurnTheTablet />}
+
+      {/* Screen-anchored, so it neither scales nor lifts with the design. */}
+      <BuildLabel scale={scale} lift={lift} height={height} />
     </div>
   );
 }
